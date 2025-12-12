@@ -1,152 +1,255 @@
 <!doctype html>
-<html lang="ru">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revo Coffee — персонализированный кофе</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revo Coffee</title>
 </head>
 
 <body>
-<header>
-  <a href="#">
-    <img src="assets/img/LOGO.png" alt="Логотип Revo Coffee">
-  </a>
+  <header>
+    <a href="#home" aria-label="Trang chủ">
+      <img src="assets/img/LOGO.png" alt="Revo Coffee logo">
+    </a>
 
-  <nav>
-    <ul>
-      <li><a href="#coffee">Coffee</a></li>
-      <li><a href="#base">Build your base</a></li>
-      <li><a href="#giftset">Giftset</a></li>
-      <li><a href="#combo">Combo</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+    <nav aria-label="Menu">
+      <ul>
+        <li><a href="#home">TRANG CHỦ</a></li>
+        <li><a href="#coffee">COFFEE</a></li>
+        <li><a href="#phin">PHIN MẠ MÀU</a></li>
+        <li><a href="#combo">COMBO PHIN PHÊ</a></li>
+        <li><a href="#giftset">GIFTSET</a></li>
+        <li><a href="#contact">LIÊN HỆ</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-  <!-- HERO -->
-  <section>
-    <h1>Ваш персонализированный кофе</h1>
-    <p>
-      Подберите вкус под настроение: насыщенность, аромат и баланс.
-      Мы бережно отбираем зерно и контролируем каждую обжарку.
-    </p>
+  <main id="home">
+    <!-- HERO -->
+    <section aria-labelledby="hero-title">
+      <img src="assets/img/Баннер.png" alt="Your Personalized Coffee banner">
+      <h1 id="hero-title">YOUR COFFEE PERSONALIZED</h1>
+    </section>
 
-    <img src="assets/img/Баннер.png" alt="Кофейная сцена Revo Coffee">
-  </section>
+    <!-- COFFEE BUILD YOUR BASE -->
+    <section id="phin" aria-labelledby="base-title">
+      <header>
+        <p>Your Personalized Coffee</p>
+        <h2 id="base-title">COFFEE BUILD YOUR BASE</h2>
+      </header>
 
-  <!-- BUILD YOUR BASE -->
-  <section id="base">
-    <h2>Соберите основу вкуса</h2>
+      <div>
+        <article>
+          <img src="assets/icons/IC_Mountain.png" alt="">
+          <h3>Nguồn gốc</h3>
+          <p>Những hạt cà phê Arabica, Robusta đạt chất lượng theo tiêu chuẩn quốc tế.</p>
+        </article>
 
-    <article>
-      <img src="assets/icons/IC_Mountain.png" alt="">
-      <h3>Происхождение</h3>
-      <p>Отборные зёрна из проверенных регионов с устойчивым качеством.</p>
-    </article>
+        <article>
+          <img src="assets/icons/IC_coffee.png" alt="">
+          <h3>Chất lượng</h3>
+          <p>70% chất lượng tách cà phê đến từ nguồn gốc và chất lượng green bean.</p>
+        </article>
 
-    <article>
-      <img src="assets/icons/IC_coffee.png" alt="">
-      <h3>Состав</h3>
-      <p>Баланс арабики и робусты для гармоничного вкуса.</p>
-    </article>
+        <article>
+          <img src="assets/icons/IC (2).png" alt="">
+          <h3>Các loại hạt</h3>
+          <p>Từng một hạt cà phê là cả một quá trình tập trung cao độ của nghệ nhân cà phê.</p>
+        </article>
 
-    <article>
-      <img src="assets/icons/IC (2).png" alt="">
-      <h3>Качество</h3>
-      <p>Контроль обжарки и свежести каждого зерна.</p>
-    </article>
+        <article>
+          <img src="assets/icons/IC (3).png" alt="">
+          <h3>Pha chế</h3>
+          <p>Những hạt cà phê được lột xác qua quá trình rang xay kỹ lưỡng và nghiêm ngặt.</p>
+        </article>
+      </div>
+    </section>
 
-    <article>
-      <img src="assets/icons/IC (3).png" alt="">
-      <h3>Приготовление</h3>
-      <p>Рекомендации под разные способы заваривания.</p>
-    </article>
-  </section>
+    <!-- CHOOSE YOUR FAVORITE -->
+    <section id="coffee" aria-labelledby="fav-title">
+      <header>
+        <p>Choose Your Favorite</p>
+        <h2 id="fav-title">CHUẨN GU ĐÚNG VỊ</h2>
+      </header>
 
-  <!-- PRODUCTS -->
-  <section id="coffee">
-    <h2>Выберите любимый вкус</h2>
+      <div>
+        <article>
+          <img src="assets/img/IMAGE.png" alt="REVO Morning">
+          <p>đắng, hậu ngọt, hương hoa</p>
+          <h3>REVO Morning</h3>
+          <p><strong>99.000</strong></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </article>
 
-    <article>
-      <img src="assets/img/IMAGE.png" alt="Кофе Revo">
-      <h3>Revo Morning</h3>
-      <p>Лёгкий вкус и цветочный аромат.</p>
-      <p><strong>99 000</strong></p>
-      <button>Купить</button>
-    </article>
+        <article>
+          <img src="assets/img/IMAGE (2).png" alt="REVO Everyday">
+          <p>cân bằng, hậu đắng, vị chocolate</p>
+          <h3>REVO Everyday</h3>
+          <p><strong>85.000</strong></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </article>
 
-    <article>
-      <img src="assets/img/image (1).png" alt="Кофе Revo">
-      <h3>Revo Everyday</h3>
-      <p>Сбалансированный вкус с нотами шоколада.</p>
-      <p><strong>85 000</strong></p>
-      <button>Купить</button>
-    </article>
+        <article>
+          <!-- В исходных фото нет упаковки Honey без кружки.
+               Используем имеющийся файл image (8).png -->
+          <img src="assets/img/image (8).png" alt="REVO Honey">
+          <p>độ ngọt cao, hậu ngọt, chua họ táo</p>
+          <h3>REVO Honey</h3>
+          <p><strong>195.000</strong></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </article>
 
-    <article>
-      <img src="assets/img/IMAGE (2).png" alt="Кофе Revo">
-      <h3>Revo Honey</h3>
-      <p>Сладкое послевкусие и фруктовые ноты.</p>
-      <p><strong>195 000</strong></p>
-      <button>Купить</button>
-    </article>
+        <article>
+          <!-- В исходных фото нет отдельной упаковки Natural.
+               Временно ставим Origin (как отдельный продукт в макете тоже есть). -->
+          <img src="assets/img/image (1).png" alt="REVO Natural">
+          <p>hậu ngọt, hương hoa, vị chua dâu</p>
+          <h3>REVO Natural</h3>
+          <p><strong>169.000</strong></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </article>
 
-    <article>
-      <img src="assets/img/IMAGE (3).png" alt="Кофе Revo">
-      <h3>Revo Natural</h3>
-      <p>Ягодная кислинка и яркий аромат.</p>
-      <p><strong>169 000</strong></p>
-      <button>Купить</button>
-    </article>
-  </section>
+        <article>
+          <img src="assets/img/image (1).png" alt="REVO Origin">
+          <p>hậu ngọt, ít đắng, vị chua dâu</p>
+          <h3>REVO Origin</h3>
+          <p><strong>139.000</strong></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </article>
 
-  <!-- GIFTSET -->
-  <section id="giftset">
-    <h2>Giftset</h2>
+        <article>
+          <img src="assets/img/IMAGE (3).png" alt="REVO Đậm Đà">
+          <p>đậm đà, đắng, truyền thống</p>
+          <h3>REVO Đậm Đà</h3>
+          <p><strong>75.000</strong></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </article>
+      </div>
+    </section>
 
-    <article>
-      <img src="assets/img/pr-0018-r.png" alt="Подарочный набор Revo Coffee">
-      <h3>Подарочный набор</h3>
-      <p>Идеальный подарок для ценителей кофе.</p>
-      <p><strong>285 000</strong></p>
-      <button>Купить</button>
-    </article>
-  </section>
+    <!-- GIFTSET -->
+    <section id="giftset" aria-labelledby="gift-title">
+      <header>
+        <p>Best Gift For Best Friend</p>
+        <h2 id="gift-title">GIFTSET</h2>
+      </header>
 
-  <!-- COMBO -->
-  <section id="combo">
-    <h2>Combo phin phê</h2>
+      <article>
+        <img src="assets/img/pr-0018-r.png" alt="Giftset Cà phê phin Việt Nam">
+        <div>
+          <p><strong>Giftset "Cà phê phin Việt Nam"</strong></p>
+          <p>
+            Món quà tuyệt vời dành cho người sành cà phê. Hạt cà phê được Revo cẩn trọng chọn lựa,
+            rang xay theo công nghệ và bí quyết học hỏi từ những nghệ nhân nổi tiếng, cùng với tình yêu,
+            sự đam mê của người làm cà phê… tạo ra những tách cà phê tinh khiết chỉ dành riêng cho bạn.
+          </p>
 
-    <article>
-      <img src="assets/img/image (6).png" alt="Кофейный набор">
-      <h3>Combo Revo Đậm Đà</h3>
-      <p><strong>147 000</strong></p>
-    </article>
+          <dl>
+            <div>
+              <dt>Độ cao</dt>
+              <dd>700 - 800m</dd>
+            </div>
+            <div>
+              <dt>Loại hạt</dt>
+              <dd>Fine Robusta Blend</dd>
+            </div>
+          </dl>
 
-    <article>
-      <img src="assets/img/image (7).png" alt="Кофейный набор">
-      <h3>Combo Revo Everyday</h3>
-      <p><strong>156 000</strong></p>
-    </article>
+          <p><strong>285.000</strong></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </div>
+      </article>
+    </section>
 
-    <article>
-      <img src="assets/img/image (8).png" alt="Кофейный набор">
-      <h3>Combo Revo Honey</h3>
-      <p><strong>275 000</strong></p>
-    </article>
-  </section>
+    <!-- COMBO PHIN PHÊ -->
+    <section id="combo" aria-labelledby="combo-title">
+      <header>
+        <p>Your Personalized Coffee</p>
+        <h2 id="combo-title">COMBO PHIN PHÊ</h2>
+      </header>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Контакты</h2>
-    <p>Email: hello@revo.example</p>
-    <p>Телефон: +7 000 000-00-00</p>
-  </section>
-</main>
+      <div>
+        <article>
+          <img src="assets/img/image (6).png" alt="Combo Revo Đậm Đà">
+          <p>Hàm lượng caffein trong Revo Đậm Đà đủ mạnh để làm bạn tỉnh táo làm việc...</p>
+          <h3>Combo Revo Đậm Đà</h3>
+          <p><strong>147.000</strong> <del>155.000</del></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </article>
 
-<footer>
-  <p>© Revo Coffee Việt Nam — 2018</p>
-</footer>
+        <article>
+          <img src="assets/img/image (7).png" alt="Combo Revo Everyday">
+          <p>Revo Everyday được phối trộn giữa vị đắng của hạt Robusta và hương thơm...</p>
+          <h3>Combo Revo Everyday</h3>
+          <p><strong>156.000</strong> <del>165.000</del></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </article>
+
+        <article>
+          <img src="assets/img/image (8).png" alt="Combo Revo Honey">
+          <p>Honey trong tên gọi Revo Honey đến từ phương pháp chế biến hạt Arabica...</p>
+          <h3>Combo Revo Honey</h3>
+          <p><strong>275.000</strong> <del>260.000</del></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </article>
+
+        <article>
+          <!-- В фото нет отдельного Natural combo (в макете есть 4 карточки).
+               Если найдёшь/добавишь картинку — просто поменяй src. -->
+          <img src="assets/img/image (7).png" alt="Combo Revo Natural">
+          <p>Revo Natural là dòng cà phê đặc biệt của Revo Coffee dành riêng ...</p>
+          <h3>Combo Revo Natural</h3>
+          <p><strong>249.000</strong> <del>236.000</del></p>
+          <p>
+            <a href="#contact">MUA NGAY</a>
+            <a href="#contact">CHI TIẾT</a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">LIÊN HỆ</h2>
+      <address>
+        <p>Email: <a href="mailto:hello@revo.example">hello@revo.example</a></p>
+        <p>Phone: <a href="tel:+70000000000">+7 000 000-00-00</a></p>
+      </address>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Revo Coffee Việt Nam - 2018</p>
+  </footer>
 </body>
 </html>
