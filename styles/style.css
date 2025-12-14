@@ -22,12 +22,13 @@ body{
   line-height:1.4;
 }
 
-/* ===== HERO (точно как на макете: 3 колонки) ===== */
+/* ===== HERO (3 колонки, меню НЕ fixed) ===== */
 .hero{
   background:var(--white);
   display:grid;
   grid-template-columns: 1fr 1.45fr 260px;
   min-height:560px;
+  position:relative;
 }
 
 .hero__left{
@@ -35,6 +36,8 @@ body{
   display:flex;
   flex-direction:column;
   gap:70px;
+  position:relative;
+  z-index:2;              /* текст поверх */
 }
 
 .hero__logo{width:110px}
@@ -46,6 +49,7 @@ body{
   line-height:70px;
   text-transform:uppercase;
   color:var(--primary);
+  margin-right:-28px;     /* наезд на картинку как в макете */
 }
 .hero__hl{
   display:inline-block;
@@ -54,10 +58,14 @@ body{
   padding:0 10px;
 }
 
-.hero__media{min-height:560px}
+.hero__media{
+  min-height:560px;
+  position:relative;
+  z-index:1;
+}
 .hero__img{width:100%;height:100%;object-fit:cover}
 
-/* меню как в макете: НЕ fixed */
+/* меню как в макете: НЕ fixed, но растянуто по высоте hero */
 .hero__menu{
   background:var(--primary);
   color:#fff;
@@ -65,7 +73,9 @@ body{
   display:flex;
   flex-direction:column;
   gap:18px;
+  align-self:stretch;
 }
+
 .hero__cart{
   width:34px;height:34px;
   margin-left:auto;
@@ -79,30 +89,54 @@ body{
 .section--white{background:var(--white)}
 .section--gray{background:var(--bg);position:relative;overflow:hidden}
 
-.section__kicker{text-align:center;opacity:.75;margin-bottom:8px}
+.section__kicker{
+  text-align:center;
+  opacity:.75;
+  margin-bottom:8px;
+  position:relative;
+  z-index:1;
+}
 .section__title{
   text-align:center;
   font-family:'Montserrat',system-ui,sans-serif;
   font-weight:800;
   letter-spacing:.4px;
   color:var(--primary);
+  position:relative;
+  z-index:1;
 }
 
-/* ===== BUILD YOUR BASE ===== */
+/* ===== BUILD YOUR BASE (иконки ровно) ===== */
 .base{
   max-width:1100px;
   margin:26px auto 0;
   display:grid;
   grid-template-columns:repeat(4,minmax(170px,1fr));
   gap:26px;
-  justify-items:center;
+  justify-items:stretch;   /* важно */
+  align-items:start;       /* важно */
   text-align:center;
+  position:relative;
+  z-index:1;
 }
-.base__icon{width:62px;height:62px;margin-bottom:12px}
+
+.base__item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.base__icon{
+  width:62px;
+  height:62px;             /* фикс высоты */
+  object-fit:contain;
+  margin:0 0 12px;
+}
+
 .base__name{font-weight:800;color:var(--primary);margin-bottom:6px}
 .base__text{opacity:.75;max-width:240px}
 
-/* ===== PRODUCTS декоративная левая плашка + стрелка ===== */
+/* ===== PRODUCTS (панель уходит назад) ===== */
 .products__panel{
   position:absolute;
   left:0;
@@ -110,7 +144,9 @@ body{
   width:330px;
   height:230px;
   background:var(--panel);
+  z-index:0;              /* фон назад */
 }
+
 .products__arrow{
   position:absolute;
   right:46px;
@@ -120,6 +156,7 @@ body{
   border-radius:999px;
   background:var(--accent);
   cursor:default;
+  z-index:2;
 }
 .products__arrow::before{
   content:"";
@@ -137,6 +174,8 @@ body{
   margin:26px auto 0;
   display:grid;
   gap:18px;
+  position:relative;
+  z-index:1;              /* контент поверх панелей */
 }
 .grid--2{grid-template-columns:repeat(2,minmax(320px,1fr))}
 .grid--3{grid-template-columns:repeat(3,minmax(280px,1fr))}
@@ -175,7 +214,7 @@ body{
 .link{font-weight:800;opacity:.8}
 .link:hover{opacity:1}
 
-/* ===== GIFTSET (картинка + карточка + 1/2/3 справа) ===== */
+/* ===== GIFTSET ===== */
 .giftset__wrap{
   max-width:1100px;
   margin:26px auto 0;
@@ -183,7 +222,10 @@ body{
   grid-template-columns: 1.1fr 1.35fr 70px;
   gap:18px;
   align-items:stretch;
+  position:relative;
+  z-index:1;
 }
+
 .giftset__card{
   background:var(--white);
   border-radius:10px;
@@ -225,7 +267,7 @@ body{
 }
 .step--active{opacity:1}
 
-/* ===== COMBO: правая плашка + стрелка + “обрезанная” карточка ===== */
+/* ===== COMBO (панель назад + стрелка поверх + ghost) ===== */
 .combo__panel{
   position:absolute;
   right:0;
@@ -233,7 +275,9 @@ body{
   width:330px;
   height:290px;
   background:var(--panel);
+  z-index:0;              /* фон назад */
 }
+
 .combo__arrow{
   position:absolute;
   right:46px;
@@ -243,6 +287,7 @@ body{
   border-radius:999px;
   background:var(--accent);
   cursor:default;
+  z-index:2;
 }
 .combo__arrow::before{
   content:"";
@@ -254,6 +299,7 @@ body{
   margin:18px auto 0;
 }
 
+/* combo cards */
 .combo-card{
   background:var(--white);
   border-radius:10px;
@@ -268,10 +314,12 @@ body{
 .combo-card__price{font-weight:800;margin-top:2px}
 .combo-card__price del{opacity:.6;margin-left:8px}
 
+/* ghost card */
 .combo__ghost{
   max-width:1100px;
   margin:0 auto;
   position:relative;
+  z-index:1;
 }
 .combo-card--ghost{
   position:absolute;
@@ -289,6 +337,7 @@ body{
   .hero{grid-template-columns:1fr;min-height:auto}
   .hero__media{min-height:auto}
   .hero__img{height:auto}
+  .hero__title{margin-right:0}
   .products__panel,.combo__panel,.products__arrow,.combo__arrow,.combo__ghost{display:none}
   .base{grid-template-columns:1fr}
   .grid--2,.grid--3{grid-template-columns:1fr}
