@@ -1,400 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Nunito:wght@400;600;700&display=swap');
+
 :root{
   --primary:#415167;
   --accent:#C7A17A;
   --dark:#151D28;
-  --light:#EDF0F5;
-  --card:#ffffff;
-  --imgbg:#F9F5E8;
+  --bg:#EDF0F5;
+  --white:#ffffff;
+  --panel:#3b4a5f;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
 img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
+ul{list-style:none}
+a{text-decoration:none;color:inherit}
+html{scroll-behavior:smooth}
 
 body{
-  font-family:"Nunito",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--primary);
-  background:#fff;
-}
-
-.page{
-  width:1400px;   /* ВАЖНО: в PDF макете ширина 1400 */
-  margin:0 auto;
-}
-
-/* typography guide */
-.kicker{
-  text-align:center;
-  font-size:12px;
-  line-height:20px;
-  opacity:.65;
-}
-.h2{
-  text-align:center;
-  font-family:"Montserrat",system-ui,sans-serif;
-  font-weight:900;
-  font-size:30px;
-  line-height:34px;
-  margin-top:6px;
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.4;
 }
 
 /* ================= HERO ================= */
+/* ВАЖНО: это десктопный вид как в макете (не “переламывается” на твоей ширине окна) */
 .hero{
-  position:relative;
-  height:820px;
+  background:var(--white);
   display:grid;
-  grid-template-columns: 436px 690px 274px; /* снято с макета */
-  overflow:hidden;
+  grid-template-columns: 420px 1fr 320px;
+  height: 760px; /* чтобы фото и меню не уезжали вниз как у тебя на скрине */
+  position:relative;
 }
 
+/* left column */
 .hero__left{
-  background:#fff;
+  padding:34px 34px 0;
   position:relative;
+  z-index:3;
 }
 .hero__logo{
-  width:120px;
-  margin:52px 0 0 72px;
-}
-
-.hero__photo{
-  position:relative;
-  overflow:hidden;
-}
-.hero__photo img{
-  width:690px;
-  height:520px;
-  object-fit:cover;
-  margin-top:40px;
-}
-.hero__play{
-  position:absolute;
-  width:44px;height:44px;
-  border-radius:50%;
-  background:#fff;
-  left:50%;
-  top:40px;
-  transform:translate(-50%, 225px);
-  box-shadow:0 12px 24px rgba(21,29,40,.18);
-}
-.hero__play::before{
-  content:"";
-  position:absolute;
-  left:18px;top:14px;
-  width:0;height:0;
-  border-left:12px solid var(--accent);
-  border-top:8px solid transparent;
-  border-bottom:8px solid transparent;
-}
-
-.hero__side{
-  background:var(--primary);
-  position:relative;
-}
-.hero__cart{
-  position:absolute;
-  right:26px;
-  top:40px;
-}
-.hero__cart img{
-  width:20px; /* маленькая корзина как в макете */
-  height:20px;
-}
-
-.menu{
-  position:absolute;
-  right:36px;
-  top:220px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  text-align:left;
-}
-.menu__link{
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.04em;
-  color:#fff;
-  opacity:.55;
-}
-.menu__link--active{
-  opacity:1;
-}
-
-.hero__title{
-  position:absolute;
-  left:78px;
-  top:260px;
-  font-family:"Montserrat",system-ui,sans-serif;
-  font-weight:900;
-  font-size:54px;
-  line-height:70px;
-  z-index:5;
-}
-.hero__title span{
-  display:inline-block;
-  background:var(--accent);
-  color:#fff;
-  padding:0 14px;
-  margin-left:0;
-  transform:translateX(72px); /* чтобы PERSONALIZED залезал на фото как в макете */
-}
-
-/* ================= BASE ================= */
-.base{
-  padding: 70px 0 85px;
-  background:#fff;
-}
-.base__grid{
-  width: 1120px;
-  margin: 54px auto 0;
-  display:grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  text-align:center;
-}
-.base__item img{
-  width:56px;height:56px;
-  margin:0 auto 16px;
-}
-.base__item h3{
-  font-size:16px;
-  font-weight:700;
-  line-height:20px;
-}
-.base__item p{
-  margin-top:10px;
-  font-size:12px;
-  line-height:18px;
-  opacity:.75;
-}
-
-/* ================= COFFEE ================= */
-.coffee{
-  position:relative;
-  padding: 85px 0 110px;
-  background:var(--light);
-  overflow:hidden;
-}
-
-/* ступеньки слева — по ширине как в макете (~382px) */
-.coffee__bg{
-  position:absolute;
-  left:0;
-  width:382px;
-  background:var(--primary);
-}
-.coffee__bg--top{ top:170px; height:220px; }
-.coffee__bg--mid{ top:420px; height:220px; }
-.coffee__bg--bot{ top:670px; height:220px; }
-
-.coffee__grid{
-  width: 1140px;
-  margin: 58px auto 0;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 34px;
-  position:relative;
-  z-index:2;
-}
-
-.card{
-  height: 170px;
-  background:var(--card);
-  border-radius:8px;
-  box-shadow:0 16px 28px rgba(21,29,40,.10);
-  overflow:hidden;
-  display:grid;
-  grid-template-columns: 220px 1fr;
-}
-
-.card__img{
-  background:var(--imgbg);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.card__img img{
   width:120px;
   height:auto;
 }
 
-.card__body{
-  position:relative;
-  padding: 22px 24px;
-}
-
-.card__price{
+/* title sits lower (как на макете) */
+.hero__title{
   position:absolute;
-  top:18px;
-  font-size:12px;
-  opacity:.55;
-}
-.card__price--left{ left:24px; }
-.card__price--right{ right:24px; }
-
-.card__title{
-  margin-top:28px;
-  font-size:16px;
-  line-height:20px;
-  font-weight:700;
-}
-.card__desc{
-  margin-top:6px;
-  font-size:12px;
-  line-height:18px;
-  opacity:.75;
+  left:34px;
+  bottom:170px;            /* как в макете: заголовок ближе к низу */
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:900;
+  font-size:54px;
+  line-height:70px;
+  text-transform:uppercase;
+  color:var(--primary);
+  z-index:5;
 }
 
-.card__actions{
-  margin-top:14px;
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  height:32px;
-  padding:0 16px;
-  border-radius:16px;
+/* “PERSONALIZED” должен слегка заходить на фото */
+.hero__hl{
+  display:inline-block;
   background:var(--accent);
   color:#fff;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.02em;
+  padding:2px 12px 0;
+  margin-right:-30px;      /* ключ: наезд плашки на баннер */
 }
-.link{
-  font-size:12px;
-  font-weight:700;
+
+/* media */
+.hero__media{
+  position:relative;
+  overflow:hidden;
+}
+.hero__img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* play button декоративный */
+.hero__play{
+  position:absolute;
+  left:50%;
+  top:40%;
+  width:54px;
+  height:54px;
+  border-radius:999px;
+  background:rgba(255,255,255,.85);
+  transform:translate(-50%,-50%);
+}
+.hero__play::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  top:18px;
+  width:0;height:0;
+  border-left:14px solid var(--primary);
+  border-top:9px solid transparent;
+  border-bottom:9px solid transparent;
   opacity:.85;
 }
 
-/* стрелка справа (как в макете) */
-.arrow{
-  position:absolute;
-  right:26px;
-  top:50%;
-  transform:translateY(-20%);
-  width:46px;height:46px;
-  border-radius:50%;
-  background:var(--accent);
-  box-shadow:0 14px 26px rgba(21,29,40,.18);
-  z-index:3;
-}
-.arrow::before{
-  content:"";
-  position:absolute;
-  left:18px;top:16px;
-  width:10px;height:10px;
-  border-right:3px solid #fff;
-  border-bottom:3px solid #fff;
-  transform:rotate(-45deg);
-}
-
-/* ================= GIFTSET ================= */
-.gift{
+/* right menu (НЕ fixed) */
+.hero__menu{
+  background:var(--primary);
+  color:#fff;
+  padding:38px 34px;
   position:relative;
-  padding: 85px 0 105px;
-  background:var(--light);
-  overflow:hidden;
 }
-
-/* светлая полоса как в макете */
-.gift__band{
-  position:absolute;
-  left:0; right:0;
-  top:170px;
-  height:360px;
-  background: rgba(255,255,255,.55);
+.hero__cart{
+  width:48px;              /* больше как в макете */
+  height:48px;
+  margin-left:auto;
+  margin-bottom:34px;
 }
+.hero__nav{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.hero__link{
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  opacity:.85;
+}
+.hero__link--active{opacity:1}
+.hero__link:hover{color:var(--accent);opacity:1}
 
-.gift__wrap{
-  width:1140px;
-  margin:58px auto 0;
-  display:grid;
-  grid-template-columns: 420px 1fr 76px;
-  gap:30px;
-  align-items:center;
+/* ================= Sections ================= */
+.section{padding:78px 24px}
+.section--white{background:var(--white)}
+.section--gray{background:var(--bg);position:relative;overflow:hidden}
+.section--gift{background:var(--bg);position:relative;overflow:hidden}
+
+.section__kicker{
+  text-align:center;
+  opacity:.75;
+  margin-bottom:8px;
+  position:relative;
+  z-index:2;
+}
+.section__title{
+  text-align:center;
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:800;
+  letter-spacing:.35px;
+  color:var(--primary);
   position:relative;
   z-index:2;
 }
 
-.gift__img img{
+/* ================= BUILD BASE ================= */
+.base{
+  max-width:1100px;
+  margin:40px auto 0;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:40px;
+  align-items:start;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+.base__item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.base__icon{
+  width:70px;
+  height:70px;            /* фикс высоты чтобы всё было на одной линии */
+  object-fit:contain;
+  margin-bottom:16px;
+}
+.base__name{
+  font-weight:800;
+  color:var(--primary);
+  margin-bottom:10px;
+}
+.base__text{
+  font-size:13px;
+  opacity:.7;
+  max-width:240px;
+}
+
+/* ================= PRODUCTS ================= */
+.products__panel{
+  position:absolute;
+  left:0;
+  top:230px;
   width:420px;
-  box-shadow:0 18px 34px rgba(21,29,40,.14);
-  border-radius:6px;
+  height:320px;
+  background:var(--panel);
+  z-index:0;
 }
 
-.gift__card{
+/* стрелка справа посередине как в макете */
+.products__arrow{
+  position:absolute;
+  right:22px;
+  top:55%;
+  width:52px;height:52px;
+  border:none;
+  border-radius:999px;
+  background:var(--accent);
+  z-index:3;
+}
+.products__arrow::before{
+  content:"";
+  display:block;
+  width:14px;height:14px;
+  border-right:3px solid #fff;
+  border-bottom:3px solid #fff;
+  transform:rotate(-45deg);
+  margin:17px auto 0;
+}
+
+.products__grid{
+  max-width:1100px;
+  margin:46px auto 0;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:34px;
+  position:relative;
+  z-index:2;
+}
+
+/* карточка в макете “плитка”: слева картинка на сером, справа текст */
+.p-card{
   background:#fff;
-  border-radius:8px;
-  box-shadow:0 16px 30px rgba(21,29,40,.12);
-  padding:28px 34px;
-  min-height:270px;
+  border-radius:6px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns: 190px 1fr;
+  box-shadow:0 10px 22px rgba(21,29,40,.08);
 }
-
-.gift__price{
+.p-card__media{
+  background:#F4F4F4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+.p-card__img{
+  width:120px;
+  height:auto;
+  object-fit:contain;
+}
+.p-card__body{
+  padding:18px 18px 18px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.p-card__price{
   font-size:12px;
   opacity:.55;
 }
-.gift__title{
-  margin-top:8px;
-  font-size:16px;
-  font-weight:700;
-  line-height:20px;
+.p-card__price--right{ text-align:right; }
+.p-card__title{
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:800;
+  color:var(--primary);
 }
-.gift__text{
-  margin-top:12px;
+.p-card__desc{
   font-size:12px;
-  line-height:18px;
+  opacity:.7;
+}
+
+.p-card__actions{
+  margin-top:10px;
+  display:flex;
+  gap:16px;
+  align-items:center;
+}
+
+/* кнопки как в макете */
+.btn{
+  background:var(--accent);
+  color:#fff;
+  padding:8px 18px;
+  border-radius:18px;
+  font-weight:800;
+  font-size:12px;
+}
+.link{
+  font-weight:800;
+  font-size:12px;
+  opacity:.7;
+}
+.link:hover{opacity:1}
+
+/* ================= GIFTSET ================= */
+/* светлая “полоса” фона в секции */
+.giftset__stripe{
+  position:absolute;
+  left:0;
+  right:0;
+  top:170px;
+  height:330px;
+  background:#fff;
+  z-index:0;
+}
+
+.giftset__wrap{
+  max-width:1100px;
+  margin:46px auto 0;
+  display:grid;
+  grid-template-columns: 360px 1fr 64px;
+  gap:28px;
+  align-items:start;
+  position:relative;
+  z-index:2;
+}
+
+.giftset__img img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+
+.giftset__card{
+  background:#fff;
+  border-radius:6px;
+  padding:22px 26px;
+  box-shadow:0 10px 22px rgba(21,29,40,.08);
+}
+
+.giftset__price{
+  font-size:12px;
+  opacity:.55;
+  margin-bottom:6px;
+}
+.giftset__name{
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:800;
+  color:var(--primary);
+  margin-bottom:10px;
+}
+.giftset__text{
+  font-size:12px;
   opacity:.75;
 }
 
-.gift__meta{
+.giftset__meta{
   margin-top:18px;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:28px;
+  gap:18px;
 }
 .meta__label{
   font-size:11px;
   opacity:.55;
-  margin-bottom:8px;
+  margin-bottom:6px;
 }
-.meta__value{
-  font-size:12px;
-  font-weight:600;
-  opacity:.85;
+.meta__row{
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
+.meta__ic{width:18px;height:18px;object-fit:contain}
+.meta__val{font-size:12px;opacity:.85}
 
-.gift__actions{
+.giftset__actions{
   margin-top:18px;
   display:flex;
+  gap:18px;
   align-items:center;
-  gap:16px;
 }
 
-/* ступени 1/2/3 справа */
-.steps{
-  width:76px;
+/* цифры справа вертикально как в макете (светлая колонка) */
+.giftset__steps{
   background:#fff;
-  border-radius:8px;
-  box-shadow:0 12px 24px rgba(21,29,40,.10);
+  border-radius:6px;
+  box-shadow:0 10px 22px rgba(21,29,40,.06);
   overflow:hidden;
+  display:flex;
+  flex-direction:column;
 }
 .step{
-  height:90px;
+  height:86px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-family:"Montserrat",system-ui,sans-serif;
-  font-weight:900;
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:800;
   color:var(--primary);
   opacity:.35;
   border-bottom:1px solid rgba(21,29,40,.06);
 }
+.step:last-child{border-bottom:none}
 .step--active{
   background:var(--accent);
   color:#fff;
@@ -402,100 +399,156 @@ body{
 }
 
 /* ================= COMBO ================= */
-.combo{
-  position:relative;
-  padding: 85px 0 120px;
-  background:var(--light);
-  overflow:hidden;
-}
-
-/* правый синий прямоугольник как в макете */
-.combo__bg--right{
+/* фоновые панели справа (в макете их несколько “слоёв”) */
+.combo__panel{
   position:absolute;
   right:0;
-  top:190px;
-  width:320px;
-  height:260px;
-  background:var(--primary);
+  top:160px;
+  width:420px;
+  height:340px;
+  background:var(--panel);
   z-index:0;
 }
-
-/* полупрозрачный “призрак” справа (без JS) */
-.combo__ghost{
+.combo__panel2{
   position:absolute;
-  right:0;
-  top:420px;
-  width:320px;
-  height:260px;
-  background:rgba(65,81,103,.25);
+  right:120px;
+  top:280px;
+  width:260px;
+  height:210px;
+  background:#6B778B;
   z-index:0;
+  opacity:.55;
+}
+
+/* стрелка на правой панели */
+.combo__arrow{
+  position:absolute;
+  right:22px;
+  top:52%;
+  width:52px;height:52px;
+  border:none;
+  border-radius:999px;
+  background:var(--accent);
+  z-index:3;
+}
+.combo__arrow::before{
+  content:"";
+  display:block;
+  width:14px;height:14px;
+  border-right:3px solid #fff;
+  border-bottom:3px solid #fff;
+  transform:rotate(-45deg);
+  margin:17px auto 0;
 }
 
 .combo__grid{
-  width:1140px;
-  margin:58px auto 0;
+  max-width:1100px;
+  margin:46px auto 0;
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:34px;
   position:relative;
   z-index:2;
 }
 
-.comboCard{
+/* combo карточка как в макете: картинка сверху в сером блоке */
+.c-card{
   background:#fff;
-  border-radius:8px;
-  box-shadow:0 16px 30px rgba(21,29,40,.10);
+  border-radius:6px;
   overflow:hidden;
+  box-shadow:0 10px 22px rgba(21,29,40,.08);
 }
-.comboCard__img{
-  background:var(--imgbg);
-  height:210px;
+.c-card__media{
+  background:#F4F4F4;
+  padding:22px;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 }
-.comboCard__img img{
-  width:190px;
+.c-card__img{
+  width:150px;
+  height:auto;
+  object-fit:contain;
 }
-.comboCard__body{
-  padding:18px 22px 22px;
+.c-card__body{
+  padding:18px 18px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
-.comboCard__prices{
+
+.c-card__prices{
   display:flex;
   gap:10px;
-  align-items:baseline;
-  font-size:12px;
-  opacity:.75;
-}
-.comboCard__prices .new{ font-weight:700; opacity:.9; }
-.comboCard__prices .old{ text-decoration:line-through; opacity:.5; }
-
-.comboCard__title{
-  margin-top:10px;
-  font-size:14px;
-  font-weight:700;
-}
-.comboCard__desc{
-  margin-top:10px;
-  font-size:12px;
-  line-height:18px;
-  opacity:.75;
-}
-.comboCard__actions{
-  margin-top:16px;
-  display:flex;
   align-items:center;
-  gap:14px;
+  font-size:12px;
+  opacity:.65;
 }
+.c-card__new{opacity:.85}
+.c-card__old{opacity:.45}
 
-.arrow--combo{
-  top:62%;
+.c-card__title{
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:800;
+  color:var(--primary);
 }
-
-/* ================= FOOTER ================= */
-.footer{
-  text-align:center;
-  padding: 22px 0 30px;
+.c-card__desc{
   font-size:12px;
   opacity:.75;
+  min-height:34px;
+}
+
+.c-card__actions{
+  margin-top:10px;
+  display:flex;
+  gap:16px;
+  align-items:center;
+}
+
+/* “обрезанная” справа */
+.combo__ghost{
+  max-width:1100px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
+}
+.c-card--ghost{
+  position:absolute;
+  right:-180px;
+  top:-290px;
+  width:280px;
+  opacity:.35;
+}
+
+/* ================= Footer ================= */
+.footer{
+  background:#fff;
+  padding:26px;
+  text-align:center;
+  opacity:.7;
+  font-size:12px;
+}
+
+/* ================= Responsive ================= */
+/* Раньше у тебя ломалось на “почти десктопе”. Теперь перелом ТОЛЬКО на реально узком экране */
+@media (max-width: 760px){
+  .hero{
+    grid-template-columns:1fr;
+    height:auto;
+  }
+  .hero__title{
+    position:static;
+    margin-top:22px;
+    margin-bottom:22px;
+  }
+  .hero__hl{margin-right:0}
+
+  .base{grid-template-columns:1fr}
+  .products__grid{grid-template-columns:1fr}
+  .giftset__wrap{grid-template-columns:1fr}
+  .combo__grid{grid-template-columns:1fr}
+
+  .products__panel,.products__arrow,
+  .combo__panel,.combo__panel2,.combo__arrow,
+  .combo__ghost,.giftset__stripe{display:none}
 }
