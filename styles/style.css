@@ -6,7 +6,6 @@
   --dark:#151D28;
   --bg:#EDF0F5;
   --white:#ffffff;
-  --panel:#3b4a5f;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -15,11 +14,20 @@ ul{list-style:none}
 a{text-decoration:none;color:inherit}
 html{scroll-behavior:smooth}
 
-body{
+body{ font-family:'Nunito',system-ui,sans-serif; }
+
+.hero__title,
+.section__title{
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:900;
+}
+
+.base__name,
+.p-card__title,
+.giftset__name,
+.c-card__title{
   font-family:'Nunito',system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--dark);
-  line-height:1.4;
+  font-weight:700; /* или 800 если надо плотнее */
 }
 
 /* ================= HERO ================= */
@@ -27,27 +35,28 @@ body{
 .hero{
   background:var(--white);
   display:grid;
-  grid-template-columns: 420px 1fr 320px;
-  height: 760px; /* чтобы фото и меню не уезжали вниз как у тебя на скрине */
+  grid-template-columns: 340px 1fr 310px;
+  height: 700px; /* чтобы фото и меню не уезжали вниз как у тебя на скрине */
   position:relative;
 }
 
 /* left column */
 .hero__left{
-  padding:34px 34px 0;
+  left:100px;
+  bottom:-60px;  
   position:relative;
   z-index:3;
 }
 .hero__logo{
-  width:120px;
+  width:auto;
   height:auto;
 }
 
 /* title sits lower (как на макете) */
 .hero__title{
   position:absolute;
-  left:34px;
-  bottom:170px;            /* как в макете: заголовок ближе к низу */
+  left:-10px;
+  bottom:100px;            /* как в макете: заголовок ближе к низу */
   font-family:'Montserrat',system-ui,sans-serif;
   font-weight:900;
   font-size:54px;
@@ -66,65 +75,58 @@ body{
   margin-right:-30px;      /* ключ: наезд плашки на баннер */
 }
 
-/* media */
 .hero__media{
   position:relative;
   overflow:hidden;
+  background:#fff;
 }
+
+/* ВАЖНО: нормальный cover и никакой прозрачности */
 .hero__img{
   width:100%;
   height:100%;
   object-fit:cover;
+  object-position:center;
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal;
 }
 
-/* play button декоративный */
-.hero__play{
-  position:absolute;
-  left:50%;
-  top:40%;
-  width:54px;
-  height:54px;
-  border-radius:999px;
-  background:rgba(255,255,255,.85);
-  transform:translate(-50%,-50%);
-}
-.hero__play::before{
-  content:"";
-  position:absolute;
-  left:22px;
-  top:18px;
-  width:0;height:0;
-  border-left:14px solid var(--primary);
-  border-top:9px solid transparent;
-  border-bottom:9px solid transparent;
-  opacity:.85;
+/* если где-то был слой затемнения — принудительно отключаем */
+.hero__media::before,
+.hero__media::after{
+  content:none !important;
 }
 
-/* right menu (НЕ fixed) */
 .hero__menu{
   background:var(--primary);
   color:#fff;
-  padding:38px 34px;
+  padding:80px 50px;
   position:relative;
 }
 .hero__cart{
-  width:48px;              /* больше как в макете */
-  height:48px;
-  margin-left:auto;
+  width:20px;            
+  height:20px;
+  margin-left:0px;
   margin-bottom:34px;
 }
 .hero__nav{
+  margin-top:90px;
   display:flex;
   flex-direction:column;
-  gap:16px;
 }
 .hero__link{
-  font-family:'Montserrat',system-ui,sans-serif;
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  font-family:'Nunito',system-ui,sans-serif;
   font-weight:700;
   font-size:13px;
-  letter-spacing:.6px;
+  letter-spacing:.08em;
   text-transform:uppercase;
-  opacity:.85;
+  opacity:.75;
+}
+.hero__link:last-child{
+  border-bottom:none;
 }
 .hero__link--active{opacity:1}
 .hero__link:hover{color:var(--accent);opacity:1}
@@ -187,13 +189,17 @@ body{
 }
 
 /* ================= PRODUCTS ================= */
+.products{
+  background:var(--white);
+  height:730px;
+}
 .products__panel{
   position:absolute;
   left:0;
-  top:230px;
+  top:0px;
   width:420px;
-  height:320px;
-  background:var(--panel);
+  height:800px;
+  background:var(--primary);
   z-index:0;
 }
 
@@ -215,15 +221,15 @@ body{
   border-right:3px solid #fff;
   border-bottom:3px solid #fff;
   transform:rotate(-45deg);
-  margin:17px auto 0;
+  margin:1px auto 0;
 }
 
 .products__grid{
-  max-width:1100px;
-  margin:46px auto 0;
+  max-width:800px;
+  margin:50px auto 0;
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:34px;
+  gap:19px;
   position:relative;
   z-index:2;
 }
@@ -234,23 +240,23 @@ body{
   border-radius:6px;
   overflow:hidden;
   display:grid;
-  grid-template-columns: 190px 1fr;
-  box-shadow:0 10px 22px rgba(21,29,40,.08);
+  grid-template-columns: 140px 1fr;
+  box-shadow:0 13px 22px rgba(21,29,40,.08);
 }
 .p-card__media{
   background:#F4F4F4;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:18px;
+  padding:0px;
 }
 .p-card__img{
-  width:120px;
+  width:400px;
   height:auto;
   object-fit:contain;
 }
 .p-card__body{
-  padding:18px 18px 18px 18px;
+  padding:20px 18px 18px 18px;
   display:flex;
   flex-direction:column;
   gap:8px;
@@ -259,7 +265,7 @@ body{
   font-size:12px;
   opacity:.55;
 }
-.p-card__price--right{ text-align:right; }
+.p-card__price--right{ text-align:left; }
 .p-card__title{
   font-family:'Montserrat',system-ui,sans-serif;
   font-weight:800;
@@ -406,7 +412,7 @@ body{
   top:160px;
   width:420px;
   height:340px;
-  background:var(--panel);
+  background:var(--primary);
   z-index:0;
 }
 .combo__panel2{
@@ -527,28 +533,4 @@ body{
   text-align:center;
   opacity:.7;
   font-size:12px;
-}
-
-/* ================= Responsive ================= */
-/* Раньше у тебя ломалось на “почти десктопе”. Теперь перелом ТОЛЬКО на реально узком экране */
-@media (max-width: 760px){
-  .hero{
-    grid-template-columns:1fr;
-    height:auto;
-  }
-  .hero__title{
-    position:static;
-    margin-top:22px;
-    margin-bottom:22px;
-  }
-  .hero__hl{margin-right:0}
-
-  .base{grid-template-columns:1fr}
-  .products__grid{grid-template-columns:1fr}
-  .giftset__wrap{grid-template-columns:1fr}
-  .combo__grid{grid-template-columns:1fr}
-
-  .products__panel,.products__arrow,
-  .combo__panel,.combo__panel2,.combo__arrow,
-  .combo__ghost,.giftset__stripe{display:none}
 }
