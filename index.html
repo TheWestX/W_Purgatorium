@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <!-- HERO = 3 колонки: слева текст, по центру фото, справа меню (НЕ fixed) -->
+  <!-- HERO -->
   <header class="hero" id="home">
     <div class="hero__left">
       <img class="hero__logo" src="assets/img/logo.png" alt="revo" />
@@ -33,7 +33,8 @@
           <li><a class="hero__link" href="#phin">PHIN MẠ MÀU</a></li>
           <li><a class="hero__link" href="#combo">COMBO PHIN PHÊ</a></li>
           <li><a class="hero__link" href="#giftset">GIFTSET</a></li>
-          <li><a class="hero__link" href="#contact">LIÊN HỆ</a></li>
+          <!-- В макете пункт есть, но отдельной секции можно не делать -->
+          <li><a class="hero__link" href="#footer">LIÊN HỆ</a></li>
         </ul>
       </nav>
     </aside>
@@ -88,8 +89,8 @@
             <h3 class="card__title">REVO Morning</h3>
             <p class="card__price">99.000</p>
             <div class="card__actions">
-              <a class="btn" href="#contact">MUA NGAY</a>
-              <a class="link" href="#contact">CHI TIẾT</a>
+              <a class="btn" href="#footer">MUA NGAY</a>
+              <a class="link" href="#footer">CHI TIẾT</a>
             </div>
           </div>
         </article>
@@ -101,8 +102,8 @@
             <h3 class="card__title">REVO Everyday</h3>
             <p class="card__price">85.000</p>
             <div class="card__actions">
-              <a class="btn" href="#contact">MUA NGAY</a>
-              <a class="link" href="#contact">CHI TIẾT</a>
+              <a class="btn" href="#footer">MUA NGAY</a>
+              <a class="link" href="#footer">CHI TIẾT</a>
             </div>
           </div>
         </article>
@@ -114,8 +115,8 @@
             <h3 class="card__title">REVO Origin</h3>
             <p class="card__price">139.000</p>
             <div class="card__actions">
-              <a class="btn" href="#contact">MUA NGAY</a>
-              <a class="link" href="#contact">CHI TIẾT</a>
+              <a class="btn" href="#footer">MUA NGAY</a>
+              <a class="link" href="#footer">CHI TIẾT</a>
             </div>
           </div>
         </article>
@@ -127,8 +128,8 @@
             <h3 class="card__title">REVO Đậm Đà</h3>
             <p class="card__price">75.000</p>
             <div class="card__actions">
-              <a class="btn" href="#contact">MUA NGAY</a>
-              <a class="link" href="#contact">CHI TIẾT</a>
+              <a class="btn" href="#footer">MUA NGAY</a>
+              <a class="link" href="#footer">CHI TIẾT</a>
             </div>
           </div>
         </article>
@@ -136,7 +137,9 @@
     </section>
 
     <!-- GIFTSET -->
-    <section class="section section--white giftset" id="giftset" aria-labelledby="gift-title">
+    <section class="section section--gift giftset" id="giftset" aria-labelledby="gift-title">
+      <div class="giftset__bg" aria-hidden="true"></div>
+
       <p class="section__kicker">Best Gift For Best Friend</p>
       <h2 class="section__title" id="gift-title">GIFTSET</h2>
 
@@ -174,8 +177,8 @@
           </dl>
 
           <div class="card__actions">
-            <a class="btn" href="#contact">MUA NGAY</a>
-            <a class="link" href="#contact">CHI TIẾT</a>
+            <a class="btn" href="#footer">MUA NGAY</a>
+            <a class="link" href="#footer">CHI TIẾT</a>
           </div>
         </article>
 
@@ -199,12 +202,12 @@
         <article class="combo-card">
           <img class="combo-card__img" src="assets/img/image (6).png" alt="Combo Revo Đậm Đà" />
           <div class="combo-card__body">
-            <p class="combo-card__desc">Hàm lượng caffein trong Revo Đậm Đà đủ mạnh để làm bạn tỉnh táo làm việc...</p>
+            <p class="combo-card__desc">Hàm lượng caffein trong Revo Đậm Đà đủ mạnh để làm bạn tỉnh táo làm việc.</p>
             <h3 class="combo-card__title">Combo Revo Đậm Đà</h3>
             <p class="combo-card__price">147.000 <del>155.000</del></p>
             <div class="card__actions">
-              <a class="btn" href="#contact">MUA NGAY</a>
-              <a class="link" href="#contact">CHI TIẾT</a>
+              <a class="btn" href="#footer">MUA NGAY</a>
+              <a class="link" href="#footer">CHI TIẾT</a>
             </div>
           </div>
         </article>
@@ -212,12 +215,12 @@
         <article class="combo-card">
           <img class="combo-card__img" src="assets/img/image (7).png" alt="Combo Revo Everyday" />
           <div class="combo-card__body">
-            <p class="combo-card__desc">Revo Everyday được phối trộn giữa vị đắng của hạt Robusta và hương thơm...</p>
+            <p class="combo-card__desc">Revo Everyday được phối trộn giữa vị đắng của hạt Robusta và hương thơm.</p>
             <h3 class="combo-card__title">Combo Revo Everyday</h3>
             <p class="combo-card__price">156.000 <del>165.000</del></p>
             <div class="card__actions">
-              <a class="btn" href="#contact">MUA NGAY</a>
-              <a class="link" href="#contact">CHI TIẾT</a>
+              <a class="btn" href="#footer">MUA NGAY</a>
+              <a class="link" href="#footer">CHI TIẾT</a>
             </div>
           </div>
         </article>
@@ -225,36 +228,32 @@
         <article class="combo-card">
           <img class="combo-card__img" src="assets/img/image (8).png" alt="Combo Revo Honey" />
           <div class="combo-card__body">
-            <p class="combo-card__desc">Honey trong tên gọi Revo Honey đến từ phương pháp chế biến hạt Arabica...</p>
+            <p class="combo-card__desc">Honey trong tên gọi Revo Honey đến từ phương pháp chế biến hạt Arabica.</p>
             <h3 class="combo-card__title">Combo Revo Honey</h3>
             <p class="combo-card__price">275.000 <del>260.000</del></p>
             <div class="card__actions">
-              <a class="btn" href="#contact">MUA NGAY</a>
-              <a class="link" href="#contact">CHI TIẾT</a>
+              <a class="btn" href="#footer">MUA NGAY</a>
+              <a class="link" href="#footer">CHI TIẾT</a>
             </div>
           </div>
         </article>
       </div>
 
-      <!-- “обрезанная” карточка справа (визуально) -->
+      <!-- обрезанная справа (визуально) -->
       <div class="combo__ghost" aria-hidden="true">
         <article class="combo-card combo-card--ghost">
           <img class="combo-card__img" src="assets/img/image (7).png" alt="" />
           <div class="combo-card__body">
-            <p class="combo-card__desc">Revo Natural là dòng cà phê đặc biệt của Revo Coffee dành riêng ...</p>
+            <p class="combo-card__desc">Revo Natural là dòng cà phê đặc biệt của Revo Coffee dành riêng.</p>
             <h3 class="combo-card__title">Combo Revo Honey</h3>
             <p class="combo-card__price">249.000 <del>236.000</del></p>
           </div>
         </article>
       </div>
     </section>
-
-    <section class="section section--white" id="contact" aria-labelledby="c-title">
-      <h2 class="section__title" id="c-title">LIÊN HỆ</h2>
-    </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" id="footer">
     <p>© Revo Coffee Việt Nam - 2018</p>
   </footer>
 </body>
