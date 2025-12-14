@@ -1,0 +1,113 @@
+/* ===== RESET ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Nunito:wght@400;600&display=swap');
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #EDF0F5;
+  color: #151D28;
+  line-height: 1.5;
+}
+
+/* ===== HEADER ===== */
+.header {
+  padding: 24px;
+  background: #fff;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  position: fixed;
+  top: 120px;
+  right: 0;
+  width: 220px;
+  padding: 24px;
+  background: #415167;
+  color: #fff;
+}
+
+.sidebar__cart {
+  margin-bottom: 24px;
+}
+
+.sidebar__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar__link {
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.sidebar__link:hover,
+.sidebar__link:focus {
+  color: #C7A17A;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 80px 24px;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* ===== BUTTONS ===== */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #C7A17A;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background: #b08c63;
+  transform: scale(1.05);
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+/* ===== FOCUS ===== */
+a:focus {
+  outline: 2px solid #C7A17A;
+  outline-offset: 2px;
+}
