@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Nunito:wght@400;600;700&display=swap');
 
 :root{
-  --primary:#415167;
-  --accent:#C7A17A;
-  --dark:#151D28;
-  --bg:#EDF0F5;
+  --primary:#415167;  /* макет */
+  --accent:#C7A17A;   /* макет */
+  --dark:#151D28;     /* макет */
+  --bg:#EDF0F5;       /* макет */
   --white:#ffffff;
-  --panel: var(--primary);     /* ключ: фон-плашки = цвет макета */
   --soft:#F4F4F4;
+  --panel: var(--primary);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -26,8 +26,9 @@ body{
 .kicker{
   text-align:center;
   font-size:12px;
-  opacity:.65;
-  margin-bottom:8px;
+  line-height:16px;
+  opacity:.6;
+  margin-bottom:10px;
 }
 .title{
   text-align:center;
@@ -36,7 +37,36 @@ body{
   font-size:24px;
   line-height:28px;
   color:var(--primary);
+  letter-spacing:0;
 }
+
+/* buttons (как в макете: пилюля + текст) */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--accent);
+  color:#fff;
+  padding:8px 18px;
+  border-radius:22px;
+  font-family:'Nunito',system-ui,sans-serif;
+  font-weight:700;
+  font-size:11px;
+  line-height:16px;
+  text-transform:uppercase;
+}
+.btn--lg{ padding:9px 22px; }
+
+.link{
+  font-family:'Nunito',system-ui,sans-serif;
+  font-weight:700;
+  font-size:11px;
+  line-height:16px;
+  text-transform:uppercase;
+  opacity:.75;
+}
+.link--primary{ color:var(--primary); opacity:.9; }
+.link:hover{opacity:1}
 
 /* HERO */
 .hero{
@@ -48,34 +78,43 @@ body{
 
 .hero__left{
   position:relative;
-  padding:36px 34px;
+  padding:34px 34px 0 34px;
+  overflow:visible;
 }
+.hero__brand{display:inline-block}
 .hero__logo{
-  width:120px;
+  width:122px;
   height:auto;
 }
+
+/* ВАЖНО: заголовок наложен так, чтобы плашка немного заходила на фото */
 .hero__title{
   position:absolute;
   left:34px;
-  bottom:140px;
+  bottom:135px;
   font-family:'Montserrat',system-ui,sans-serif;
   font-weight:900;
   font-size:54px;
   line-height:70px;
   color:var(--primary);
   text-transform:uppercase;
+  z-index:3;
 }
+.hero__t1,.hero__t2,.hero__t3{display:block}
 .hero__hl{
   display:inline-block;
   background:var(--accent);
   color:#fff;
-  padding:2px 12px 0;
-  margin-right:-26px;
+  padding:2px 14px 0;
+  /* заход на картинку как в макете */
+  margin-right:-90px;
 }
 
+/* media */
 .hero__media{
   position:relative;
   overflow:hidden;
+  z-index:1;
 }
 .hero__img{
   width:100%;
@@ -88,7 +127,6 @@ body{
   top:36%;
   width:52px;height:52px;
   border-radius:999px;
-  border:none;
   background:rgba(255,255,255,.85);
   transform:translate(-50%,-50%);
 }
@@ -103,7 +141,7 @@ body{
   border-bottom:10px solid transparent;
 }
 
-/* right menu (как макет: тонкий шрифт + маленькая корзина) */
+/* right menu */
 .hero__menu{
   background:var(--primary);
   color:#fff;
@@ -111,6 +149,7 @@ body{
   display:flex;
   flex-direction:column;
   gap:18px;
+  z-index:2;
 }
 .hero__menuTop{
   display:flex;
@@ -118,10 +157,13 @@ body{
   margin-bottom:22px;
 }
 
-/* маленькая корзина */
+/* корзина маленькая как в макете */
 .hero__cart{
   width:18px;
   height:18px;
+  max-width:18px;
+  max-height:18px;
+  object-fit:contain;
   opacity:.9;
 }
 
@@ -131,20 +173,16 @@ body{
   gap:14px;
 }
 
-/* шрифт меню как в макете (не жирный) */
 .hero__link{
   font-family:'Nunito',system-ui,sans-serif;
-  font-weight:400;
-  font-size:13px;
+  font-weight:600;
+  font-size:12px;
   line-height:16px;
   text-transform:uppercase;
   letter-spacing:0.04em;
   opacity:.85;
 }
-.hero__link--active{
-  font-weight:700;
-  opacity:1;
-}
+.hero__link--active{font-weight:700;opacity:1}
 .hero__link:hover{color:var(--accent);opacity:1}
 
 /* Sections */
@@ -156,26 +194,38 @@ body{
 /* BUILD BASE */
 .base{
   max-width:1100px;
-  margin:42px auto 0;
+  margin:44px auto 0;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:40px;
+  gap:46px;
   text-align:center;
 }
 .base__item{display:flex;flex-direction:column;align-items:center}
-.base__icon{width:72px;height:72px;object-fit:contain;margin-bottom:16px}
-.base__name{font-weight:700;color:var(--primary);margin-bottom:10px}
-.base__text{font-size:12px;opacity:.7;max-width:240px}
+.base__icon{width:74px;height:74px;object-fit:contain;margin-bottom:16px}
+.base__name{
+  font-family:'Nunito',system-ui,sans-serif;
+  font-weight:700;
+  color:var(--primary);
+  font-size:16px;
+  line-height:20px;
+  margin-bottom:10px;
+}
+.base__text{
+  font-size:12px;
+  line-height:16px;
+  opacity:.7;
+  max-width:250px
+}
 
-/* COFFEE decor */
+/* COFFEE (фоновые блоки как в макете) */
 .coffee__decor{
   position:absolute;
   background:var(--panel);
   z-index:0;
 }
-.coffee__decor--left1{left:0; top:210px; width:420px; height:260px}
-.coffee__decor--left2{left:0; top:520px; width:420px; height:260px}
-.coffee__decor--right{right:0; top:470px; width:210px; height:260px; opacity:.75}
+.coffee__decor--l1{left:0; top:220px; width:430px; height:240px}
+.coffee__decor--l2{left:0; top:510px; width:430px; height:240px}
+.coffee__decor--r{right:0; top:420px; width:260px; height:260px; opacity:.55}
 
 .coffee .kicker, .coffee .title{position:relative; z-index:2}
 
@@ -204,36 +254,39 @@ body{
   justify-content:center;
   padding:18px;
 }
-.coffeeCard__img{width:120px; height:auto; object-fit:contain}
+.coffeeCard__img{width:118px; height:auto; object-fit:contain}
 
 .coffeeCard__body{
-  padding:18px;
+  padding:18px 20px;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:6px;
 }
-.coffeeCard__price{font-size:12px;opacity:.55}
+
+/* ЦЕНА: accent + Nunito Semibold (как в макете визуально) */
+.coffeeCard__price{
+  font-family:'Nunito',system-ui,sans-serif;
+  font-weight:600;
+  font-size:12px;
+  line-height:16px;
+  color:var(--accent);
+  opacity:1;
+}
 .coffeeCard__price--right{text-align:right}
+
 .coffeeCard__name{
   font-family:'Montserrat',system-ui,sans-serif;
   font-weight:900;
   color:var(--primary);
   font-size:14px;
+  line-height:18px;
 }
-.coffeeCard__desc{font-size:12px;opacity:.7}
+.coffeeCard__desc{
+  font-size:12px;
+  line-height:16px;
+  opacity:.7
+}
 .coffeeCard__actions{margin-top:10px;display:flex;gap:16px;align-items:center}
-
-/* buttons */
-.btn{
-  background:var(--accent);
-  color:#fff;
-  padding:8px 18px;
-  border-radius:18px;
-  font-weight:700;
-  font-size:11px;
-}
-.link{font-weight:700;font-size:11px;opacity:.7}
-.link:hover{opacity:1}
 
 /* arrows */
 .navArrow{
@@ -254,14 +307,14 @@ body{
   transform:rotate(-45deg);
   margin:16px auto 0;
 }
-.navArrow--coffee{right:22px; top:58%}
+.navArrow--coffee{right:22px; top:54%}
 
 /* GIFTSET */
 .gift__band{
   position:absolute;
   left:0; right:0;
-  top:140px;
-  height:280px;
+  top:120px;
+  height:300px;
   background:#fff;
   z-index:0;
 }
@@ -271,7 +324,7 @@ body{
   max-width:1100px;
   margin:46px auto 0;
   display:grid;
-  grid-template-columns: 360px 1fr 64px;
+  grid-template-columns: 360px 1fr 74px;
   gap:28px;
   align-items:start;
   position:relative;
@@ -284,15 +337,22 @@ body{
   box-shadow:0 10px 22px rgba(21,29,40,.08);
   padding:22px 26px;
 }
-.gift__price{font-size:12px;opacity:.55}
+.gift__price{
+  font-family:'Nunito',system-ui,sans-serif;
+  font-weight:600;
+  font-size:12px;
+  line-height:16px;
+  color:var(--accent);
+}
 .gift__name{
   margin-top:6px;
   font-family:'Montserrat',system-ui,sans-serif;
   font-weight:900;
   font-size:14px;
+  line-height:18px;
   color:var(--primary);
 }
-.gift__text{margin-top:10px;font-size:12px;opacity:.75}
+.gift__text{margin-top:10px;font-size:12px;line-height:16px;opacity:.75}
 
 .gift__meta{
   margin-top:18px;
@@ -334,18 +394,18 @@ body{
   opacity:1;
 }
 
-/* COMBO */
+/* COMBO (фон справа как в макете, без “грязных” перекрытий) */
 .combo__decor1{
   position:absolute;
-  right:0; top:240px;
-  width:420px; height:320px;
+  right:0; top:255px;
+  width:440px; height:320px;
   background:var(--panel);
   z-index:0;
   opacity:1;
 }
 .combo__decor2{
   position:absolute;
-  right:140px; top:410px;
+  right:165px; top:430px;
   width:260px; height:190px;
   background:var(--panel);
   opacity:.45;
@@ -379,19 +439,31 @@ body{
 }
 .comboCard__img{width:150px;height:auto;object-fit:contain}
 .comboCard__body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px}
-.comboCard__prices{display:flex;gap:10px;align-items:center;font-size:12px;opacity:.65}
-.comboCard__new{opacity:.85}
-.comboCard__old{opacity:.45}
+
+/* цены combo */
+.comboCard__prices{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  font-family:'Nunito',system-ui,sans-serif;
+  font-weight:600;
+  font-size:12px;
+  line-height:16px;
+}
+.comboCard__new{color:var(--accent)}
+.comboCard__old{opacity:.5}
+
 .comboCard__name{
   font-family:'Montserrat',system-ui,sans-serif;
   font-weight:900;
   color:var(--primary);
   font-size:13px;
+  line-height:18px;
 }
-.comboCard__desc{font-size:12px;opacity:.75;min-height:34px}
+.comboCard__desc{font-size:12px;line-height:16px;opacity:.75;min-height:34px}
 .comboCard__actions{margin-top:10px;display:flex;gap:16px;align-items:center}
 
-.navArrow--combo{right:22px; top:54%}
+.navArrow--combo{right:22px; top:56%}
 
 /* ghost */
 .combo__ghost{
@@ -402,9 +474,9 @@ body{
 }
 .comboCard--ghost{
   position:absolute;
-  right:-160px;
-  top:-265px;
-  width:280px;
+  right:-165px;
+  top:-255px;
+  width:290px;
   opacity:.25;
 }
 
@@ -420,7 +492,7 @@ body{
 /* responsive */
 @media (max-width: 980px){
   .hero{grid-template-columns:1fr; height:auto}
-  .hero__title{position:static;margin-top:22px}
+  .hero__title{position:static;margin:22px 0 30px}
   .hero__hl{margin-right:0}
   .coffee__grid{grid-template-columns:1fr}
   .combo__grid{grid-template-columns:1fr}

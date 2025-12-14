@@ -11,17 +11,20 @@
   <!-- HERO -->
   <header class="hero" id="home">
     <div class="hero__left">
-      <img class="hero__logo" src="assets/img/logo.png" alt="revo">
-      <h1 class="hero__title">
-        YOUR<br>
-        <span class="hero__hl">PERSONALIZED</span><br>
-        COFFEE
+      <a class="hero__brand" href="#home" aria-label="revo">
+        <img class="hero__logo" src="assets/img/LOGO.png" alt="revo">
+      </a>
+
+      <h1 class="hero__title" aria-label="Your Personalized Coffee">
+        <span class="hero__t1">YOUR</span>
+        <span class="hero__t2"><span class="hero__hl">PERSONALIZED</span></span>
+        <span class="hero__t3">COFFEE</span>
       </h1>
     </div>
 
-    <div class="hero__media">
-      <img class="hero__img" src="assets/img/Баннер.png" alt="Your Personalized Coffee">
-      <button class="hero__play" type="button" aria-label="Play" tabindex="-1"></button>
+    <div class="hero__media" aria-hidden="true">
+      <img class="hero__img" src="assets/img/Баннер.png" alt="">
+      <span class="hero__play" aria-hidden="true"></span>
     </div>
 
     <aside class="hero__menu" aria-label="Menu">
@@ -77,9 +80,9 @@
 
     <!-- COFFEE -->
     <section class="section section--gray coffee" id="coffee" aria-labelledby="coffee-title">
-      <div class="coffee__decor coffee__decor--left1" aria-hidden="true"></div>
-      <div class="coffee__decor coffee__decor--left2" aria-hidden="true"></div>
-      <div class="coffee__decor coffee__decor--right" aria-hidden="true"></div>
+      <div class="coffee__decor coffee__decor--l1" aria-hidden="true"></div>
+      <div class="coffee__decor coffee__decor--l2" aria-hidden="true"></div>
+      <div class="coffee__decor coffee__decor--r" aria-hidden="true"></div>
 
       <p class="kicker">Choose Your Favorite</p>
       <h2 class="title" id="coffee-title">CHUẨN GU ĐÚNG VỊ</h2>
@@ -165,9 +168,11 @@
           <div class="gift__price">285.000</div>
 
           <h3 class="gift__name">Giftset "Cà phê phin Việt Nam"</h3>
+
           <p class="gift__text">
             Món quà tuyệt vời dành cho người sành cà phê. Hạt cà phê được Revo cẩn trọng chọn lựa, rang xay theo công nghệ và bí
-            quyết học hỏi từ những nghệ nhân nổi tiếng, cùng với tình yêu, sự đam mê của người làm cà phê…
+            quyết học hỏi từ những nghệ nhân nổi tiếng, cùng với tình yêu, sự đam mê của người làm cà phê… tạo ra những tách cà
+            phê tinh khiết chỉ dành riêng cho bạn.
           </p>
 
           <div class="gift__meta">
@@ -189,8 +194,8 @@
           </div>
 
           <div class="gift__actions">
-            <a class="btn" href="#footer">MUA NGAY</a>
-            <a class="link" href="#footer">CHI TIẾT</a>
+            <a class="btn btn--lg" href="#footer">MUA NGAY</a>
+            <a class="link link--primary" href="#footer">CHI TIẾT</a>
           </div>
         </article>
 
@@ -268,6 +273,7 @@
 
       <button class="navArrow navArrow--combo" type="button" aria-label="Next" tabindex="-1"></button>
 
+      <!-- Ghost card on the right (как в макете видна часть карточки) -->
       <div class="combo__ghost" aria-hidden="true">
         <article class="comboCard comboCard--ghost">
           <div class="comboCard__imgWrap">
