@@ -6,7 +6,7 @@
   --dark:#151D28;
   --bg:#EDF0F5;
   --white:#ffffff;
-  --panel:#3b4a5f;
+  --panel: var(--primary);     /* ключ: фон-плашки = цвет макета */
   --soft:#F4F4F4;
 }
 
@@ -22,7 +22,7 @@ body{
   color:var(--dark);
 }
 
-/* ---------- типографика как в макете ---------- */
+/* typography */
 .kicker{
   text-align:center;
   font-size:12px;
@@ -38,7 +38,7 @@ body{
   color:var(--primary);
 }
 
-/* ---------- HERO (как на картинке макета) ---------- */
+/* HERO */
 .hero{
   background:var(--white);
   display:grid;
@@ -70,7 +70,7 @@ body{
   background:var(--accent);
   color:#fff;
   padding:2px 12px 0;
-  margin-right:-26px; /* плашка заходит на фото как в макете */
+  margin-right:-26px;
 }
 
 .hero__media{
@@ -82,8 +82,6 @@ body{
   height:100%;
   object-fit:cover;
 }
-
-/* круглая кнопка на фото */
 .hero__play{
   position:absolute;
   left:50%;
@@ -105,11 +103,11 @@ body{
   border-bottom:10px solid transparent;
 }
 
-/* правое меню */
+/* right menu (как макет: тонкий шрифт + маленькая корзина) */
 .hero__menu{
   background:var(--primary);
   color:#fff;
-  padding:28px 34px;
+  padding:32px 34px;
   display:flex;
   flex-direction:column;
   gap:18px;
@@ -117,41 +115,45 @@ body{
 .hero__menuTop{
   display:flex;
   justify-content:flex-end;
+  margin-bottom:22px;
 }
 
-/* КОРЗИНА: в макете маленькая, не огромная */
+/* маленькая корзина */
 .hero__cart{
-  width:28px;
-  height:28px;
-  opacity:.95;
+  width:18px;
+  height:18px;
+  opacity:.9;
 }
 
 .hero__nav{
   display:flex;
   flex-direction:column;
   gap:14px;
-  margin-top:8px;
 }
 
-/* ШРИФТ МЕНЮ: не Montserrat, а Nunito (как выглядит в макете) */
+/* шрифт меню как в макете (не жирный) */
 .hero__link{
   font-family:'Nunito',system-ui,sans-serif;
-  font-weight:600;
-  font-size:12px;
-  letter-spacing:.2px;
+  font-weight:400;
+  font-size:13px;
+  line-height:16px;
   text-transform:uppercase;
-  opacity:.78;
+  letter-spacing:0.04em;
+  opacity:.85;
 }
-.hero__link--active{opacity:1}
+.hero__link--active{
+  font-weight:700;
+  opacity:1;
+}
 .hero__link:hover{color:var(--accent);opacity:1}
 
-/* ---------- sections ---------- */
+/* Sections */
 .section{padding:74px 24px}
 .section--white{background:var(--white)}
 .section--gray{background:var(--bg); position:relative; overflow:hidden}
 .section--gift{background:var(--bg); position:relative; overflow:hidden}
 
-/* ---------- BUILD BASE ---------- */
+/* BUILD BASE */
 .base{
   max-width:1100px;
   margin:42px auto 0;
@@ -165,15 +167,15 @@ body{
 .base__name{font-weight:700;color:var(--primary);margin-bottom:10px}
 .base__text{font-size:12px;opacity:.7;max-width:240px}
 
-/* ---------- COFFEE (фоновые плашки как в макете) ---------- */
+/* COFFEE decor */
 .coffee__decor{
   position:absolute;
   background:var(--panel);
   z-index:0;
 }
-.coffee__decor--left1{left:0; top:165px; width:420px; height:260px}
-.coffee__decor--left2{left:0; top:470px; width:420px; height:260px}
-.coffee__decor--right{right:0; top:420px; width:210px; height:260px; opacity:.7}
+.coffee__decor--left1{left:0; top:210px; width:420px; height:260px}
+.coffee__decor--left2{left:0; top:520px; width:420px; height:260px}
+.coffee__decor--right{right:0; top:470px; width:210px; height:260px; opacity:.75}
 
 .coffee .kicker, .coffee .title{position:relative; z-index:2}
 
@@ -221,7 +223,7 @@ body{
 .coffeeCard__desc{font-size:12px;opacity:.7}
 .coffeeCard__actions{margin-top:10px;display:flex;gap:16px;align-items:center}
 
-/* кнопки */
+/* buttons */
 .btn{
   background:var(--accent);
   color:#fff;
@@ -233,7 +235,7 @@ body{
 .link{font-weight:700;font-size:11px;opacity:.7}
 .link:hover{opacity:1}
 
-/* стрелка справа как в макете */
+/* arrows */
 .navArrow{
   position:absolute;
   width:46px;height:46px;
@@ -254,7 +256,7 @@ body{
 }
 .navArrow--coffee{right:22px; top:58%}
 
-/* ---------- GIFTSET ---------- */
+/* GIFTSET */
 .gift__band{
   position:absolute;
   left:0; right:0;
@@ -305,7 +307,7 @@ body{
 
 .gift__actions{margin-top:18px;display:flex;gap:18px;align-items:center}
 
-/* цифры справа (вертикальная шкала) */
+/* steps */
 .gift__steps{
   background:#fff;
   border-radius:6px;
@@ -332,20 +334,21 @@ body{
   opacity:1;
 }
 
-/* ---------- COMBO (две плашки справа + стрелка + “обрезок” карточки) ---------- */
+/* COMBO */
 .combo__decor1{
   position:absolute;
-  right:0; top:210px;
-  width:420px; height:300px;
+  right:0; top:240px;
+  width:420px; height:320px;
   background:var(--panel);
   z-index:0;
+  opacity:1;
 }
 .combo__decor2{
   position:absolute;
-  right:140px; top:360px;
-  width:260px; height:200px;
-  background:#6B778B;
-  opacity:.55;
+  right:140px; top:410px;
+  width:260px; height:190px;
+  background:var(--panel);
+  opacity:.45;
   z-index:0;
 }
 
@@ -390,6 +393,7 @@ body{
 
 .navArrow--combo{right:22px; top:54%}
 
+/* ghost */
 .combo__ghost{
   max-width:1100px;
   margin:0 auto;
@@ -398,13 +402,13 @@ body{
 }
 .comboCard--ghost{
   position:absolute;
-  right:-180px;
-  top:-285px;
+  right:-160px;
+  top:-265px;
   width:280px;
-  opacity:.35;
+  opacity:.25;
 }
 
-/* ---------- footer ---------- */
+/* footer */
 .footer{
   background:transparent;
   padding:26px;
@@ -413,7 +417,7 @@ body{
   font-size:12px;
 }
 
-/* ---------- адаптив (аккуратно) ---------- */
+/* responsive */
 @media (max-width: 980px){
   .hero{grid-template-columns:1fr; height:auto}
   .hero__title{position:static;margin-top:22px}
