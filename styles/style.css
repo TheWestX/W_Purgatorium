@@ -1,120 +1,117 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Nunito:wght@400;600;700&display=swap');
 
 :root{
-  --primary:#415167;  /* макет */
-  --accent:#C7A17A;   /* макет */
-  --dark:#151D28;     /* макет */
-  --bg:#EDF0F5;       /* макет */
+  --primary:#415167;
+  --accent:#C7A17A;
+  --dark:#151D28;
+  --bg:#EDF0F5;
+  --cream:#F9F5E8;
   --white:#ffffff;
-  --soft:#F4F4F4;
-  --panel: var(--primary);
+  --soft:#F3F3F3;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-img{display:block;max-width:100%}
-ul{list-style:none}
-a{text-decoration:none;color:inherit}
-html{scroll-behavior:smooth}
-
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
 body{
-  font-family:'Nunito',system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--dark);
+  font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+}
+img{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+
+.page{
+  width: 1440px;          /* как макет */
+  margin: 0 auto;
+  background: var(--bg);
 }
 
-/* typography */
+/* Типографика */
 .kicker{
   text-align:center;
   font-size:12px;
   line-height:16px;
-  opacity:.6;
+  opacity:.65;
   margin-bottom:10px;
 }
-.title{
+.h2{
   text-align:center;
-  font-family:'Montserrat',system-ui,sans-serif;
+  font-family:"Montserrat", system-ui, sans-serif;
   font-weight:900;
   font-size:24px;
   line-height:28px;
-  color:var(--primary);
-  letter-spacing:0;
+  color: var(--primary);
 }
 
-/* buttons (как в макете: пилюля + текст) */
+/* Кнопки */
 .btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background:var(--accent);
-  color:#fff;
-  padding:8px 18px;
+  height:28px;
+  padding:0 18px;
   border-radius:22px;
-  font-family:'Nunito',system-ui,sans-serif;
+  background: var(--accent);
+  color:#fff;
+  font-family:"Nunito", system-ui, sans-serif;
   font-weight:700;
   font-size:11px;
-  line-height:16px;
+  letter-spacing:.02em;
   text-transform:uppercase;
 }
-.btn--lg{ padding:9px 22px; }
-
 .link{
-  font-family:'Nunito',system-ui,sans-serif;
+  font-family:"Nunito", system-ui, sans-serif;
   font-weight:700;
   font-size:11px;
-  line-height:16px;
   text-transform:uppercase;
   opacity:.75;
 }
-.link--primary{ color:var(--primary); opacity:.9; }
-.link:hover{opacity:1}
+.link--primary{ color: var(--primary); opacity:1; }
 
 /* HERO */
 .hero{
-  background:var(--white);
+  height: 700px;
+  background: var(--white);
   display:grid;
-  grid-template-columns: 420px 1fr 320px;
-  height: 680px;
+  grid-template-columns: 380px 740px 320px;
 }
 
+/* left */
 .hero__left{
   position:relative;
-  padding:34px 34px 0 34px;
-  overflow:visible;
+  padding: 44px 36px;
+  background: var(--white);
 }
-.hero__brand{display:inline-block}
-.hero__logo{
-  width:122px;
-  height:auto;
-}
+.brand__logo{ width:120px; height:auto; }
 
-/* ВАЖНО: заголовок наложен так, чтобы плашка немного заходила на фото */
-.hero__title{
+.hero__h1{
   position:absolute;
-  left:34px;
-  bottom:135px;
-  font-family:'Montserrat',system-ui,sans-serif;
+  left: 36px;
+  bottom: 170px;          /* как в макете: заголовок сидит ниже */
+  font-family:"Montserrat", system-ui, sans-serif;
   font-weight:900;
   font-size:54px;
   line-height:70px;
-  color:var(--primary);
+  color: var(--primary);
   text-transform:uppercase;
-  z-index:3;
 }
-.hero__t1,.hero__t2,.hero__t3{display:block}
-.hero__hl{
+.hero__line{ display:block; }
+.hero__line--hl{
+  position:relative;
   display:inline-block;
-  background:var(--accent);
+}
+.hero__line--hl > span{
+  display:inline-block;
+  background: var(--accent);
   color:#fff;
-  padding:2px 14px 0;
-  /* заход на картинку как в макете */
-  margin-right:-90px;
+  padding: 2px 14px 0;
+  margin-right:-92px;     /* “заходит” на фото как в макете */
 }
 
-/* media */
-.hero__media{
+/* center */
+.hero__center{
   position:relative;
   overflow:hidden;
-  z-index:1;
 }
 .hero__img{
   width:100%;
@@ -124,379 +121,446 @@ body{
 .hero__play{
   position:absolute;
   left:50%;
-  top:36%;
-  width:52px;height:52px;
+  top:44%;
+  width:52px;
+  height:52px;
   border-radius:999px;
-  background:rgba(255,255,255,.85);
-  transform:translate(-50%,-50%);
+  background: rgba(255,255,255,.85);
+  transform: translate(-50%,-50%);
 }
 .hero__play::before{
   content:"";
   position:absolute;
-  left:21px;
-  top:16px;
-  width:0;height:0;
-  border-left:14px solid rgba(65,81,103,.95);
-  border-top:10px solid transparent;
-  border-bottom:10px solid transparent;
+  left: 22px;
+  top: 16px;
+  width:0; height:0;
+  border-left: 14px solid rgba(65,81,103,.95);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
 }
 
 /* right menu */
-.hero__menu{
-  background:var(--primary);
+.hero__right{
+  background: var(--primary);
   color:#fff;
-  padding:32px 34px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  z-index:2;
+  padding: 36px 34px;
+  position:relative;
 }
-.hero__menuTop{
+.hero__cartWrap{
   display:flex;
   justify-content:flex-end;
-  margin-bottom:22px;
+  position:relative;
+  margin-bottom: 56px;
 }
-
-/* корзина маленькая как в макете */
 .hero__cart{
   width:18px;
   height:18px;
-  max-width:18px;
-  max-height:18px;
   object-fit:contain;
-  opacity:.9;
+  opacity:.95;
 }
-
+.hero__badge{
+  position:absolute;
+  right:-6px;
+  top:-10px;
+  width:16px;
+  height:16px;
+  border-radius:999px;
+  background: var(--accent);
+  color:#fff;
+  font-size:10px;
+  line-height:16px;
+  font-weight:700;
+  text-align:center;
+}
 .hero__nav{
   display:flex;
   flex-direction:column;
   gap:14px;
+  margin-top: 86px; /* отступ как в макете */
 }
-
 .hero__link{
-  font-family:'Nunito',system-ui,sans-serif;
+  font-family:"Nunito", system-ui, sans-serif;
   font-weight:600;
   font-size:12px;
   line-height:16px;
+  letter-spacing:.04em;
   text-transform:uppercase;
-  letter-spacing:0.04em;
   opacity:.85;
 }
-.hero__link--active{font-weight:700;opacity:1}
-.hero__link:hover{color:var(--accent);opacity:1}
+.hero__link--active{ font-weight:700; opacity:1; }
+.hero__link:hover{ color: var(--accent); opacity:1; }
 
-/* Sections */
-.section{padding:74px 24px}
-.section--white{background:var(--white)}
-.section--gray{background:var(--bg); position:relative; overflow:hidden}
-.section--gift{background:var(--bg); position:relative; overflow:hidden}
-
-/* BUILD BASE */
-.base{
-  max-width:1100px;
-  margin:44px auto 0;
+/* BASE */
+.baseSection{
+  background: var(--white);
+  padding: 56px 0 66px;
+}
+.baseGrid{
+  width: 1120px;
+  margin: 44px auto 0;
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:46px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
   text-align:center;
 }
-.base__item{display:flex;flex-direction:column;align-items:center}
-.base__icon{width:74px;height:74px;object-fit:contain;margin-bottom:16px}
-.base__name{
-  font-family:'Nunito',system-ui,sans-serif;
-  font-weight:700;
-  color:var(--primary);
-  font-size:16px;
-  line-height:20px;
-  margin-bottom:10px;
+.baseIcon{
+  width:76px;
+  height:76px;
+  object-fit:contain;
+  margin: 0 auto 16px;
 }
-.base__text{
-  font-size:12px;
+.baseTitle{
+  font-size:14px;
+  font-weight:700;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.baseText{
+  font-size:11px;
   line-height:16px;
-  opacity:.7;
-  max-width:250px
+  opacity:.65;
+  max-width: 210px;
+  margin: 0 auto;
 }
 
-/* COFFEE (фоновые блоки как в макете) */
-.coffee__decor{
+/* Общие “секции серого фона” */
+.coffeeSection,
+.comboSection{
+  position:relative;
+  background: var(--bg);
+  padding: 70px 0 80px;
+  overflow:hidden;
+}
+
+/* фоновые плашки */
+.bgBlock{
   position:absolute;
-  background:var(--panel);
+  background: var(--primary);
   z-index:0;
 }
-.coffee__decor--l1{left:0; top:220px; width:430px; height:240px}
-.coffee__decor--l2{left:0; top:510px; width:430px; height:240px}
-.coffee__decor--r{right:0; top:420px; width:260px; height:260px; opacity:.55}
+.bgBlock--coffeeTop{
+  left:0;
+  top: 210px;
+  width: 430px;
+  height: 240px;
+}
+.bgBlock--coffeeBottom{
+  left:0;
+  top: 490px;
+  width: 430px;
+  height: 240px;
+}
 
-.coffee .kicker, .coffee .title{position:relative; z-index:2}
-
-.coffee__grid{
-  max-width:1100px;
-  margin:46px auto 0;
+/* COFFEE grid */
+.coffeeSection .kicker,
+.coffeeSection .h2{
+  position:relative;
+  z-index:2;
+}
+.coffeeGrid{
+  width: 1100px;
+  margin: 44px auto 0;
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:34px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
   position:relative;
   z-index:2;
 }
 
+/* Coffee card */
 .coffeeCard{
-  background:#fff;
-  border-radius:6px;
-  overflow:hidden;
-  box-shadow:0 10px 22px rgba(21,29,40,.08);
+  height: 150px;
+  background: var(--white);
+  border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(21,29,40,.08);
   display:grid;
-  grid-template-columns: 190px 1fr;
+  grid-template-columns: 200px 1fr;
+  overflow:hidden;
 }
-.coffeeCard__imgWrap{
-  background:var(--soft);
+.coffeeImgBox{
+  background: var(--soft);
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:18px;
 }
-.coffeeCard__img{width:118px; height:auto; object-fit:contain}
-
-.coffeeCard__body{
-  padding:18px 20px;
+.coffeeImg{
+  width: 120px;
+  height:auto;
+  object-fit:contain;
+}
+.coffeeBody{
+  padding: 18px 20px;
   display:flex;
   flex-direction:column;
-  gap:6px;
+  gap: 6px;
 }
-
-/* ЦЕНА: accent + Nunito Semibold (как в макете визуально) */
-.coffeeCard__price{
-  font-family:'Nunito',system-ui,sans-serif;
+.coffeePrice{
+  font-size:12px;
   font-weight:600;
-  font-size:12px;
-  line-height:16px;
-  color:var(--accent);
-  opacity:1;
+  color: var(--accent);
 }
-.coffeeCard__price--right{text-align:right}
-
-.coffeeCard__name{
-  font-family:'Montserrat',system-ui,sans-serif;
+.coffeePrice--right{ text-align:right; }
+.coffeeName{
+  font-family:"Montserrat", system-ui, sans-serif;
   font-weight:900;
-  color:var(--primary);
   font-size:14px;
-  line-height:18px;
+  color: var(--primary);
 }
-.coffeeCard__desc{
+.coffeeDesc{
   font-size:12px;
-  line-height:16px;
-  opacity:.7
+  opacity:.7;
 }
-.coffeeCard__actions{margin-top:10px;display:flex;gap:16px;align-items:center}
+.actions{
+  margin-top: 10px;
+  display:flex;
+  gap: 16px;
+  align-items:center;
+}
 
-/* arrows */
-.navArrow{
+/* стрелка (декор) */
+.arrow{
   position:absolute;
-  width:46px;height:46px;
+  width:46px;
+  height:46px;
   border:none;
   border-radius:999px;
-  background:var(--accent);
+  background: var(--accent);
   z-index:3;
-  cursor:default;
 }
-.navArrow::before{
+.arrow::before{
   content:"";
   display:block;
-  width:12px;height:12px;
+  width: 12px;
+  height: 12px;
   border-right:3px solid #fff;
   border-bottom:3px solid #fff;
-  transform:rotate(-45deg);
-  margin:16px auto 0;
+  transform: rotate(-45deg);
+  margin: 16px auto 0;
 }
-.navArrow--coffee{right:22px; top:54%}
+.arrow--coffee{
+  right: 24px;
+  top: 55%;
+}
+
+/* “обрезанная” карточка справа */
+.coffeeGhost{
+  position:absolute;
+  right: -220px;  /* чтобы было видно часть как в макете */
+  top: 360px;
+  width: 330px;
+  z-index:1;
+}
+.coffeeCard--ghost{
+  opacity:.35;
+  transform: translateX(20px);
+}
 
 /* GIFTSET */
-.gift__band{
+.giftSection{
+  position:relative;
+  background: var(--bg);
+  padding: 70px 0 80px;
+  overflow:hidden;
+}
+.giftBand{
   position:absolute;
-  left:0; right:0;
-  top:120px;
-  height:300px;
-  background:#fff;
+  left: 0;
+  right: 0;
+  top: 140px;
+  height: 320px;
+  background: var(--cream);     /* светлая подложка как в макете */
   z-index:0;
 }
-.section--gift .kicker, .section--gift .title{position:relative; z-index:2}
-
-.gift{
-  max-width:1100px;
-  margin:46px auto 0;
+.giftSection .kicker,
+.giftSection .h2{
+  position:relative;
+  z-index:2;
+}
+.giftWrap{
+  width: 1100px;
+  margin: 44px auto 0;
   display:grid;
-  grid-template-columns: 360px 1fr 74px;
-  gap:28px;
+  grid-template-columns: 380px 1fr 70px;
+  gap: 28px;
   align-items:start;
   position:relative;
   z-index:2;
 }
-
-.gift__card{
-  background:#fff;
-  border-radius:6px;
-  box-shadow:0 10px 22px rgba(21,29,40,.08);
-  padding:22px 26px;
+.giftImg img{
+  width: 360px;
+  box-shadow: 0 12px 26px rgba(21,29,40,.10);
+  border-radius:4px;
 }
-.gift__price{
-  font-family:'Nunito',system-ui,sans-serif;
-  font-weight:600;
+.giftCard{
+  background: var(--white);
+  border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(21,29,40,.08);
+  padding: 22px 26px;
+}
+.giftPrice{
   font-size:12px;
-  line-height:16px;
-  color:var(--accent);
+  font-weight:600;
+  color: var(--accent);
 }
-.gift__name{
-  margin-top:6px;
-  font-family:'Montserrat',system-ui,sans-serif;
+.giftName{
+  margin-top: 6px;
+  font-family:"Montserrat", system-ui, sans-serif;
   font-weight:900;
   font-size:14px;
   line-height:18px;
-  color:var(--primary);
+  color: var(--primary);
 }
-.gift__text{margin-top:10px;font-size:12px;line-height:16px;opacity:.75}
-
-.gift__meta{
-  margin-top:18px;
+.giftText{
+  margin-top: 10px;
+  font-size:12px;
+  line-height:16px;
+  opacity:.75;
+}
+.giftMeta{
+  margin-top: 16px;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
 }
-.giftMeta__label{font-size:11px;opacity:.55;margin-bottom:6px}
-.giftMeta__row{display:flex;gap:10px;align-items:center}
-.giftMeta__ic{width:18px;height:18px;object-fit:contain}
-.giftMeta__val{font-size:12px;opacity:.85}
-
-.gift__actions{margin-top:18px;display:flex;gap:18px;align-items:center}
-
-/* steps */
-.gift__steps{
-  background:#fff;
-  border-radius:6px;
-  box-shadow:0 10px 22px rgba(21,29,40,.06);
-  overflow:hidden;
+.metaLabel{
+  font-size:11px;
+  opacity:.55;
+  margin-bottom: 6px;
+}
+.metaRow{
   display:flex;
-  flex-direction:column;
+  align-items:center;
+  gap: 10px;
 }
-.giftStep{
-  height:86px;
+.metaIcon{
+  width:18px;
+  height:18px;
+  object-fit:contain;
+}
+.metaValue{
+  font-size:12px;
+  opacity:.85;
+}
+.giftActions{
+  margin-top: 16px;
+  display:flex;
+  gap: 18px;
+  align-items:center;
+}
+
+/* 1/2/3 справа */
+.steps{
+  background: var(--white);
+  border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(21,29,40,.06);
+  overflow:hidden;
+}
+.step{
+  height: 86px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-family:'Montserrat',system-ui,sans-serif;
+  font-family:"Montserrat", system-ui, sans-serif;
   font-weight:900;
-  color:var(--primary);
+  color: var(--primary);
   opacity:.35;
-  border-bottom:1px solid rgba(21,29,40,.06);
+  border-bottom: 1px solid rgba(21,29,40,.06);
 }
-.giftStep:last-child{border-bottom:none}
-.giftStep--active{
-  background:var(--accent);
+.step:last-child{ border-bottom:none; }
+.step--active{
+  background: var(--accent);
   color:#fff;
   opacity:1;
 }
 
-/* COMBO (фон справа как в макете, без “грязных” перекрытий) */
-.combo__decor1{
-  position:absolute;
-  right:0; top:255px;
-  width:440px; height:320px;
-  background:var(--panel);
-  z-index:0;
+/* COMBO */
+.bgBlock--comboRight{
+  right:0;
+  top: 340px;
+  width: 440px;
+  height: 320px;
   opacity:1;
 }
-.combo__decor2{
-  position:absolute;
-  right:165px; top:430px;
-  width:260px; height:190px;
-  background:var(--panel);
-  opacity:.45;
-  z-index:0;
-}
-
-.combo .kicker, .combo .title{position:relative; z-index:2}
-
-.combo__grid{
-  max-width:1100px;
-  margin:46px auto 0;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:34px;
+.comboSection .kicker,
+.comboSection .h2{
   position:relative;
   z-index:2;
 }
-
+.comboGrid{
+  width: 1100px;
+  margin: 44px auto 0;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  position:relative;
+  z-index:2;
+}
 .comboCard{
-  background:#fff;
-  border-radius:6px;
+  background: var(--white);
+  border-radius: 6px;
+  box-shadow: 0 10px 22px rgba(21,29,40,.08);
   overflow:hidden;
-  box-shadow:0 10px 22px rgba(21,29,40,.08);
 }
-.comboCard__imgWrap{
-  background:var(--soft);
-  padding:22px;
+.comboImgBox{
+  background: var(--soft);
+  height: 190px;
   display:flex;
+  align-items:center;
   justify-content:center;
-  align-items:center;
 }
-.comboCard__img{width:150px;height:auto;object-fit:contain}
-.comboCard__body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px}
-
-/* цены combo */
-.comboCard__prices{
+.comboImg{
+  width: 150px;
+  height:auto;
+  object-fit:contain;
+}
+.comboBody{
+  padding: 18px 18px 20px;
   display:flex;
-  gap:10px;
+  flex-direction:column;
+  gap: 8px;
+}
+.comboPrices{
+  display:flex;
   align-items:center;
-  font-family:'Nunito',system-ui,sans-serif;
+  gap: 10px;
+  font-size:12px;
   font-weight:600;
+}
+.comboNew{ color: var(--accent); }
+.comboOld{ opacity:.5; }
+.comboName{
+  font-family:"Montserrat", system-ui, sans-serif;
+  font-weight:900;
+  font-size:13px;
+  color: var(--primary);
+}
+.comboDesc{
   font-size:12px;
   line-height:16px;
+  opacity:.75;
+  min-height: 32px;
 }
-.comboCard__new{color:var(--accent)}
-.comboCard__old{opacity:.5}
-
-.comboCard__name{
-  font-family:'Montserrat',system-ui,sans-serif;
-  font-weight:900;
-  color:var(--primary);
-  font-size:13px;
-  line-height:18px;
+.arrow--combo{
+  right: 24px;
+  top: 63%;
 }
-.comboCard__desc{font-size:12px;line-height:16px;opacity:.75;min-height:34px}
-.comboCard__actions{margin-top:10px;display:flex;gap:16px;align-items:center}
 
-.navArrow--combo{right:22px; top:56%}
-
-/* ghost */
-.combo__ghost{
-  max-width:1100px;
-  margin:0 auto;
-  position:relative;
+/* ghost combo справа */
+.comboGhost{
+  position:absolute;
+  right:-240px;
+  top: 380px;
+  width: 330px;
   z-index:1;
 }
 .comboCard--ghost{
-  position:absolute;
-  right:-165px;
-  top:-255px;
-  width:290px;
-  opacity:.25;
+  opacity:.35;
 }
 
 /* footer */
 .footer{
-  background:transparent;
-  padding:26px;
   text-align:center;
-  opacity:.7;
   font-size:12px;
-}
-
-/* responsive */
-@media (max-width: 980px){
-  .hero{grid-template-columns:1fr; height:auto}
-  .hero__title{position:static;margin:22px 0 30px}
-  .hero__hl{margin-right:0}
-  .coffee__grid{grid-template-columns:1fr}
-  .combo__grid{grid-template-columns:1fr}
-  .base{grid-template-columns:1fr}
-  .gift{grid-template-columns:1fr}
-  .coffee__decor,.combo__decor1,.combo__decor2,.navArrow,.combo__ghost,.gift__band{display:none}
+  padding: 18px 0 26px;
+  opacity:.7;
 }
