@@ -1,121 +1,273 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Nunito:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Nunito:wght@400;600;700&display=swap');
 
 :root{
   --primary:#415167;
   --accent:#C7A17A;
+  --dark:#151D28;
   --bg:#EDF0F5;
+  --white:#ffffff;
+  --panel:#3b4a5f;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:Nunito,sans-serif;
-  background:var(--bg);
-  color:#151D28;
-}
-img{max-width:100%;display:block}
+*{box-sizing:border-box;margin:0;padding:0}
+img{display:block;max-width:100%}
 ul{list-style:none}
 a{text-decoration:none;color:inherit}
+html{scroll-behavior:smooth}
 
-.header{
-  background:#fff;
-  padding:20px;
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  line-height:1.4;
 }
-.header__logo img{width:120px}
 
-.sidebar{
-  position:fixed;
-  right:0;
-  top:80px;
-  width:220px;
-  background:var(--primary);
-  color:#fff;
-  padding:20px;
-}
-.sidebar__cart{
-  width:32px;
-  margin-left:auto;
-  margin-bottom:20px;
-}
-.sidebar__menu li{margin:12px 0}
-.sidebar__menu a:hover{color:var(--accent)}
-
-.main{padding-right:240px}
-
+/* ===== HERO (как в макете: три колонки) ===== */
 .hero{
   display:grid;
-  grid-template-columns:1fr 1.3fr;
-  background:#fff;
-  min-height:500px;
+  grid-template-columns: 1fr 1.45fr 260px;
+  min-height:560px;
+  background:var(--white);
 }
-.hero__text{
+
+.hero__left{
+  padding:22px 24px;
   display:flex;
-  justify-content:center;
-  align-items:center;
+  flex-direction:column;
+  justify-content:flex-start;
+  gap:70px;
 }
-.hero__text h1{
-  font-family:Montserrat;
+
+.hero__logo{width:110px}
+
+.hero__title{
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:900;
   font-size:54px;
   line-height:70px;
+  text-transform:uppercase;
   color:var(--primary);
 }
-.hero__text span{
+.hero__hl{
   background:var(--accent);
-  color:#fff;
+  color:var(--white);
   padding:0 10px;
-}
-.hero__image img{
-  height:100%;
-  object-fit:cover;
+  display:inline-block;
 }
 
-.section-kicker{text-align:center;opacity:.7;margin-top:60px}
-.section-title{text-align:center;font-family:Montserrat;margin:10px 0 40px}
+.hero__media{min-height:560px}
+.hero__img{width:100%;height:100%;object-fit:cover}
 
-.base__grid{
+.hero__menu{
+  background:var(--primary);
+  color:#fff;
+  padding:24px 18px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  justify-content:flex-start;
+}
+
+.hero__cart{
+  width:34px;height:34px;
+  margin-left:auto;
+}
+
+.hero__list{display:flex;flex-direction:column;gap:14px}
+.hero__link{
+  font-weight:700;
+  opacity:.95;
+  letter-spacing:.2px;
+}
+.hero__link:hover,.hero__link:focus{color:var(--accent);outline:none;opacity:1}
+
+/* ===== Sections ===== */
+.section{padding:70px 24px}
+.section--white{background:var(--white)}
+.section--gray{background:var(--bg); position:relative; overflow:hidden;}
+
+.section__head{max-width:1100px;margin:0 auto;text-align:center}
+.kicker{opacity:.75;margin-bottom:8px;text-align:center}
+.title{
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:800;
+  color:var(--primary);
+  text-align:center;
+  letter-spacing:.4px;
+}
+
+/* ===== Decorative side panels (как на макете) ===== */
+.panel{
+  position:absolute;
+  top:140px;
+  width:330px;
+  height:230px;
+  background:var(--panel);
+}
+.panel--left{left:0}
+.panel--right{right:0; top:170px; height:280px}
+
+/* ===== Build your base ===== */
+.base{
+  max-width:1100px;
+  margin:26px auto 0;
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:30px;
-  padding:0 40px;
+  grid-template-columns:repeat(4,minmax(170px,1fr));
+  gap:26px;
+  justify-items:center;
+  text-align:center;
 }
-.base__item{text-align:center}
-.base__item img{width:50px;margin:0 auto 10px}
+.base__icon{width:62px;height:62px;margin-bottom:12px}
+.base__name{font-weight:800;color:var(--primary);margin-bottom:6px}
+.base__text{opacity:.75;max-width:240px}
 
-.products__grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-  padding:0 40px;
-}
-.product-card{
-  background:#fff;
+/* ===== Cards общий стиль ===== */
+.card{
+  background:var(--white);
   border-radius:10px;
+  padding:18px;
   display:grid;
-  grid-template-columns:120px 1fr;
-  gap:15px;
-  padding:15px;
+  grid-template-columns:140px 1fr;
+  gap:16px;
+  align-items:center;
+  box-shadow:0 0 0 rgba(0,0,0,0);
+  transition:transform .25s ease, box-shadow .25s ease;
 }
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(21,29,40,.12)}
+.card__img{width:140px;height:140px;object-fit:contain}
+.card__body{display:flex;flex-direction:column;gap:6px}
+.card__desc{opacity:.75;font-size:14px}
+.card__title{font-family:'Montserrat',system-ui,sans-serif;font-weight:800;color:var(--primary)}
+.card__price{font-weight:800;margin-top:2px}
+.old{opacity:.6;margin-left:8px}
 
-.actions{margin-top:10px;display:flex;gap:15px}
+.card__actions{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  margin-top:10px;
+}
 .btn{
   background:var(--accent);
   color:#fff;
-  padding:6px 14px;
-  border-radius:16px;
+  padding:10px 14px;
+  border-radius:18px;
+  font-weight:800;
+  font-size:14px;
+  transition:transform .2s ease, filter .2s ease;
 }
-.link{font-weight:700}
+.btn:hover{transform:scale(1.03);filter:brightness(.97)}
+.btn:active{transform:scale(.98)}
+.link{font-weight:800;opacity:.8}
+.link:hover{opacity:1}
 
-.gift{
+/* ===== Products (2x2) ===== */
+.cards2{
+  max-width:1100px;
+  margin:26px auto 0;
   display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:20px;
-  padding:0 40px;
+  grid-template-columns:repeat(2,minmax(320px,1fr));
+  gap:18px;
 }
-.gift__info{background:#fff;padding:20px;border-radius:10px}
-.gift__meta{display:flex;gap:20px;margin:10px 0}
-.gift__meta img{width:18px}
 
-.footer{
-  text-align:center;
-  padding:30px;
-  opacity:.7;
+/* ===== Arrow circle (визуально как в макете) ===== */
+.arrow{
+  position:absolute;
+  right:40px;
+  top:50%;
+  width:54px;
+  height:54px;
+  border-radius:999px;
+  border:none;
+  background:var(--accent);
+  cursor:pointer;
+}
+.arrow::before{
+  content:"";
+  display:block;
+  width:14px;height:14px;
+  border-right:3px solid #fff;
+  border-bottom:3px solid #fff;
+  transform:rotate(-45deg);
+  margin:18px auto 0;
+}
+
+/* ===== Giftset ===== */
+.giftset{
+  max-width:1100px;
+  margin:26px auto 0;
+  display:grid;
+  grid-template-columns: 1.1fr 1.35fr 70px;
+  gap:18px;
+  align-items:stretch;
+}
+
+.giftset__card{
+  background:var(--white);
+  border-radius:10px;
+  padding:18px;
+}
+.giftset__price{font-weight:900;opacity:.75}
+.giftset__title{
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:800;
+  color:var(--primary);
+  margin:6px 0;
+}
+.giftset__text{opacity:.8}
+
+.giftset__meta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:14px 0;
+}
+.meta{display:flex;gap:10px;align-items:center}
+.meta__ic{width:20px;height:20px}
+.meta__name{font-weight:800}
+.meta__val{opacity:.8}
+
+.giftset__steps{
+  background:var(--white);
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+}
+.step{
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:800;
+  opacity:.35;
+}
+.step--active{opacity:1}
+
+/* ===== Combo (3 cards + ghost) ===== */
+.cards3{
+  max-width:1100px;
+  margin:26px auto 0;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(280px,1fr));
+  gap:18px;
+}
+.card--combo{grid-template-columns:1fr; text-align:left}
+.card--combo .card__img{width:100%;height:auto;object-fit:contain}
+.card--ghost{opacity:.45; position:relative}
+.arrow--combo{top:58%}
+
+/* ===== Footer ===== */
+.footer{padding:24px;text-align:center;opacity:.75}
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px){
+  .hero{grid-template-columns:1fr; min-height:auto}
+  .hero__media{min-height:auto}
+  .hero__img{height:auto}
+  .hero__menu{order:3}
+  .panel{display:none}
+  .cards2{grid-template-columns:1fr}
+  .cards3{grid-template-columns:1fr}
+  .giftset{grid-template-columns:1fr}
+  .arrow{display:none}
 }
