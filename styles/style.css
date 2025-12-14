@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Nunito:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Nunito:wght@400;600;700&display=swap');
 
 :root{
   --primary:#415167;
@@ -7,6 +7,7 @@
   --bg:#EDF0F5;
   --white:#ffffff;
   --panel:#3b4a5f;
+  --soft:#F4F4F4;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -19,54 +20,59 @@ body{
   font-family:'Nunito',system-ui,sans-serif;
   background:var(--bg);
   color:var(--dark);
-  line-height:1.4;
 }
 
-/* ================= HERO ================= */
-/* ВАЖНО: это десктопный вид как в макете (не “переламывается” на твоей ширине окна) */
+/* ---------- типографика как в макете ---------- */
+.kicker{
+  text-align:center;
+  font-size:12px;
+  opacity:.65;
+  margin-bottom:8px;
+}
+.title{
+  text-align:center;
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:900;
+  font-size:24px;
+  line-height:28px;
+  color:var(--primary);
+}
+
+/* ---------- HERO (как на картинке макета) ---------- */
 .hero{
   background:var(--white);
   display:grid;
   grid-template-columns: 420px 1fr 320px;
-  height: 760px; /* чтобы фото и меню не уезжали вниз как у тебя на скрине */
-  position:relative;
+  height: 680px;
 }
 
-/* left column */
 .hero__left{
-  padding:34px 34px 0;
   position:relative;
-  z-index:3;
+  padding:36px 34px;
 }
 .hero__logo{
   width:120px;
   height:auto;
 }
-
-/* title sits lower (как на макете) */
 .hero__title{
   position:absolute;
   left:34px;
-  bottom:170px;            /* как в макете: заголовок ближе к низу */
+  bottom:140px;
   font-family:'Montserrat',system-ui,sans-serif;
   font-weight:900;
   font-size:54px;
   line-height:70px;
-  text-transform:uppercase;
   color:var(--primary);
-  z-index:5;
+  text-transform:uppercase;
 }
-
-/* “PERSONALIZED” должен слегка заходить на фото */
 .hero__hl{
   display:inline-block;
   background:var(--accent);
   color:#fff;
   padding:2px 12px 0;
-  margin-right:-30px;      /* ключ: наезд плашки на баннер */
+  margin-right:-26px; /* плашка заходит на фото как в макете */
 }
 
-/* media */
 .hero__media{
   position:relative;
   overflow:hidden;
@@ -77,235 +83,189 @@ body{
   object-fit:cover;
 }
 
-/* play button декоративный */
+/* круглая кнопка на фото */
 .hero__play{
   position:absolute;
   left:50%;
-  top:40%;
-  width:54px;
-  height:54px;
+  top:36%;
+  width:52px;height:52px;
   border-radius:999px;
+  border:none;
   background:rgba(255,255,255,.85);
   transform:translate(-50%,-50%);
 }
 .hero__play::before{
   content:"";
   position:absolute;
-  left:22px;
-  top:18px;
+  left:21px;
+  top:16px;
   width:0;height:0;
-  border-left:14px solid var(--primary);
-  border-top:9px solid transparent;
-  border-bottom:9px solid transparent;
-  opacity:.85;
+  border-left:14px solid rgba(65,81,103,.95);
+  border-top:10px solid transparent;
+  border-bottom:10px solid transparent;
 }
 
-/* right menu (НЕ fixed) */
+/* правое меню */
 .hero__menu{
   background:var(--primary);
   color:#fff;
-  padding:38px 34px;
-  position:relative;
+  padding:28px 34px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
 }
+.hero__menuTop{
+  display:flex;
+  justify-content:flex-end;
+}
+
+/* КОРЗИНА: в макете маленькая, не огромная */
 .hero__cart{
-  width:48px;              /* больше как в макете */
-  height:48px;
-  margin-left:auto;
-  margin-bottom:34px;
+  width:28px;
+  height:28px;
+  opacity:.95;
 }
+
 .hero__nav{
   display:flex;
   flex-direction:column;
-  gap:16px;
+  gap:14px;
+  margin-top:8px;
 }
+
+/* ШРИФТ МЕНЮ: не Montserrat, а Nunito (как выглядит в макете) */
 .hero__link{
-  font-family:'Montserrat',system-ui,sans-serif;
-  font-weight:700;
-  font-size:13px;
-  letter-spacing:.6px;
+  font-family:'Nunito',system-ui,sans-serif;
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.2px;
   text-transform:uppercase;
-  opacity:.85;
+  opacity:.78;
 }
 .hero__link--active{opacity:1}
 .hero__link:hover{color:var(--accent);opacity:1}
 
-/* ================= Sections ================= */
-.section{padding:78px 24px}
+/* ---------- sections ---------- */
+.section{padding:74px 24px}
 .section--white{background:var(--white)}
-.section--gray{background:var(--bg);position:relative;overflow:hidden}
-.section--gift{background:var(--bg);position:relative;overflow:hidden}
+.section--gray{background:var(--bg); position:relative; overflow:hidden}
+.section--gift{background:var(--bg); position:relative; overflow:hidden}
 
-.section__kicker{
-  text-align:center;
-  opacity:.75;
-  margin-bottom:8px;
-  position:relative;
-  z-index:2;
-}
-.section__title{
-  text-align:center;
-  font-family:'Montserrat',system-ui,sans-serif;
-  font-weight:800;
-  letter-spacing:.35px;
-  color:var(--primary);
-  position:relative;
-  z-index:2;
-}
-
-/* ================= BUILD BASE ================= */
+/* ---------- BUILD BASE ---------- */
 .base{
   max-width:1100px;
-  margin:40px auto 0;
+  margin:42px auto 0;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:40px;
-  align-items:start;
   text-align:center;
-  position:relative;
-  z-index:2;
 }
-.base__item{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.base__icon{
-  width:70px;
-  height:70px;            /* фикс высоты чтобы всё было на одной линии */
-  object-fit:contain;
-  margin-bottom:16px;
-}
-.base__name{
-  font-weight:800;
-  color:var(--primary);
-  margin-bottom:10px;
-}
-.base__text{
-  font-size:13px;
-  opacity:.7;
-  max-width:240px;
-}
+.base__item{display:flex;flex-direction:column;align-items:center}
+.base__icon{width:72px;height:72px;object-fit:contain;margin-bottom:16px}
+.base__name{font-weight:700;color:var(--primary);margin-bottom:10px}
+.base__text{font-size:12px;opacity:.7;max-width:240px}
 
-/* ================= PRODUCTS ================= */
-.products__panel{
+/* ---------- COFFEE (фоновые плашки как в макете) ---------- */
+.coffee__decor{
   position:absolute;
-  left:0;
-  top:230px;
-  width:420px;
-  height:320px;
   background:var(--panel);
   z-index:0;
 }
+.coffee__decor--left1{left:0; top:165px; width:420px; height:260px}
+.coffee__decor--left2{left:0; top:470px; width:420px; height:260px}
+.coffee__decor--right{right:0; top:420px; width:210px; height:260px; opacity:.7}
 
-/* стрелка справа посередине как в макете */
-.products__arrow{
-  position:absolute;
-  right:22px;
-  top:55%;
-  width:52px;height:52px;
-  border:none;
-  border-radius:999px;
-  background:var(--accent);
-  z-index:3;
-}
-.products__arrow::before{
-  content:"";
-  display:block;
-  width:14px;height:14px;
-  border-right:3px solid #fff;
-  border-bottom:3px solid #fff;
-  transform:rotate(-45deg);
-  margin:17px auto 0;
-}
+.coffee .kicker, .coffee .title{position:relative; z-index:2}
 
-.products__grid{
+.coffee__grid{
   max-width:1100px;
   margin:46px auto 0;
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(2, 1fr);
   gap:34px;
   position:relative;
   z-index:2;
 }
 
-/* карточка в макете “плитка”: слева картинка на сером, справа текст */
-.p-card{
+.coffeeCard{
   background:#fff;
   border-radius:6px;
   overflow:hidden;
+  box-shadow:0 10px 22px rgba(21,29,40,.08);
   display:grid;
   grid-template-columns: 190px 1fr;
-  box-shadow:0 10px 22px rgba(21,29,40,.08);
 }
-.p-card__media{
-  background:#F4F4F4;
+.coffeeCard__imgWrap{
+  background:var(--soft);
   display:flex;
   align-items:center;
   justify-content:center;
   padding:18px;
 }
-.p-card__img{
-  width:120px;
-  height:auto;
-  object-fit:contain;
-}
-.p-card__body{
-  padding:18px 18px 18px 18px;
+.coffeeCard__img{width:120px; height:auto; object-fit:contain}
+
+.coffeeCard__body{
+  padding:18px;
   display:flex;
   flex-direction:column;
   gap:8px;
 }
-.p-card__price{
-  font-size:12px;
-  opacity:.55;
-}
-.p-card__price--right{ text-align:right; }
-.p-card__title{
+.coffeeCard__price{font-size:12px;opacity:.55}
+.coffeeCard__price--right{text-align:right}
+.coffeeCard__name{
   font-family:'Montserrat',system-ui,sans-serif;
-  font-weight:800;
+  font-weight:900;
   color:var(--primary);
+  font-size:14px;
 }
-.p-card__desc{
-  font-size:12px;
-  opacity:.7;
-}
+.coffeeCard__desc{font-size:12px;opacity:.7}
+.coffeeCard__actions{margin-top:10px;display:flex;gap:16px;align-items:center}
 
-.p-card__actions{
-  margin-top:10px;
-  display:flex;
-  gap:16px;
-  align-items:center;
-}
-
-/* кнопки как в макете */
+/* кнопки */
 .btn{
   background:var(--accent);
   color:#fff;
   padding:8px 18px;
   border-radius:18px;
-  font-weight:800;
-  font-size:12px;
+  font-weight:700;
+  font-size:11px;
 }
-.link{
-  font-weight:800;
-  font-size:12px;
-  opacity:.7;
-}
+.link{font-weight:700;font-size:11px;opacity:.7}
 .link:hover{opacity:1}
 
-/* ================= GIFTSET ================= */
-/* светлая “полоса” фона в секции */
-.giftset__stripe{
+/* стрелка справа как в макете */
+.navArrow{
   position:absolute;
-  left:0;
-  right:0;
-  top:170px;
-  height:330px;
+  width:46px;height:46px;
+  border:none;
+  border-radius:999px;
+  background:var(--accent);
+  z-index:3;
+  cursor:default;
+}
+.navArrow::before{
+  content:"";
+  display:block;
+  width:12px;height:12px;
+  border-right:3px solid #fff;
+  border-bottom:3px solid #fff;
+  transform:rotate(-45deg);
+  margin:16px auto 0;
+}
+.navArrow--coffee{right:22px; top:58%}
+
+/* ---------- GIFTSET ---------- */
+.gift__band{
+  position:absolute;
+  left:0; right:0;
+  top:140px;
+  height:280px;
   background:#fff;
   z-index:0;
 }
+.section--gift .kicker, .section--gift .title{position:relative; z-index:2}
 
-.giftset__wrap{
+.gift{
   max-width:1100px;
   margin:46px auto 0;
   display:grid;
@@ -316,63 +276,37 @@ body{
   z-index:2;
 }
 
-.giftset__img img{
-  width:100%;
-  height:auto;
-  object-fit:contain;
-}
-
-.giftset__card{
+.gift__card{
   background:#fff;
   border-radius:6px;
-  padding:22px 26px;
   box-shadow:0 10px 22px rgba(21,29,40,.08);
+  padding:22px 26px;
 }
-
-.giftset__price{
-  font-size:12px;
-  opacity:.55;
-  margin-bottom:6px;
-}
-.giftset__name{
+.gift__price{font-size:12px;opacity:.55}
+.gift__name{
+  margin-top:6px;
   font-family:'Montserrat',system-ui,sans-serif;
-  font-weight:800;
+  font-weight:900;
+  font-size:14px;
   color:var(--primary);
-  margin-bottom:10px;
 }
-.giftset__text{
-  font-size:12px;
-  opacity:.75;
-}
+.gift__text{margin-top:10px;font-size:12px;opacity:.75}
 
-.giftset__meta{
+.gift__meta{
   margin-top:18px;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:18px;
 }
-.meta__label{
-  font-size:11px;
-  opacity:.55;
-  margin-bottom:6px;
-}
-.meta__row{
-  display:flex;
-  gap:10px;
-  align-items:center;
-}
-.meta__ic{width:18px;height:18px;object-fit:contain}
-.meta__val{font-size:12px;opacity:.85}
+.giftMeta__label{font-size:11px;opacity:.55;margin-bottom:6px}
+.giftMeta__row{display:flex;gap:10px;align-items:center}
+.giftMeta__ic{width:18px;height:18px;object-fit:contain}
+.giftMeta__val{font-size:12px;opacity:.85}
 
-.giftset__actions{
-  margin-top:18px;
-  display:flex;
-  gap:18px;
-  align-items:center;
-}
+.gift__actions{margin-top:18px;display:flex;gap:18px;align-items:center}
 
-/* цифры справа вертикально как в макете (светлая колонка) */
-.giftset__steps{
+/* цифры справа (вертикальная шкала) */
+.gift__steps{
   background:#fff;
   border-radius:6px;
   box-shadow:0 10px 22px rgba(21,29,40,.06);
@@ -380,66 +314,42 @@ body{
   display:flex;
   flex-direction:column;
 }
-.step{
+.giftStep{
   height:86px;
   display:flex;
   align-items:center;
   justify-content:center;
   font-family:'Montserrat',system-ui,sans-serif;
-  font-weight:800;
+  font-weight:900;
   color:var(--primary);
   opacity:.35;
   border-bottom:1px solid rgba(21,29,40,.06);
 }
-.step:last-child{border-bottom:none}
-.step--active{
+.giftStep:last-child{border-bottom:none}
+.giftStep--active{
   background:var(--accent);
   color:#fff;
   opacity:1;
 }
 
-/* ================= COMBO ================= */
-/* фоновые панели справа (в макете их несколько “слоёв”) */
-.combo__panel{
+/* ---------- COMBO (две плашки справа + стрелка + “обрезок” карточки) ---------- */
+.combo__decor1{
   position:absolute;
-  right:0;
-  top:160px;
-  width:420px;
-  height:340px;
+  right:0; top:210px;
+  width:420px; height:300px;
   background:var(--panel);
   z-index:0;
 }
-.combo__panel2{
+.combo__decor2{
   position:absolute;
-  right:120px;
-  top:280px;
-  width:260px;
-  height:210px;
+  right:140px; top:360px;
+  width:260px; height:200px;
   background:#6B778B;
-  z-index:0;
   opacity:.55;
+  z-index:0;
 }
 
-/* стрелка на правой панели */
-.combo__arrow{
-  position:absolute;
-  right:22px;
-  top:52%;
-  width:52px;height:52px;
-  border:none;
-  border-radius:999px;
-  background:var(--accent);
-  z-index:3;
-}
-.combo__arrow::before{
-  content:"";
-  display:block;
-  width:14px;height:14px;
-  border-right:3px solid #fff;
-  border-bottom:3px solid #fff;
-  transform:rotate(-45deg);
-  margin:17px auto 0;
-}
+.combo .kicker, .combo .title{position:relative; z-index:2}
 
 .combo__grid{
   max-width:1100px;
@@ -451,104 +361,66 @@ body{
   z-index:2;
 }
 
-/* combo карточка как в макете: картинка сверху в сером блоке */
-.c-card{
+.comboCard{
   background:#fff;
   border-radius:6px;
   overflow:hidden;
   box-shadow:0 10px 22px rgba(21,29,40,.08);
 }
-.c-card__media{
-  background:#F4F4F4;
+.comboCard__imgWrap{
+  background:var(--soft);
   padding:22px;
   display:flex;
   justify-content:center;
   align-items:center;
 }
-.c-card__img{
-  width:150px;
-  height:auto;
-  object-fit:contain;
-}
-.c-card__body{
-  padding:18px 18px 20px;
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-}
-
-.c-card__prices{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  font-size:12px;
-  opacity:.65;
-}
-.c-card__new{opacity:.85}
-.c-card__old{opacity:.45}
-
-.c-card__title{
+.comboCard__img{width:150px;height:auto;object-fit:contain}
+.comboCard__body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px}
+.comboCard__prices{display:flex;gap:10px;align-items:center;font-size:12px;opacity:.65}
+.comboCard__new{opacity:.85}
+.comboCard__old{opacity:.45}
+.comboCard__name{
   font-family:'Montserrat',system-ui,sans-serif;
-  font-weight:800;
+  font-weight:900;
   color:var(--primary);
+  font-size:13px;
 }
-.c-card__desc{
-  font-size:12px;
-  opacity:.75;
-  min-height:34px;
-}
+.comboCard__desc{font-size:12px;opacity:.75;min-height:34px}
+.comboCard__actions{margin-top:10px;display:flex;gap:16px;align-items:center}
 
-.c-card__actions{
-  margin-top:10px;
-  display:flex;
-  gap:16px;
-  align-items:center;
-}
+.navArrow--combo{right:22px; top:54%}
 
-/* “обрезанная” справа */
 .combo__ghost{
   max-width:1100px;
   margin:0 auto;
   position:relative;
   z-index:1;
 }
-.c-card--ghost{
+.comboCard--ghost{
   position:absolute;
   right:-180px;
-  top:-290px;
+  top:-285px;
   width:280px;
   opacity:.35;
 }
 
-/* ================= Footer ================= */
+/* ---------- footer ---------- */
 .footer{
-  background:#fff;
+  background:transparent;
   padding:26px;
   text-align:center;
   opacity:.7;
   font-size:12px;
 }
 
-/* ================= Responsive ================= */
-/* Раньше у тебя ломалось на “почти десктопе”. Теперь перелом ТОЛЬКО на реально узком экране */
-@media (max-width: 760px){
-  .hero{
-    grid-template-columns:1fr;
-    height:auto;
-  }
-  .hero__title{
-    position:static;
-    margin-top:22px;
-    margin-bottom:22px;
-  }
+/* ---------- адаптив (аккуратно) ---------- */
+@media (max-width: 980px){
+  .hero{grid-template-columns:1fr; height:auto}
+  .hero__title{position:static;margin-top:22px}
   .hero__hl{margin-right:0}
-
-  .base{grid-template-columns:1fr}
-  .products__grid{grid-template-columns:1fr}
-  .giftset__wrap{grid-template-columns:1fr}
+  .coffee__grid{grid-template-columns:1fr}
   .combo__grid{grid-template-columns:1fr}
-
-  .products__panel,.products__arrow,
-  .combo__panel,.combo__panel2,.combo__arrow,
-  .combo__ghost,.giftset__stripe{display:none}
+  .base{grid-template-columns:1fr}
+  .gift{grid-template-columns:1fr}
+  .coffee__decor,.combo__decor1,.combo__decor2,.navArrow,.combo__ghost,.gift__band{display:none}
 }
