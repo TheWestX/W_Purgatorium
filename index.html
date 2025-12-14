@@ -4,262 +4,193 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Revo Coffee</title>
-  <link rel="stylesheet" href="styles/style.css" />
 </head>
 
 <body>
-  <header class="hero" id="home">
-    <div class="hero__left">
-      <img class="hero__logo" src="assets/img/LOGO.png" alt="revo" />
+  <header>
+    <a href="#home" aria-label="Trang chủ">
+      <img src="assets/img/LOGO.png" alt="Revo Coffee">
+    </a>
 
-      <h1 class="hero__title">
-        YOUR<br />
-        <span class="hero__hl">PERSONALIZED</span><br />
-        COFFEE
-      </h1>
-    </div>
-
-    <div class="hero__media">
-      <img class="hero__img" src="assets/img/Баннер.png" alt="Your Personalized Coffee" />
-    </div>
-
-    <aside class="hero__menu" aria-label="Menu">
-      <img class="hero__cart" src="assets/icons/shopping-cart-3.png" alt="" aria-hidden="true" />
-      <nav>
-        <ul class="hero__nav">
-          <li><a class="hero__link hero__link--active" href="#home">TRANG CHỦ</a></li>
-          <li><a class="hero__link" href="#coffee">COFFEE</a></li>
-          <li><a class="hero__link" href="#phin">PHIN MẠ MÀU</a></li>
-          <li><a class="hero__link" href="#combo">COMBO PHIN PHÊ</a></li>
-          <li><a class="hero__link" href="#giftset">GIFTSET</a></li>
-          <li><a class="hero__link" href="#footer">LIÊN HỆ</a></li>
+    <!-- В макете это правое боковое меню -->
+    <aside aria-label="Sidebar menu">
+      <img src="assets/icons/shopping-cart-3.png" alt="" aria-hidden="true">
+      <nav aria-label="Menu">
+        <ul>
+          <li><a href="#home">TRANG CHỦ</a></li>
+          <li><a href="#coffee">COFFEE</a></li>
+          <li><a href="#phin">PHIN MẠ MÀU</a></li>
+          <li><a href="#combo">COMBO PHIN PHÊ</a></li>
+          <li><a href="#giftset">GIFTSET</a></li>
+          <li><a href="#contact">LIÊN HỆ</a></li>
         </ul>
       </nav>
     </aside>
   </header>
 
-  <main>
-    <section class="section section--white" id="phin" aria-labelledby="base-title">
-      <p class="section__kicker">Your Personalized Coffee</p>
-      <h2 class="section__title" id="base-title">COFFEE BUILD YOUR BASE</h2>
+  <main id="home">
+    <!-- HERO -->
+    <section aria-labelledby="hero-title">
+      <img src="assets/img/Баннер.png" alt="Your Personalized Coffee">
+      <h1 id="hero-title">YOUR PERSONALIZED COFFEE</h1>
+    </section>
 
-      <div class="base">
-        <article class="base__item">
-          <img class="base__icon" src="assets/icons/ic.png" alt="" aria-hidden="true" />
-          <h3 class="base__name">Nguồn gốc</h3>
-          <p class="base__text">Những hạt cà phê Arabica, Robusta đạt chất lượng theo tiêu chuẩn quốc tế.</p>
+    <!-- COFFEE BUILD YOUR BASE -->
+    <section id="phin" aria-labelledby="base-title">
+      <header>
+        <p>Your Personalized Coffee</p>
+        <h2 id="base-title">COFFEE BUILD YOUR BASE</h2>
+      </header>
+
+      <div>
+        <article>
+          <img src="assets/icons/ic.png" alt="" aria-hidden="true">
+          <h3>Nguồn gốc</h3>
+          <p>Những hạt cà phê Arabica, Robusta đạt chất lượng theo tiêu chuẩn quốc tế.</p>
         </article>
 
-        <article class="base__item">
-          <img class="base__icon" src="assets/icons/IC (1).png" alt="" aria-hidden="true" />
-          <h3 class="base__name">Chất lượng</h3>
-          <p class="base__text">Từng một hạt cà phê là cả một quá trình tập trung cao độ của nghệ nhân cà phê.</p>
+        <article>
+          <img src="assets/icons/IC (1).png" alt="" aria-hidden="true">
+          <h3>Các loại hạt</h3>
+          <p>70% chất lượng tách cà phê đến từ nguồn gốc và chất lượng green bean.</p>
         </article>
 
-        <article class="base__item">
-          <img class="base__icon" src="assets/icons/IC (2).png" alt="" aria-hidden="true" />
-          <h3 class="base__name">Các loại hạt</h3>
-          <p class="base__text">70% chất lượng tách cà phê đến từ nguồn gốc và chất lượng green bean.</p>
+        <article>
+          <img src="assets/icons/IC (2).png" alt="" aria-hidden="true">
+          <h3>Chất lượng</h3>
+          <p>Từng một hạt cà phê là cả một quá trình tập trung cao độ của nghệ nhân cà phê.</p>
         </article>
 
-        <article class="base__item">
-          <img class="base__icon" src="assets/icons/IC (3).png" alt="" aria-hidden="true" />
-          <h3 class="base__name">Pha chế</h3>
-          <p class="base__text">Những hạt cà phê được lột xác qua quá trình rang xay kỹ lưỡng và nghiêm ngặt.</p>
+        <article>
+          <img src="assets/icons/IC (3).png" alt="" aria-hidden="true">
+          <h3>Pha chế</h3>
+          <p>Những hạt cà phê được lột xác qua quá trình rang xay kỹ lưỡng và nghiêm ngặt.</p>
         </article>
       </div>
     </section>
 
-    <section class="section section--gray products" id="coffee" aria-labelledby="prod-title">
-      <div class="products__panel" aria-hidden="true"></div>
-      <button class="products__arrow" type="button" aria-label="Next" aria-hidden="true"></button>
+    <!-- CHUẨN GU ĐÚNG VỊ -->
+    <section id="coffee" aria-labelledby="fav-title">
+      <header>
+        <p>Choose Your Favorite</p>
+        <h2 id="fav-title">CHUẨN GU ĐÚNG VỊ</h2>
+      </header>
 
-      <p class="section__kicker">Choose Your Favorite</p>
-      <h2 class="section__title" id="prod-title">CHUẨN GU ĐÚNG VỊ</h2>
-
-      <div class="products__grid">
-        <article class="p-card">
-          <div class="p-card__media">
-            <img class="p-card__img" src="assets/img/IMAGE.png" alt="REVO Morning" />
-          </div>
-          <div class="p-card__body">
-            <div class="p-card__price">99.000</div>
-            <h3 class="p-card__title">REVO Morning</h3>
-            <p class="p-card__desc">đắng, hậu ngọt, hương hoa</p>
-            <div class="p-card__actions">
-              <a class="btn" href="#footer">MUA NGAY</a>
-              <a class="link" href="#footer">CHI TIẾT</a>
-            </div>
-          </div>
+      <div>
+        <article>
+          <img src="assets/img/IMAGE.png" alt="REVO Morning">
+          <p>đắng, hậu ngọt, hương hoa</p>
+          <h3>REVO Morning</h3>
+          <p><strong>99.000</strong></p>
+          <p><a href="#contact">MUA NGAY</a> <a href="#contact">CHI TIẾT</a></p>
         </article>
 
-        <article class="p-card">
-          <div class="p-card__media">
-            <img class="p-card__img" src="assets/img/IMAGE (2).png" alt="REVO Everyday" />
-          </div>
-          <div class="p-card__body">
-            <div class="p-card__price p-card__price--right">85.000</div>
-            <h3 class="p-card__title">REVO Everyday</h3>
-            <p class="p-card__desc">cân bằng, hậu đắng, vị chocolate</p>
-            <div class="p-card__actions">
-              <a class="btn" href="#footer">MUA NGAY</a>
-              <a class="link" href="#footer">CHI TIẾT</a>
-            </div>
-          </div>
+        <article>
+          <img src="assets/img/IMAGE (2).png" alt="REVO Everyday">
+          <p>cân bằng, hậu đắng, vị chocolate</p>
+          <h3>REVO Everyday</h3>
+          <p><strong>85.000</strong></p>
+          <p><a href="#contact">MUA NGAY</a> <a href="#contact">CHI TIẾT</a></p>
         </article>
 
-        <article class="p-card">
-          <div class="p-card__media">
-            <img class="p-card__img" src="assets/img/image (1).png" alt="REVO Origin" />
-          </div>
-          <div class="p-card__body">
-            <div class="p-card__price">139.000</div>
-            <h3 class="p-card__title">REVO Origin</h3>
-            <p class="p-card__desc">hậu ngọt, ít đắng, vị chua dâu</p>
-            <div class="p-card__actions">
-              <a class="btn" href="#footer">MUA NGAY</a>
-              <a class="link" href="#footer">CHI TIẾT</a>
-            </div>
-          </div>
+        <article>
+          <img src="assets/img/image (1).png" alt="REVO Origin">
+          <p>hậu ngọt, ít đắng, vị chua dâu</p>
+          <h3>REVO Origin</h3>
+          <p><strong>139.000</strong></p>
+          <p><a href="#contact">MUA NGAY</a> <a href="#contact">CHI TIẾT</a></p>
         </article>
 
-        <article class="p-card">
-          <div class="p-card__media">
-            <img class="p-card__img" src="assets/img/IMAGE (3).png" alt="REVO Đậm Đà" />
-          </div>
-          <div class="p-card__body">
-            <div class="p-card__price p-card__price--right">75.000</div>
-            <h3 class="p-card__title">REVO Đậm Đà</h3>
-            <p class="p-card__desc">đậm đà, đắng, truyền thống</p>
-            <div class="p-card__actions">
-              <a class="btn" href="#footer">MUA NGAY</a>
-              <a class="link" href="#footer">CHI TIẾT</a>
-            </div>
-          </div>
+        <article>
+          <img src="assets/img/IMAGE (3).png" alt="REVO Đậm Đà">
+          <p>đậm đà, đắng, truyền thống</p>
+          <h3>REVO Đậm Đà</h3>
+          <p><strong>75.000</strong></p>
+          <p><a href="#contact">MUA NGAY</a> <a href="#contact">CHI TIẾT</a></p>
         </article>
       </div>
     </section>
 
-    <section class="section section--gift giftset" id="giftset" aria-labelledby="gift-title">
-      <div class="giftset__stripe" aria-hidden="true"></div>
+    <!-- GIFTSET -->
+    <section id="giftset" aria-labelledby="gift-title">
+      <header>
+        <p>Best Gift For Best Friend</p>
+        <h2 id="gift-title">GIFTSET</h2>
+      </header>
 
-      <p class="section__kicker">Best Gift For Best Friend</p>
-      <h2 class="section__title" id="gift-title">GIFTSET</h2>
+      <article>
+        <img src="assets/img/pr-0018-r.png" alt='Giftset "Cà phê phin Việt Nam"'>
 
-      <div class="giftset__wrap">
-        <div class="giftset__img">
-          <img src="assets/img/pr-0018-r.png" alt='Giftset "Cà phê phin Việt Nam"' />
-        </div>
-
-        <article class="giftset__card">
-          <p class="giftset__price">285.000</p>
-          <h3 class="giftset__name">Giftset "Cà phê phin Việt Nam"</h3>
-
-          <p class="giftset__text">
+        <div>
+          <p><strong>285.000</strong></p>
+          <h3>Giftset "Cà phê phin Việt Nam"</h3>
+          <p>
             Món quà tuyệt vời dành cho người sành cà phê. Hạt cà phê được Revo cẩn trọng chọn lựa, rang xay theo công nghệ và bí
             quyết học hỏi từ những nghệ nhân nổi tiếng, cùng với tình yêu, sự đam mê của người làm cà phê… tạo ra những tách cà
             phê tinh khiết chỉ dành riêng cho bạn.
           </p>
 
-          <div class="giftset__meta">
-            <div class="meta">
-              <div class="meta__label">Loại hạt</div>
-              <div class="meta__row">
-                <img class="meta__ic" src="assets/icons/IC_coffee.png" alt="" aria-hidden="true" />
-                <div class="meta__val">Fine Robusta Blend</div>
-              </div>
+          <dl>
+            <div>
+              <dt>
+                <img src="assets/icons/IC_coffee.png" alt="" aria-hidden="true">
+                Loại hạt
+              </dt>
+              <dd>Fine Robusta Blend</dd>
             </div>
 
-            <div class="meta">
-              <div class="meta__label">Độ cao</div>
-              <div class="meta__row">
-                <img class="meta__ic" src="assets/icons/IC_Mountain.png" alt="" aria-hidden="true" />
-                <div class="meta__val">700 - 800m</div>
-              </div>
+            <div>
+              <dt>
+                <img src="assets/icons/IC_Mountain.png" alt="" aria-hidden="true">
+                Độ cao
+              </dt>
+              <dd>700 - 800m</dd>
             </div>
-          </div>
+          </dl>
 
-          <div class="giftset__actions">
-            <a class="btn" href="#footer">MUA NGAY</a>
-            <a class="link" href="#footer">CHI TIẾT</a>
-          </div>
-        </article>
-
-        <div class="giftset__steps" aria-hidden="true">
-          <div class="step step--active">1</div>
-          <div class="step">2</div>
-          <div class="step">3</div>
+          <p><a href="#contact">MUA NGAY</a> <a href="#contact">CHI TIẾT</a></p>
         </div>
-      </div>
+      </article>
     </section>
 
-    <section class="section section--gray combo" id="combo" aria-labelledby="combo-title">
-      <div class="combo__panel" aria-hidden="true"></div>
-      <div class="combo__panel2" aria-hidden="true"></div>
-      <button class="combo__arrow" type="button" aria-label="Next" aria-hidden="true"></button>
+    <!-- COMBO PHIN PHÊ -->
+    <section id="combo" aria-labelledby="combo-title">
+      <header>
+        <p>Your Personalized Coffee</p>
+        <h2 id="combo-title">COMBO PHIN PHÊ</h2>
+      </header>
 
-      <p class="section__kicker">Your Personalized Coffee</p>
-      <h2 class="section__title" id="combo-title">COMBO PHIN PHÊ</h2>
-
-      <div class="combo__grid">
-        <article class="c-card">
-          <div class="c-card__media">
-            <img class="c-card__img" src="assets/img/image (6).png" alt="Combo Revo Đậm Đà" />
-          </div>
-          <div class="c-card__body">
-            <div class="c-card__prices">
-              <span class="c-card__new">147.000</span>
-              <del class="c-card__old">155.000</del>
-            </div>
-            <h3 class="c-card__title">Combo Revo Đậm Đà</h3>
-            <p class="c-card__desc">Hàm lượng caffein trong Revo Đậm Đà đủ mạnh để làm bạn tỉnh táo làm việc…</p>
-            <div class="c-card__actions">
-              <a class="btn" href="#footer">MUA NGAY</a>
-              <a class="link" href="#footer">CHI TIẾT</a>
-            </div>
-          </div>
+      <div>
+        <article>
+          <img src="assets/img/image (6).png" alt="Combo Revo Đậm Đà">
+          <p>Hàm lượng caffein trong Revo Đậm Đà đủ mạnh để làm bạn tỉnh táo làm việc...</p>
+          <h3>Combo Revo Đậm Đà</h3>
+          <p><strong>147.000</strong> <del>155.000</del></p>
+          <p><a href="#contact">MUA NGAY</a> <a href="#contact">CHI TIẾT</a></p>
         </article>
 
-        <article class="c-card">
-          <div class="c-card__media">
-            <img class="c-card__img" src="assets/img/image (7).png" alt="Combo Revo Everyday" />
-          </div>
-          <div class="c-card__body">
-            <div class="c-card__prices">
-              <span class="c-card__new">156.000</span>
-              <del class="c-card__old">165.000</del>
-            </div>
-            <h3 class="c-card__title">Combo Revo Everyday</h3>
-            <p class="c-card__desc">Revo Everyday được phối trộn giữa vị đắng của hạt Robusta và hương thơm…</p>
-            <div class="c-card__actions">
-              <a class="btn" href="#footer">MUA NGAY</a>
-              <a class="link" href="#footer">CHI TIẾT</a>
-            </div>
-          </div>
+        <article>
+          <img src="assets/img/image (7).png" alt="Combo Revo Everyday">
+          <p>Revo Everyday được phối trộn giữa vị đắng của hạt Robusta và hương thơm...</p>
+          <h3>Combo Revo Everyday</h3>
+          <p><strong>156.000</strong> <del>165.000</del></p>
+          <p><a href="#contact">MUA NGAY</a> <a href="#contact">CHI TIẾT</a></p>
         </article>
 
-        <article class="c-card">
-          <div class="c-card__media">
-            <img class="c-card__img" src="assets/img/image (8).png" alt="Combo Revo Honey" />
-          </div>
-          <div class="c-card__body">
-            <div class="c-card__prices">
-              <span class="c-card__new">275.000</span>
-              <del class="c-card__old">260.000</del>
-            </div>
-            <h3 class="c-card__title">Combo Revo Honey</h3>
-            <p class="c-card__desc">Honey trong tên gọi Revo Honey đến từ phương pháp chế biến hạt Arabica…</p>
-            <div class="c-card__actions">
-              <a class="btn" href="#footer">MUA NGAY</a>
-              <a class="link" href="#footer">CHI TIẾT</a>
-            </div>
-          </div>
+        <article>
+          <img src="assets/img/image (8).png" alt="Combo Revo Honey">
+          <p>Honey trong tên gọi Revo Honey đến từ phương pháp chế biến hạt Arabica...</p>
+          <h3>Combo Revo Honey</h3>
+          <p><strong>275.000</strong> <del>260.000</del></p>
+          <p><a href="#contact">MUA NGAY</a> <a href="#contact">CHI TIẾT</a></p>
         </article>
-      </div>
+
+    <section id="contact" aria-labelledby="c-title">
+      <h2 id="c-title">LIÊN HỆ</h2>
     </section>
   </main>
 
-  <footer class="footer" id="footer">
+  <footer>
     <p>© Revo Coffee Việt Nam - 2018</p>
   </footer>
 </body>
