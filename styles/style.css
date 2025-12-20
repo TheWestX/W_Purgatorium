@@ -501,7 +501,7 @@ a {
 /* Подписи мета */
 .meta__label {
   position: relative;
-  top: 20px;
+  top: 19px;
   left: 48px;
   font-size: 16px;
   font-weight: 300;
@@ -512,12 +512,12 @@ a {
 
 .meta__label_2 {
   position: relative;
-  top: 25px;
+  top: 17px;
   left: 48px;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 20px;
-  opacity: 0.55;
+  color: var(--primary);
   margin-bottom: 6px;
 }
 
@@ -525,15 +525,12 @@ a {
 .meta__row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 20px;
-  color: var(--primary);
 }
 
 /* Иконки мета */
 .meta__row img {
+  position: relative;
+  bottom: 30px;
   width: 38px;
   height: 38px;
   object-fit: contain;
@@ -691,4 +688,70 @@ a {
   line-height: 20px;
   padding: 18px 0px 30px;
   opacity: 0.6;
+}
+
+/* Плавная прокрутка по якорям (UX для навигации) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Общие плавности для интерактивных элементов */
+a,
+button,
+.btn,
+.link,
+.nav__link,
+.cCard,
+.pCard,
+.gift__card {
+  transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease, color .25s ease, background-color .25s ease;
+}
+
+/* Видимый фокус (клавиатура) — чтобы было понятно, где курсор */
+.nav__link:focus-visible,
+.btn:focus-visible,
+.link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Меню: hover + active */
+.nav__link:hover {
+  opacity: 1;
+  color: var(--accent);
+  transform: translateX(2px);
+}
+
+.nav__link:active {
+  transform: translateX(0px);
+  opacity: 1;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(21, 29, 40, .14);
+}
+
+.btn:active {
+  transform: translateY(0px) scale(.98);
+  box-shadow: 0 6px 12px rgba(21, 29, 40, .10);
+}
+
+.link:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+.link:active {
+  opacity: 1;
+}
+
+.cCard--interactive:hover,
+.pCard--interactive:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 28px rgba(21, 29, 40, .14);
+}
+.cCard--interactive:active,
+.pCard--interactive:active {
+  transform: translateY(-1px);
 }
