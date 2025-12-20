@@ -539,7 +539,7 @@ a {
   right: 0px;
   top: 0px;
   width: 350px;
-  height: 800px;
+  height: 703px;
 }
 
 /* Поднимаем заголовки combo */
@@ -627,7 +627,11 @@ a {
 
 /* Подвал */
 .footer {
+  position: relative;
   text-align: center;
+  background: var(--light);
+  top: 85px;
+  height: 20px;
   font-size: 12px;
   padding: 18px 0px 30px;
   opacity: 0.7;
