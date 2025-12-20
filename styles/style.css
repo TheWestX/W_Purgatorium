@@ -295,7 +295,7 @@ a {
 .bg--coffee-top {
   left: 0px;
   top: 0px;
-  width: 370px;
+  width: 270px;
   height: 800px;
 }
 
@@ -388,15 +388,30 @@ a {
 .actions {
   margin-top: 12px;
   display: flex;
-  gap: 18px;
+  gap: px;
   align-items: center;
+}
+
+/* Кнопки в карточках COFFEE */
+.coffee .actions {
+  gap: 40px; /* интервал как тебе нужен в coffee */
+}
+
+/* Кнопки в GIFTSET */
+.gift .actions {
+  gap: 180px; /* в макете обычно меньше */
+}
+
+/* Кнопки в COMBO */
+.combo .actions {
+  gap: 40px; /* отдельно для combo */
 }
 
 /* Подложка gift-секции */
 .gift__band {
   position: absolute;
   left: 0px;
-  right: 350px;
+  right: 270px;
   top: 0px;
   height: 800px;
   background: var(--light);
@@ -481,11 +496,24 @@ a {
   margin-top: 16px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 180px;
 }
 
 /* Подписи мета */
 .meta__label {
+  position: relative;
+  top: 20px;
+  left: 48px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 20px;
+  opacity: 0.55;
+  margin-bottom: 6px;
+}
+
+.meta__label_2 {
+  position: relative;
+  top: 25px;
+  left: 48px;
   font-size: 16px;
   font-weight: 300;
   line-height: 20px;
@@ -559,7 +587,7 @@ a {
 .bg--combo-right {
   right: 0px;
   top: 0px;
-  width: 350px;
+  width: 270px;
   height: 764px;
 }
 
@@ -658,7 +686,9 @@ a {
   background: var(--light);
   top: 85px;
   height: 20px;
-  font-size: 12px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 20px;
   padding: 18px 0px 30px;
-  opacity: 0.7;
+  opacity: 0.6;
 }
