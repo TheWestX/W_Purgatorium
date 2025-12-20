@@ -28,7 +28,7 @@ body {
 /* Унификация поведения изображений */
 img {
   display: block;    /* убирает inline-gap снизу */
-  max-width: 100%;   /* не вылезает из контейнеров */
+  max-width: 85%;   /* не вылезает из контейнеров */
 }
 
 /* База ссылок */
@@ -39,7 +39,7 @@ a {
 
 /* Контейнер макета */
 .page {
-  width: 1440px;         /* фикс ширина макета */
+  width: 1240px;         /* фикс ширина макета */
   margin: 0px auto;      /* центрирование */
   background: var(--light); /* фон контейнера */
 }
@@ -47,8 +47,8 @@ a {
 /* Малый заголовок секции (kicker) */
 .kicker {
   text-align: center;  /* по центру */
-  font-size: 12px;     /* размер текста */
-  line-height: 16px;   /* межстрочный интервал */
+  font-size: 24px;     /* размер текста */
+  line-height: 28px;   /* межстрочный интервал */
   opacity: 0.65;       /* приглушение */
 }
 
@@ -74,7 +74,8 @@ a {
   background: var(--accent); /* фон кнопки */
   color: rgb(255, 255, 255); /* цвет текста */
   font-weight: 700;          /* жирность */
-  font-size: 11px;           /* размер текста */
+  font-size: 16px;           /* размер текста */
+  line-height: 20px;
   letter-spacing: 0.04em;    /* трекинг */
   text-transform: uppercase; /* капс */
 }
@@ -82,7 +83,8 @@ a {
 /* Ссылка рядом с кнопкой (CHI TIẾT) */
 .link {
   font-weight: 700;         /* жирность */
-  font-size: 11px;          /* размер */
+  font-size: 16px;          /* размер */
+  line-height: 20px;
   letter-spacing: 0.04em;   /* трекинг */
   text-transform: uppercase;/* капс */
   color: var(--primary);    /* цвет */
@@ -91,9 +93,9 @@ a {
 /* Блок HOME (первый экран) */
 .home {
   background: var(--card); /* фон */
-  height: 700px;           /* высота */
+  height: 681px;           /* высота */
   display: grid;           /* grid-сетка */
-  grid-template-columns: 420px 720px 300px; /* 3 колонки */
+  grid-template-columns: 270px 720px 250px; /* 3 колонки */
   position: relative;      /* база для absolute-элементов внутри */
 }
 
@@ -105,15 +107,17 @@ a {
 
 /* Логотип */
 .logo {
-  width: 140px;  /* ширина */
+  position: relative;  
+  left: 90px;
+  width: 115px;  /* ширина */
   height: auto;  /* авто-высота */
 }
 
 /* Заголовок на HOME */
 .home__title {
   position: absolute; /* абсолютное позиционирование */
-  left: 170px;        /* смещение слева */
-  bottom: 50px;       /* смещение снизу */
+  left: 130px;        /* смещение слева */
+  bottom: 30px;       /* смещение снизу */
   width: 560px;       /* ширина заголовка */
   z-index: 5;         /* слой (над баннером) */
   font-family: Montserrat, system-ui, sans-serif; /* шрифт */
@@ -143,12 +147,13 @@ a {
 /* Контейнер изображения на HOME */
 .home__image {
   position: relative; /* база для возможных absolute */
-  overflow: hidden;   /* обрезка */
+  left: 108px;
 }
 
 /* Изображение баннера (только object-fit, без размеров) */
 .home__image img {
   object-fit: cover; /* заполнение без искажения */
+
 }
 
 /* Правая колонка HOME (меню) */
@@ -162,8 +167,8 @@ a {
 /* Корзина */
 .cart {
   position: absolute; /* позиционирование */
-  left: 30px;         /* слева */
-  top: 30px;          /* сверху */
+  left: 60px;         /* слева */
+  top: 80px;          /* сверху */
 }
 
 /* Иконка корзины */
@@ -200,10 +205,13 @@ a {
 
 /* Ссылки меню */
 .nav__link {
-  font-size: 12px;           /* размер */
+  top: 55px;
+  left: 30px;
+  font-size: 16px;           /* размер */
   letter-spacing: 0.06em;    /* трекинг */
   text-transform: uppercase; /* капс */
-  opacity: 0.85;             /* приглушение */
+  opacity: 0.45;             /* приглушение */
+  position: relative; 
 }
 
 /* Последний пункт меню (border-bottom убран, хотя border не задан выше) */
@@ -249,16 +257,18 @@ a {
 
 /* Заголовок элемента base */
 .base__h {
-  font-size: 14px;
+  font-size: 24px;
   font-weight: 700;
+  line-height: 28px;
   color: var(--primary);
   margin-bottom: 10px;
 }
 
 /* Текст элемента base */
 .base__p {
-  font-size: 11px;
-  line-height: 16px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 20px;
   opacity: 0.65;
   max-width: 210px;
   margin: 0px auto;
@@ -344,8 +354,9 @@ a {
   top: 16px;
   left: 20px;
   color: var(--accent);
+  font-size: 20px;
   font-weight: 600;
-  font-size: 12px;
+  line-height: 24px;
 }
 
 /* Цена справа */
@@ -358,16 +369,18 @@ a {
 /* Название продукта */
 .cCard__name {
   margin-top: 24px;
-  font-family: Montserrat, system-ui, sans-serif;
-  font-weight: 900;
-  font-size: 14px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
   color: var(--primary);
 }
 
 /* Описание */
 .cCard__desc {
   margin-top: 6px;
-  font-size: 12px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 20px;
   opacity: 0.7;
 }
 
@@ -440,24 +453,26 @@ a {
 .gift__price {
   margin-top: 45px;
   color: var(--accent);
+  font-size: 20px;
   font-weight: 600;
-  font-size: 12px;
+  line-height: 24px;
 }
 
 /* Название gift */
 .gift__name {
   margin-top: 6px;
-  font-family: Montserrat, system-ui, sans-serif;
-  font-weight: 900;
-  font-size: 14px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
   color: var(--primary);
 }
 
 /* Описание gift */
 .gift__text {
   margin-top: 10px;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 20px;
   opacity: 0.75;
 }
 
@@ -471,7 +486,9 @@ a {
 
 /* Подписи мета */
 .meta__label {
-  font-size: 11px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 20px;
   opacity: 0.55;
   margin-bottom: 6px;
 }
@@ -481,12 +498,16 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--primary);
 }
 
 /* Иконки мета */
 .meta__row img {
-  width: 18px;
-  height: 18px;
+  width: 38px;
+  height: 38px;
   object-fit: contain;
 }
 
@@ -539,7 +560,7 @@ a {
   right: 0px;
   top: 0px;
   width: 350px;
-  height: 800px;
+  height: 764px;
 }
 
 /* Поднимаем заголовки combo */
@@ -551,7 +572,7 @@ a {
 
 /* Сетка combo-карточек */
 .combo__grid {
-  width: 800px;
+  width: 950px;
   margin: 48px auto 0px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -593,41 +614,50 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
-  font-weight: 600;
 }
 
 /* Новая цена */
 .new {
   color: var(--accent);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 /* Старая цена */
 .old {
   opacity: 0.55;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 /* Название combo */
 .pCard__name {
   margin-top: 8px;
-  font-family: Montserrat, system-ui, sans-serif;
-  font-weight: 900;
-  font-size: 13px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
   color: var(--primary);
 }
 
 /* Описание combo */
 .pCard__desc {
   margin-top: 6px;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 20px;
   opacity: 0.75;
   min-height: 32px;
 }
 
 /* Подвал */
 .footer {
+  position: relative;
   text-align: center;
+  background: var(--light);
+  top: 85px;
+  height: 20px;
   font-size: 12px;
   padding: 18px 0px 30px;
   opacity: 0.7;
