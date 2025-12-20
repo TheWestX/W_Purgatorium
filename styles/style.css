@@ -141,7 +141,7 @@ a {
   background: var(--accent);     /* фон */
   color: rgb(255, 255, 255);     /* цвет текста */
   padding: 2px 12px 0px;         /* внутренние отступы */
-  margin-right: -26px;           /* “наезд” вправо */
+  margin-right: -26px;           
 }
 
 /* Контейнер изображения на HOME */
