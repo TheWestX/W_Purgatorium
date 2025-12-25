@@ -1,274 +1,179 @@
-/* Подключение шрифтов (Montserrat + Nunito) */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Nunito:wght@400;600;700&display=swap");
 
-/* CSS-переменные (палитра проекта) */
 :root {
-  --primary: #415167; /* основной фирменный цвет */
-  --accent: #C7A17A;  /* акцентный цвет (кнопки/цены) */
-  --dark: #151D28;    /* основной тёмный текст */
-  --light: #EDF0F5;   /* светлый фон страницы */
-  --cream: #F9F5E8;   /* дополнительный тёплый оттенок */
-  --card: #F9FBFF;    /* фон карточек/блоков */
+  --primary: #415167;
+  --accent: #C7A17A;
+  --dark: #151D28;
+  --light: #EDF0F5;
+  --cream: #F9F5E8;
+  --card: #F9FBFF;
 }
 
-/* Сброс отступов и единый box-sizing */
-* {
-  box-sizing: border-box; /* padding/бордер учитываются в размерах */
-  margin: 0px;            /* убираем дефолтные margin */
-  padding: 0px;           /* убираем дефолтные padding */
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* База страницы */
+html { scroll-behavior: smooth; }
+
 body {
-  font-family: Nunito, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; /* шрифт текста */
-  background: var(--light); /* общий фон */
-  color: var(--dark);       /* базовый цвет текста */
+  font-family: Nunito, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--light);
+  color: var(--dark);
 }
 
-/* Унификация поведения изображений */
-img {
-  display: block;    /* убирает inline-gap снизу */
-  max-width: 85%;   /* не вылезает из контейнеров */
-}
+img { display: block; max-width: 100%; height: auto; }
 
-/* База ссылок */
-a {
-  text-decoration: none; /* убираем подчёркивание */
-  color: inherit;        /* наследуем цвет родителя */
-}
+a { text-decoration: none; color: inherit; }
 
-/* Контейнер макета */
 .page {
-  width: 1240px;         /* фикс ширина макета */
-  margin: 0px auto;      /* центрирование */
-  background: var(--light); /* фон контейнера */
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  background: var(--light);
+  overflow-x: hidden; /* защита от случайных сдвигов */
+  padding: 0 16px;    /* чтобы не липло к краям */
 }
 
-/* Малый заголовок секции (kicker) */
 .kicker {
-  text-align: center;  /* по центру */
-  font-size: 24px;     /* размер текста */
-  line-height: 28px;   /* межстрочный интервал */
-  opacity: 0.65;       /* приглушение */
+  text-align: center;
+  font-size: 24px;
+  line-height: 28px;
+  opacity: 0.65;
 }
 
-/* Главный заголовок секции */
 .title {
-  text-align: center; /* по центру */
-  font-family: Montserrat, system-ui, sans-serif; /* шрифт заголовков */
-  font-weight: 900;   /* жирность */
-  font-size: 30px;    /* размер */
-  line-height: 34px;  /* межстрочный */
-  color: var(--primary); /* цвет заголовка */
-  margin-top: 10px;   /* отступ от kicker */
+  text-align: center;
+  font-family: Montserrat, system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 34px;
+  color: var(--primary);
+  margin-top: 10px;
 }
 
-/* Основная кнопка */
 .btn {
-  display: inline-flex;      /* flex-кнопка */
-  align-items: center;       /* вертикальное выравнивание текста */
-  justify-content: center;   /* горизонтальное выравнивание текста */
-  height: 32px;              /* высота */
-  padding: 0px 22px;         /* внутренние отступы по бокам */
-  border-radius: 20px;       /* скругление “пилюля” */
-  background: var(--accent); /* фон кнопки */
-  color: rgb(255, 255, 255); /* цвет текста */
-  font-weight: 700;          /* жирность */
-  font-size: 16px;           /* размер текста */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 22px;
+  border-radius: 20px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
   line-height: 20px;
-  letter-spacing: 0.04em;    /* трекинг */
-  text-transform: uppercase; /* капс */
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-/* Ссылка рядом с кнопкой (CHI TIẾT) */
 .link {
-  font-weight: 700;         /* жирность */
-  font-size: 16px;          /* размер */
+  font-weight: 700;
+  font-size: 16px;
   line-height: 20px;
-  letter-spacing: 0.04em;   /* трекинг */
-  text-transform: uppercase;/* капс */
-  color: var(--primary);    /* цвет */
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary);
 }
 
-/* Блок HOME (первый экран) */
+/* HOME */
 .home {
-  background: var(--card); /* фон */
-  height: 681px;           /* высота */
-  display: grid;           /* grid-сетка */
-  grid-template-columns: 270px 720px 250px; /* 3 колонки */
-  position: relative;      /* база для absolute-элементов внутри */
+  background: var(--card);
+  min-height: 681px;
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr) 250px;
+  position: relative;
 }
 
-/* Левая часть HOME */
-.home__left {
-  padding: 46px 40px;      /* внутренние отступы */
-  background: var(--card); /* фон */
-}
+.home__left { padding: 46px 40px; background: var(--card); position: relative; }
 
-/* Логотип */
-.logo {
-  position: relative;  
-  left: 90px;
-  width: 115px;  /* ширина */
-  height: auto;  /* авто-высота */
-}
+.logo { width: 115px; margin-left: auto; margin-right: auto; }
 
-/* Заголовок на HOME */
 .home__title {
-  position: absolute; /* абсолютное позиционирование */
-  left: 130px;        /* смещение слева */
-  bottom: 30px;       /* смещение снизу */
-  width: 560px;       /* ширина заголовка */
-  z-index: 5;         /* слой (над баннером) */
-  font-family: Montserrat, system-ui, sans-serif; /* шрифт */
-  font-weight: 900;   /* жирность */
-  font-size: 54px;    /* размер */
-  line-height: 70px;  /* межстрочный */
-  color: var(--primary); /* цвет */
-  text-transform: uppercase; /* капс */
+  position: absolute;
+  left: 40px;
+  bottom: 30px;
+  width: min(560px, 100%);
+  z-index: 5;
+  font-family: Montserrat, system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 54px;
+  line-height: 70px;
+  color: var(--primary);
+  text-transform: uppercase;
 }
 
-/* Строки заголовка (YOUR / PERSONALIZED / COFFEE) */
-.home__t1,
-.home__t2,
-.home__t3 {
-  display: block; /* каждая строка с новой строки */
-}
+.home__t1, .home__t2, .home__t3 { display: block; }
 
-/* Подложка под “PERSONALIZED” */
 .home__t2 > span {
-  display: inline-block;         /* чтобы работали padding/background */
-  background: var(--accent);     /* фон */
-  color: rgb(255, 255, 255);     /* цвет текста */
-  padding: 2px 12px 0px;         /* внутренние отступы */
-  margin-right: -26px;           /* “наезд” вправо */
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 2px 12px 0;
 }
 
-/* Контейнер изображения на HOME */
-.home__image {
-  position: relative; /* база для возможных absolute */
-  left: 108px;
-}
+.home__image { position: relative; overflow: hidden; }
+.home__image img { width: 100%; height: 681px; object-fit: cover; }
 
-/* Изображение баннера (только object-fit, без размеров) */
-.home__image img {
-  object-fit: cover; /* заполнение без искажения */
-
-}
-
-/* Правая колонка HOME (меню) */
 .home__menu {
-  background: var(--primary);       /* фон меню */
-  color: rgb(255, 255, 255);        /* белый текст */
-  padding: 38px 30px;               /* отступы */
-  position: relative;               /* база для корзины */
+  background: var(--primary);
+  color: #fff;
+  padding: 38px 30px;
+  position: relative;
 }
 
-/* Корзина */
-.cart {
-  position: absolute; /* позиционирование */
-  left: 60px;         /* слева */
-  top: 80px;          /* сверху */
-}
+.cart { position: absolute; left: 30px; top: 30px; }
 
-/* Иконка корзины */
-.cart img {
-  width: 18px;           /* ширина */
-  height: 18px;          /* высота */
-  object-fit: contain;   /* не обрезать */
-  opacity: 0.95;         /* лёгкая прозрачность */
-}
+.cart img { width: 18px; height: 18px; object-fit: contain; opacity: 0.95; }
 
-/* Бейдж количества */
 .cart__badge {
-  position: absolute;        /* относительно .cart */
-  left: 10px;                /* смещение */
-  top: -10px;                /* смещение */
-  width: 16px;               /* размер */
-  height: 16px;              /* размер */
-  border-radius: 999px;      /* круг */
-  background: var(--accent); /* фон */
-  color: rgb(255, 255, 255); /* цвет */
-  font-size: 10px;           /* размер текста */
-  line-height: 16px;         /* выравнивание по вертикали */
-  font-weight: 700;          /* жирность */
-  text-align: center;        /* центрирование */
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  line-height: 16px;
+  font-weight: 700;
+  text-align: center;
 }
 
-/* Навигация в меню */
-.nav {
-  margin-top: 140px; /* оставляем вашу логику */
-}
+.nav { margin-top: 90px; }
 
 .nav__list {
   display: flex;
-  flex-direction: column; /* сейчас у вас сайдбар-меню — вертикальное */
+  flex-direction: column;
   gap: 20px;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
-.nav__item {
-  margin: 0;
-  padding: 0;
-}
-
-/* Ссылки меню */
 .nav__link {
-  top: 55px;
-  left: 30px;
-  font-size: 16px;           /* размер */
-  letter-spacing: 0.06em;    /* трекинг */
-  text-transform: uppercase; /* капс */
-  opacity: 0.45;             /* приглушение */
-  position: relative; 
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.45;
 }
 
-/* Последний пункт меню (border-bottom убран, хотя border не задан выше) */
-.nav__link:last-child {
-  border-bottom-width: medium;
-  border-bottom-style: none;
-  border-bottom-color: currentcolor;
-}
+.nav__link--active { opacity: 1; }
 
-/* Активный пункт меню */
-.nav__link--active {
-  opacity: 1; /* максимальная контрастность */
-}
+/* BASE */
+.base { background: var(--card); padding: 62px 0 70px; }
+.base .kicker { margin-bottom: 8px; }
 
-/* Секция BASE */
-.base {
-  background: var(--card); /* фон */
-  padding: 62px 0px 70px;  /* отступы секции */
-}
-
-/* Отступ под kicker в base */
-.base .kicker {
-  margin-bottom: 8px;
-}
-
-/* Сетка base (4 колонки) */
 .base__grid {
   width: 100%;
   max-width: 1120px;
-  margin: 46px auto 0px;
+  margin: 46px auto 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 32px;
   text-align: center;
-  padding: 0 16px; /* чтобы не липло к краям на маленьких */
+  padding: 0 16px;
 }
 
-/* Иконки base */
-.base__icon {
-  width: 78px;
-  height: 78px;
-  margin: 0px auto 18px;
-  object-fit: contain;
-}
+.base__icon { width: 78px; height: 78px; margin: 0 auto 18px; object-fit: contain; }
 
-/* Заголовок элемента base */
 .base__h {
   font-size: 24px;
   font-weight: 700;
@@ -277,70 +182,54 @@ a {
   margin-bottom: 10px;
 }
 
-/* Текст элемента base */
 .base__p {
   font-size: 16px;
   font-weight: 300;
   line-height: 20px;
   opacity: 0.65;
   max-width: 210px;
-  margin: 0px auto;
+  margin: 0 auto;
 }
 
-/* Общие стили секций coffee/gift/combo */
-.coffee,
-.gift,
-.combo {
-  position: relative;        /* для абсолютных фоновых блоков */
-  padding: 70px 0px 84px;    /* отступы секции */
-  background: var(--card);   /* фон */
-  overflow: hidden;          /* обрезаем фоновые элементы */
-}
-
-/* Общий класс фоновых прямоугольников */
-.bg {
-  position: absolute;       /* абсолютное позиционирование */
-  background: var(--primary); /* цвет */
-  z-index: 0;               /* под контентом */
-}
-
-/* Фон coffee-секции (одна большая панель слева) */
-.bg--coffee-top {
-  left: 0px;
-  top: 0px;
-  width: 270px;
-  height: 800px;
-}
-
-/* Поднимаем заголовки coffee над фоном */
-.coffee .kicker,
-.coffee .title {
+/* Общие секции */
+.coffee, .gift, .combo {
   position: relative;
-  z-index: 2;
+  padding: 70px 0 84px;
+  background: var(--card);
+  overflow: hidden;
 }
 
-/* Сетка карточек кофе */
+.bg { position: absolute; background: var(--primary); z-index: 0; }
+
+.bg--coffee-top { left: 0; top: 0; width: 270px; height: 800px; }
+.bg--combo-right { right: 0; top: 0; width: 270px; height: 764px; }
+
+.coffee .kicker, .coffee .title,
+.gift .kicker, .gift .title,
+.combo .kicker, .combo .title { position: relative; z-index: 2; }
+
+/* COFFEE grid */
 .coffee__grid {
-  width: 1100px;
-  margin: 48px auto 0px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 48px auto 0;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   position: relative;
   z-index: 2;
+  padding: 0 16px;
 }
 
-/* Карточка кофе */
 .cCard {
-  height: 180px;
+  min-height: 180px;
   background: var(--card);
-  box-shadow: rgba(21, 29, 40, 0.08) 0px 10px 22px;
+  box-shadow: rgba(21, 29, 40, 0.08) 0 10px 22px;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 170px 1fr;
+  grid-template-columns: 170px minmax(0, 1fr);
 }
 
-/* Левая зона картинки */
 .cCard__img {
   background: var(--light);
   display: flex;
@@ -348,20 +237,10 @@ a {
   justify-content: center;
 }
 
-/* Картинка в карточке */
-.cCard__img img {
-  width: 170px;
-  height: auto;
-  object-fit: contain;
-}
+.cCard__img img { width: 170px; height: auto; object-fit: contain; }
 
-/* Правая зона текста */
-.cCard__body {
-  padding: 18px 20px;
-  position: relative; /* база для absolute цены */
-}
+.cCard__body { padding: 18px 20px; position: relative; }
 
-/* Цена слева */
 .cCard__price {
   position: absolute;
   top: 16px;
@@ -372,14 +251,6 @@ a {
   line-height: 24px;
 }
 
-/* Цена справа */
-.cCard__price--right {
-  left: auto;
-  right: 20px;
-  text-align: right;
-}
-
-/* Название продукта */
 .cCard__name {
   margin-top: 24px;
   font-size: 24px;
@@ -388,7 +259,6 @@ a {
   color: var(--primary);
 }
 
-/* Описание */
 .cCard__desc {
   margin-top: 6px;
   font-size: 16px;
@@ -397,236 +267,107 @@ a {
   opacity: 0.7;
 }
 
-/* Контейнер кнопок */
-.actions {
-  margin-top: 12px;
-  display: flex;
-  gap: px;
-  align-items: center;
-}
+/* actions: делаем управляемо через модификаторы */
+.actions { margin-top: 12px; display: flex; align-items: center; gap: 40px; }
+.actions--gift { gap: 180px; margin-top: 18px; }
+.actions--combo { gap: 40px; }
 
-/* Кнопки в карточках COFFEE */
-.coffee .actions {
-  gap: 40px; /* интервал как тебе нужен в coffee */
-}
-
-/* Кнопки в GIFTSET */
-.gift .actions {
-  gap: 180px; /* в макете обычно меньше */
-}
-
-/* Кнопки в COMBO */
-.combo .actions {
-  gap: 40px; /* отдельно для combo */
-}
-
-/* Подложка gift-секции */
+/* GIFT */
 .gift__band {
   position: absolute;
-  left: 0px;
+  left: 0;
   right: 270px;
-  top: 0px;
+  top: 0;
   height: 800px;
   background: var(--light);
   z-index: 0;
 }
 
-/* Поднимаем заголовки gift над фоном */
-.gift .kicker,
-.gift .title {
-  position: relative;
-  z-index: 2;
-}
-
-/* Сетка gift (картинка + карточка + steps) */
 .gift__wrap {
   position: relative;
-  width: 1100px;
-  margin: 48px auto 0px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 48px auto 0;
   display: grid;
-  grid-template-columns: 420px 1fr 77px;
+  grid-template-columns: 420px minmax(0, 1fr) 77px;
   gap: 1px;
   align-items: center;
-  position: relative;
   z-index: 2;
+  padding: 0 16px;
 }
 
-/* Изображение gift */
-.gift__img img {
-  position: relative;
-  z-index: 3;
-  width: 420px;
-  top: 25px;
-}
+.gift__img img { width: 420px; }
 
-/* Карточка gift */
 .gift__card {
   position: relative;
-  z-index: 2;
-
-  /* Насколько карточка заезжает под картинку (подбери 60–110px под макет) */
-  margin-left: -190px;
-
-  /* Чтобы текст НЕ оказался под картинкой:
-     padding-left = обычный padding + величина заезда */
-  top: -0px;
-  padding-left: calc(130px + 90px);
   background: var(--card);
-  box-shadow: rgba(21, 29, 40, 0.1) 0px 14px 28px;
-  left: -1px;
+  box-shadow: rgba(21, 29, 40, 0.1) 0 14px 28px;
   min-height: 400px;
+  padding: 45px 32px 32px;
 }
 
-/* Цена gift */
-.gift__price {
-  margin-top: 45px;
-  color: var(--accent);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 24px;
-}
+.gift__price { color: var(--accent); font-size: 20px; font-weight: 600; line-height: 24px; }
+.gift__name { margin-top: 6px; font-size: 24px; font-weight: 700; line-height: 28px; color: var(--primary); }
+.gift__text { margin-top: 10px; font-size: 16px; font-weight: 300; line-height: 20px; opacity: 0.75; }
 
-/* Название gift */
-.gift__name {
-  margin-top: 6px;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 28px;
-  color: var(--primary);
-}
+.gift__meta { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-/* Описание gift */
-.gift__text {
-  margin-top: 10px;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 20px;
-  opacity: 0.75;
-}
+.meta__label { font-size: 16px; font-weight: 300; opacity: 0.55; margin-bottom: 6px; }
+.meta__label_2 { font-size: 16px; font-weight: 400; color: var(--primary); margin-bottom: 6px; }
 
-/* Метаданные gift (2 колонки) */
-.gift__meta {
-  margin-top: 16px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
+.meta__row { display: flex; align-items: center; }
+.meta__row img { width: 38px; height: 38px; object-fit: contain; }
 
-/* Подписи мета */
-.meta__label {
-  position: relative;
-  top: 19px;
-  left: 48px;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 20px;
-  opacity: 0.55;
-  margin-bottom: 6px;
-}
-
-.meta__label_2 {
-  position: relative;
-  top: 17px;
-  left: 48px;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 20px;
-  color: var(--primary);
-  margin-bottom: 6px;
-}
-
-/* Строка мета */
-.meta__row {
-  display: flex;
-  align-items: center;
-}
-
-/* Иконки мета */
-.meta__row img {
-  position: relative;
-  bottom: 30px;
-  width: 38px;
-  height: 38px;
-  object-fit: contain;
-}
-
-/* Отступ под actions в gift */
-.actions--gift {
-  margin-top: 18px;
-}
-
-/* Контейнер шагов */
 .steps {
   background: var(--light);
-  box-shadow: rgba(21, 29, 40, 0.06) 0px 10px 22px;
+  box-shadow: rgba(21, 29, 40, 0.06) 0 10px 22px;
   overflow: hidden;
 }
 
-/* Один шаг */
 .step {
-  z-index: 2;
-  position: relative;
   height: 133px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Montserrat, system-ui, sans-serif; /* шрифт заголовков */
-  font-weight: 900;   /* жирность */
-  font-size: 24px;    /* размер */
-  line-height: 34px;  /* межстрочный */
+  font-family: Montserrat, system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 34px;
   color: var(--primary);
   opacity: 0.35;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: rgba(21, 29, 40, 0.06);
+  border-bottom: 1px solid rgba(21, 29, 40, 0.06);
 }
 
-/* Последний шаг (убираем border-bottom) */
-.step:last-child {
-  border-bottom-width: medium;
-  border-bottom-style: none;
-  border-bottom-color: currentcolor;
-}
+.step:last-child { border-bottom: none; }
+.step--active { background: var(--card); opacity: 1; }
 
-/* Активный шаг */
-.step--active {
-  background: var(--card);
-  opacity: 1;
-}
-
-/* Фон combo справа (позиция/размер без position — зависит от .bg базового класса) */
-.bg--combo-right {
-  right: 0px;
-  top: 0px;
-  width: 270px;
-  height: 764px;
-}
-
-/* Поднимаем заголовки combo */
-.combo .kicker,
-.combo .title {
-  position: relative;
-  z-index: 2;
-}
-
-/* Сетка combo-карточек */
+/* COMBO + MASONRY */
 .combo__grid {
-  width: 950px;
-  margin: 48px auto 0px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 48px auto 0;
   position: relative;
   z-index: 2;
+  padding: 0 16px;
 }
 
-/* Карточка combo */
+/* реальный masonry */
+.combo__grid--masonry {
+  column-count: 3;
+  column-gap: 28px;
+}
+
 .pCard {
   background: var(--card);
-  box-shadow: rgba(21, 29, 40, 0.08) 0px 10px 22px;
+  box-shadow: rgba(21, 29, 40, 0.08) 0 10px 22px;
   overflow: hidden;
+
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 28px;
+  break-inside: avoid;
 }
 
-/* Зона картинки combo */
 .pCard__img {
   background: var(--light);
   height: 280px;
@@ -635,92 +376,40 @@ a {
   justify-content: center;
 }
 
-/* Картинка combo */
-.pCard__img img {
-  width: 300px;
-  height: auto;
-  object-fit: contain;
-}
+.pCard__img img { width: 300px; height: auto; object-fit: contain; }
 
-/* Тело combo */
-.pCard__body {
-  padding: 18px 18px 20px;
-}
+.pCard__body { padding: 18px 18px 20px; }
 
-/* Цены (новая + старая) */
-.pCard__prices {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+.pCard__prices { display: flex; align-items: center; gap: 10px; }
+.new { color: var(--accent); font-size: 20px; font-weight: 600; line-height: 24px; }
+.old { opacity: 0.55; font-size: 16px; font-weight: 400; line-height: 20px; }
 
-/* Новая цена */
-.new {
-  color: var(--accent);
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 24px;
-}
+.pCard__name { margin-top: 8px; font-size: 24px; font-weight: 700; line-height: 28px; color: var(--primary); }
 
-/* Старая цена */
-.old {
-  opacity: 0.55;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 20px;
-}
-
-/* Название combo */
-.pCard__name {
-  margin-top: 8px;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 28px;
-  color: var(--primary);
-}
-
-/* Описание combo */
 .pCard__desc {
   margin-top: 6px;
   font-size: 16px;
   font-weight: 300;
   line-height: 20px;
   opacity: 0.75;
-  min-height: 32px;
 }
 
-/* Подвал */
+/* Footer */
 .footer {
-  position: relative;
   text-align: center;
   background: var(--light);
-  top: 85px;
-  height: 20px;
   font-size: 16px;
   font-weight: 300;
   line-height: 20px;
-  padding: 18px 0px 30px;
+  padding: 18px 0 30px;
   opacity: 0.6;
 }
 
-/* Плавная прокрутка по якорям (UX для навигации) */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Общие плавности для интерактивных элементов */
-a,
-button,
-.btn,
-.link,
-.nav__link,
-.cCard,
-.pCard,
-.gift__card {
+/* Интерактивность */
+a, button, .btn, .link, .nav__link, .cCard, .pCard, .gift__card {
   transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease, color .25s ease, background-color .25s ease;
 }
 
-/* Видимый фокус (клавиатура) — чтобы было понятно, где курсор */
 .nav__link:focus-visible,
 .btn:focus-visible,
 .link:focus-visible {
@@ -729,69 +418,40 @@ button,
   border-radius: 6px;
 }
 
-/* Меню: hover + active */
-.nav__link:hover {
-  opacity: 1;
-  color: var(--accent);
-  transform: translateX(2px);
-}
-
-.nav__link:active {
-  transform: translateX(0px);
-  opacity: 1;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 18px rgba(21, 29, 40, .14);
-}
-
-.btn:active {
-  transform: translateY(0px) scale(.98);
-  box-shadow: 0 6px 12px rgba(21, 29, 40, .10);
-}
-
-.link:hover {
-  opacity: 1;
-  color: var(--accent);
-}
-.link:active {
-  opacity: 1;
-}
+.nav__link:hover { opacity: 1; color: var(--accent); transform: translateX(2px); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(21, 29, 40, .14); }
+.btn:active { transform: translateY(0) scale(.98); box-shadow: 0 6px 12px rgba(21, 29, 40, .10); }
+.link:hover { color: var(--accent); }
 
 .cCard--interactive:hover,
-.pCard--interactive:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 28px rgba(21, 29, 40, .14);
-}
-.cCard--interactive:active,
-.pCard--interactive:active {
-  transform: translateY(-1px);
-}
+.pCard--interactive:hover { transform: translateY(-4px); box-shadow: 0 18px 28px rgba(21, 29, 40, .14); }
 
-/* ===== Desktop First breakpoints ===== */
+/* ===================== */
+/* Breakpoints (Desktop First) */
+/* Реализовано 3 breakpoints: 1024px, 720px, 320px */
+/* ===================== */
 
-/* Планшеты и ниже (<= 991px) */
-@media (max-width: 991px) {
-  .page {
-    width: 100%;
-    max-width: 1240px;
-    padding: 0 16px;
+/* <= 1024px: меню становится верхним, сетки уплотняются */
+@media (max-width: 1024px) {
+  :root {
+    --primary: #36485f; /* смена цветов интерфейса */
+    --accent: #b88b62;
   }
 
   .home {
-    grid-template-columns: 1fr; /* убираем 3 колонки */
-    height: auto;
+    grid-template-columns: 1fr;
+    min-height: auto;
   }
 
-  .home__image { left: 0; }
-  .home__title { left: 24px; width: auto; }
+  .home__image img { height: auto; }
 
-  /* Меню превращаем в верхнюю панель (горизонтально) */
   .home__menu {
-    order: -1;           /* переносим меню выше */
+    order: -1;
     padding: 18px 16px;
   }
+
+  .cart { position: static; display: inline-flex; gap: 8px; margin-bottom: 10px; }
+  .cart__badge { position: relative; left: -10px; top: -8px; }
 
   .nav { margin-top: 0; }
   .nav__list {
@@ -801,22 +461,52 @@ button,
     gap: 14px 18px;
   }
 
-  .nav__link {
-    top: 0;
-    left: 0;
-    opacity: 0.85;
+  .home__title {
+    position: static;
+    margin-top: 22px;
+    padding: 0 16px 22px;
+    width: 100%;
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 1.2;
   }
+
+  .base__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Мобильные (<= 575px) */
-@media (max-width: 575px) {
-  .home__title {
-    font-size: 38px;
-    line-height: 48px;
+/* <= 720px: 1 колонка в coffee, gift в одну колонку, masonry 2 колонки */
+@media (max-width: 720px) {
+  :root {
+    --primary: #2f3e52; /* ещё один шаг смены цветов */
+    --accent: #a97a55;
   }
 
-  .btn,
-  .link {
-    font-size: 14px;
+  .coffee__grid { grid-template-columns: 1fr; }
+
+  .gift__wrap {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
+
+  .gift__img img { width: min(420px, 100%); margin: 0 auto; }
+  .steps { display: none; }
+
+  .combo__grid--masonry { column-count: 2; }
+  .actions--gift { gap: 40px; } /* чтобы не разъезжалось на узких */
+}
+
+/* <= 320px: мобильная типографика, masonry 1 колонка */
+@media (max-width: 320px) {
+  :root {
+    --primary: #283546;
+    --accent: #9b6f4d;
+  }
+
+  .kicker { font-size: 18px; line-height: 22px; }
+  .title { font-size: 22px; line-height: 26px; }
+
+  .btn, .link { font-size: 14px; }
+  .combo__grid--masonry { column-count: 1; }
+
+  .cCard { grid-template-columns: 1fr; }
+  .cCard__img img { width: 220px; margin: 0 auto; }
 }
