@@ -197,10 +197,21 @@ a {
 
 /* Навигация в меню */
 .nav {
-  margin-top: 140px;          /* отступ сверху */
-  display: flex;              /* flex-контейнер */
-  flex-direction: column;     /* вертикально */
-  gap: 20px;                  /* расстояние между пунктами */
+  margin-top: 140px; /* оставляем вашу логику */
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column; /* сейчас у вас сайдбар-меню — вертикальное */
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__item {
+  margin: 0;
+  padding: 0;
 }
 
 /* Ссылки меню */
@@ -239,12 +250,14 @@ a {
 
 /* Сетка base (4 колонки) */
 .base__grid {
-  width: 1120px;                           /* ширина контента */
-  margin: 46px auto 0px;                   /* центрирование + верхний отступ */
-  display: grid;                           /* grid */
-  grid-template-columns: repeat(4, 1fr);   /* 4 колонки */
-  gap: 70px;                               /* расстояние */
-  text-align: center;                      /* текст по центру */
+  width: 100%;
+  max-width: 1120px;
+  margin: 46px auto 0px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  text-align: center;
+  padding: 0 16px; /* чтобы не липло к краям на маленьких */
 }
 
 /* Иконки base */
@@ -754,4 +767,56 @@ button,
 .cCard--interactive:active,
 .pCard--interactive:active {
   transform: translateY(-1px);
+}
+
+/* ===== Desktop First breakpoints ===== */
+
+/* Планшеты и ниже (<= 991px) */
+@media (max-width: 991px) {
+  .page {
+    width: 100%;
+    max-width: 1240px;
+    padding: 0 16px;
+  }
+
+  .home {
+    grid-template-columns: 1fr; /* убираем 3 колонки */
+    height: auto;
+  }
+
+  .home__image { left: 0; }
+  .home__title { left: 24px; width: auto; }
+
+  /* Меню превращаем в верхнюю панель (горизонтально) */
+  .home__menu {
+    order: -1;           /* переносим меню выше */
+    padding: 18px 16px;
+  }
+
+  .nav { margin-top: 0; }
+  .nav__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px 18px;
+  }
+
+  .nav__link {
+    top: 0;
+    left: 0;
+    opacity: 0.85;
+  }
+}
+
+/* Мобильные (<= 575px) */
+@media (max-width: 575px) {
+  .home__title {
+    font-size: 38px;
+    line-height: 48px;
+  }
+
+  .btn,
+  .link {
+    font-size: 14px;
+  }
 }
