@@ -85,11 +85,13 @@ a { text-decoration: none; color: inherit; }
 .home__left { padding: 46px 40px; background: var(--card); }
 .logo { position: relative; left: 90px; width: 115px; height: auto; }
 
+/* Заголовок HOME: базово ограничиваем, чтобы не лез под правое меню */
 .home__title {
   position: absolute;
   left: 130px;
   bottom: 30px;
   width: 560px;
+  max-width: calc(100% - 250px - 24px); /* 250px — колонка меню справа */
   z-index: 5;
   font-family: Montserrat, system-ui, sans-serif;
   font-weight: 900;
@@ -98,6 +100,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--primary);
   text-transform: uppercase;
 }
+
 .home__t1, .home__t2, .home__t3 { display: block; }
 .home__t2 > span {
   display: inline-block;
@@ -117,12 +120,20 @@ a { text-decoration: none; color: inherit; }
   padding: 38px 30px;
   position: relative;
 }
-.cart { position: absolute; left: 60px; top: 80px; }
+
+/* ===== Корзина: фикс для планшета/мобилки (бейдж не улетает) ===== */
+.cart{
+  position: absolute;          /* десктоп: как было */
+  left: 60px;
+  top: 80px;
+  display: inline-block;
+}
 .cart img { width: 18px; height: 18px; object-fit: contain; opacity: 0.95; }
-.cart__badge {
+
+.cart__badge{
   position: absolute;
-  left: 10px;
-  top: -10px;
+  right: -8px;
+  top: -8px;
   width: 16px;
   height: 16px;
   border-radius: 999px;
@@ -134,6 +145,7 @@ a { text-decoration: none; color: inherit; }
   text-align: center;
 }
 
+/* Навигация */
 .nav { margin-top: 140px; }
 .nav__list {
   display: flex;
@@ -181,15 +193,17 @@ a { text-decoration: none; color: inherit; }
 /* Фоны */
 .bg, .gift__band { pointer-events: none; }
 .bg { position: absolute; background: var(--primary); z-index: 0; }
-.bg--coffee-top { left: 0; top: 0; width: 270px; height: 800px; }
-.bg--combo-right { right: 0; top: 0; width: 270px; height: 764px; }
+
+/* ВАЖНО: высота фона = высоте секции (не 5200px) */
+.bg--coffee-top { inset: 0 auto 0 0; width: 270px; }
+.bg--combo-right { inset: 0 0 0 auto; width: 270px; }
 
 .gift__band {
   position: absolute;
   left: 0;
   right: 270px;
   top: 0;
-  height: 800px;
+  bottom: 0;          /* чтобы тянулся по секции */
   background: var(--light);
   z-index: 0;
 }
@@ -441,11 +455,27 @@ button,
   .page { width: 100%; padding: 0 16px; }
   .home { grid-template-columns: 270px 1fr 250px; }
   .home__image { left: 0; }
-  .home__title { left: 110px; width: auto; }
+
+  /* Мягко уводим заголовок и ограничиваем, чтобы не наезжал на баннер */
+  .home__title{
+    left: clamp(24px, 4vw, 11px);
+  }
 }
 
-/* <= 991px: “как мобильная” (меню сверху, лого центр, заголовок под картинкой) */
+/* Промежуточный диапазон: самое проблемное место “чуть уменьшили — залез” */
+@media (max-width: 1100px) and (min-width: 992px) {
+  .home__title{
+    left: clamp(20px, 3vw, 70px);
+    font-size: 50px;
+    line-height: 64px;
+    width: min(520px, calc(100% - 250px - 24px));
+  }
+}
+
+/* <= 991px: “как мобильная” */
 @media (max-width: 991px) {
+
+  /* HOME перестраиваем */
   .home {
     grid-template-columns: 1fr;
     height: auto;
@@ -453,7 +483,14 @@ button,
   }
 
   .home__menu { order: -1; padding: 18px 16px; }
-  .cart { position: static; margin-bottom: 12px; }
+
+  /* Корзина В ПОТОКЕ, но relative (бейдж не улетает) */
+  .cart{
+    position: relative;
+    left: auto;
+    top: auto;
+    margin: 0 0 12px;
+  }
 
   .nav { margin-top: 0; }
   .nav__list {
@@ -472,30 +509,21 @@ button,
   .home__title {
     position: static;
     width: auto;
+    max-width: none;
     margin: 18px auto 0;
     text-align: center;
     font-size: 42px;
     line-height: 52px;
   }
 
-  .base__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-  }
-
+  /* Сетки */
+  .base__grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .coffee__grid { grid-template-columns: 1fr; max-width: 720px; }
-
   .combo__grid { grid-template-columns: repeat(2, 1fr); max-width: 720px; }
 
-  .gift__wrap {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-  .gift__img img {
-    width: min(420px, 100%);
-    top: 0;
-    margin: 0 auto;
-  }
+  /* Gift адаптив */
+  .gift__wrap { grid-template-columns: 1fr; gap: 18px; }
+  .gift__img img { width: min(420px, 100%); top: 0; margin: 0 auto; }
   .gift__card {
     margin-left: 0;
     padding-left: 32px;
@@ -511,6 +539,11 @@ button,
     border-right: 1px solid rgba(21, 29, 40, 0.06);
   }
   .step:last-child { border-right: none; }
+
+  /* Фоны секций: остаются, но теперь по высоте секции (через inset выше) */
+  .bg--coffee-top { width: 160px; }
+  .bg--combo-right { width: 160px; }
+  .gift__band { right: 160px; }
 }
 
 /* <= 768px: отключаем фоновые прямоугольники, чтобы не лезли на текст */
