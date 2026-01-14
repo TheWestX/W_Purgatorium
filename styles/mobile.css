@@ -1,7 +1,9 @@
+/* Практика 5: mobile */
+
 @media (max-width: 768px) {
   .no-scroll { overflow: hidden; }
 
-  /* sticky панель */
+  /* Sticky верхняя панель */
   .home__menu{
     position: sticky;
     top: 0;
@@ -10,9 +12,10 @@
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+    padding: 18px 16px; /* чтобы было как в твоём адаптиве */
   }
 
-  /* гамбургер видим */
+  /* Показ гамбургера */
   .menu-toggle{
     display: inline-flex;
     flex-direction: column;
@@ -20,6 +23,7 @@
     align-items: stretch;
   }
 
+  /* Корзина в шапке */
   .cart{
     position: relative;
     left: auto;
@@ -27,7 +31,7 @@
     margin: 0;
   }
 
-  /* выезжающее меню: через transform (плавнее) */
+  /* Off-canvas меню: выезд через transform (плавнее) */
   .home__menu .nav{
     position: fixed;
     top: 0;
@@ -44,6 +48,7 @@
     overflow-y: auto;
     z-index: 1200;
     will-change: transform;
+    margin-top: 0; /* перекрываем desktop margin-top */
   }
   .home__menu .nav.active{ transform: translateX(0); }
 
@@ -52,11 +57,10 @@
     gap: 20px;
     align-items: stretch;
   }
-  .home__menu .nav__item{ width: 100%; }
 
-  /* ссылки как на ПК */
+  /* Ссылки как на ПК: полупрозрачные, активная жирнее/ярче */
   .home__menu .nav__link{
-    position: static; /* убираем top/left из desktop-стилей */
+    position: static; /* убираем desktop top/left */
     display: block;
     width: 100%;
     padding: 10px 0;
@@ -74,6 +78,7 @@
     color: #fff;
   }
 
+  /* Hover там, где есть hover */
   @media (hover: hover) and (pointer: fine) {
     .home__menu .nav__link:hover{
       opacity: 1;
@@ -82,6 +87,7 @@
     }
   }
 
+  /* Tap feedback */
   .home__menu .nav__link:active{
     opacity: 1;
     color: var(--accent);
@@ -94,7 +100,7 @@
     border-radius: 8px;
   }
 
-  /* overlay */
+  /* Overlay */
   .nav-overlay{
     position: fixed;
     inset: 0;
@@ -103,6 +109,9 @@
     display: none;
   }
   .nav-overlay.active{ display: block; }
+
+  /* Touch-минимум */
+  .btn, .link{ min-height: 44px; }
 }
 
 @media (max-width: 480px){
