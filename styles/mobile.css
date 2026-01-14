@@ -1,18 +1,16 @@
 @media (max-width: 768px) {
   .no-scroll { overflow: hidden; }
 
-  /* sticky панель */
   .home__menu{
     position: sticky;
     top: 0;
-    z-index: 1100;
+    z-index: 6000;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
   }
 
-  /* гамбургер видим */
   .menu-toggle{
     display: inline-flex;
     flex-direction: column;
@@ -27,82 +25,90 @@
     margin: 0;
   }
 
-  /* выезжающее меню: через transform (плавнее) */
+  /* OVERLAY: кликабельный, но ниже меню */
+  .nav-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 6050;
+    display: none;
+    pointer-events: auto;
+  }
+  .nav-overlay.active{ display: block; }
+
+  /* NAV: всегда выше overlay */
   .home__menu .nav{
     position: fixed;
     top: 0;
     right: 0;
-    transform: translateX(110%);
+    z-index: 6100;               /* выше overlay */
     width: 320px;
     max-width: 92vw;
     height: 100vh;
+
     background: var(--primary);
     color: #fff;
     padding: 88px 20px 20px;
-    box-shadow: -10px 0 22px rgba(21, 29, 40, 0.25);
-    transition: transform .35s ease;
     overflow-y: auto;
-    z-index: 1200;
+    box-shadow: -10px 0 22px rgba(21, 29, 40, 0.25);
+
+    transform: translateX(110%);
+    transition: transform .35s ease;
     will-change: transform;
+
+    pointer-events: auto;
   }
   .home__menu .nav.active{ transform: translateX(0); }
 
   .home__menu .nav__list{
+    display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: stretch;
   }
+
   .home__menu .nav__item{ width: 100%; }
 
-  /* ссылки как на ПК */
+  /* Ссылки: как ПК */
   .home__menu .nav__link{
-    position: static; /* убираем top/left из desktop-стилей */
     display: block;
     width: 100%;
     padding: 10px 0;
+
     font-size: 16px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+
     opacity: 0.45;
     color: #fff;
-    transition: transform .2s ease, opacity .2s ease, color .2s ease;
+    font-weight: 600;             /* ближе к ПК */
+
+    pointer-events: auto;
+    -webkit-tap-highlight-color: rgba(199,161,122,0.25);
+
+    transition: opacity .2s ease, color .2s ease, transform .2s ease;
   }
 
+  /* Active: просто белее/жирнее (без плашки) */
   .home__menu .nav__link--active{
     opacity: 1;
-    font-weight: 700;
+    font-weight: 800;
     color: #fff;
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .home__menu .nav__link:hover{
-      opacity: 1;
-      color: var(--accent);
-      transform: translateX(2px);
-    }
-  }
-
+  /* Feedback на тап (мобилка) */
   .home__menu .nav__link:active{
     opacity: 1;
     color: var(--accent);
     transform: translateX(1px);
   }
 
+  /* Focus (клавиатура) */
   .home__menu .nav__link:focus-visible{
     outline: 2px solid var(--accent);
     outline-offset: 3px;
     border-radius: 8px;
   }
-
-  /* overlay */
-  .nav-overlay{
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 1150;
-    display: none;
-  }
-  .nav-overlay.active{ display: block; }
 }
 
 @media (max-width: 480px){
