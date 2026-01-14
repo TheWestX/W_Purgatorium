@@ -554,8 +554,25 @@ button,
 
   .page { padding: 0 16px; }
 
-  .actions { gap: 16px; flex-wrap: wrap; }
-  .gift .actions { gap: 16px; flex-wrap: wrap; }
+    /* actions: в товарных карточках держим кнопки в одну строку */
+  .cCard .actions,
+  .pCard .actions {
+    gap: 14px;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  /* В Gift можно оставлять перенос (там реально часто не влезает) */
+  .gift .actions {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* чтобы текст не ломал верстку в одну строку */
+  .cCard .btn, .cCard .link,
+  .pCard .btn, .pCard .link {
+    white-space: nowrap;
+  }
 }
 
 /* <= 575px */
