@@ -1,15 +1,16 @@
 // Практическое занятие 5: гамбургер-меню + кнопка "Наверх"
+(() => {
+  // Более устойчивые селекторы (на случай если id/класс поменяется)
+  const menuToggle = document.querySelector('#menuToggle, .menu-toggle');
+  const mainNav = document.querySelector('#mainNav, nav.nav');
 
-(function () {
-  const menuToggle = document.getElementById('menuToggle');
-  const mainNav = document.getElementById('mainNav');
+  if (!menuToggle || !mainNav) return;
 
-  // Оверлей (если нет — создадим)
-  let navOverlay = document.getElementById('navOverlay');
+  // Overlay
+  let navOverlay = document.querySelector('.nav-overlay');
   if (!navOverlay) {
     navOverlay = document.createElement('div');
     navOverlay.className = 'nav-overlay';
-    navOverlay.id = 'navOverlay';
     navOverlay.setAttribute('aria-hidden', 'true');
     document.body.appendChild(navOverlay);
   }
@@ -17,57 +18,54 @@
   const scrollTopButton = document.getElementById('scrollTop');
 
   function setBodyScrollLock(locked) {
-    document.body.style.overflow = locked ? 'hidden' : '';
+    document.body.classList.toggle('no-scroll', locked);
   }
 
-  function toggleMenu(forceClose = false) {
-    if (!menuToggle || !mainNav) return;
-
-    const isOpen = mainNav.classList.contains('active');
-    const nextState = forceClose ? false : !isOpen;
-
-    menuToggle.classList.toggle('active', nextState);
-    menuToggle.setAttribute('aria-expanded', String(nextState));
-
-    mainNav.classList.toggle('active', nextState);
-    navOverlay.classList.toggle('active', nextState);
-
-    setBodyScrollLock(nextState);
+  function openMenu() {
+    menuToggle.classList.add('active');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    mainNav.classList.add('active');
+    navOverlay.classList.add('active');
+    setBodyScrollLock(true);
   }
 
-  // Открытие/закрытие по кнопке
-  if (menuToggle) {
-    menuToggle.addEventListener('click', () => toggleMenu());
+  function closeMenu() {
+    menuToggle.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    mainNav.classList.remove('active');
+    navOverlay.classList.remove('active');
+    setBodyScrollLock(false);
   }
 
-  // Закрытие по клику на оверлей
-  navOverlay.addEventListener('click', () => toggleMenu(true));
+  function toggleMenu() {
+    if (mainNav.classList.contains('active')) closeMenu();
+    else openMenu();
+  }
 
-  // Закрытие при клике на ссылку (на мобильных)
-  document.querySelectorAll('.nav__link').forEach((link) => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 768) toggleMenu(true);
+  menuToggle.addEventListener('click', toggleMenu);
+  navOverlay.addEventListener('click', closeMenu);
+
+  // Закрываем по клику на пункт меню только на мобилке
+  mainNav.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      if (window.innerWidth <= 768) closeMenu();
     });
   });
 
   // Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') toggleMenu(true);
+    if (e.key === 'Escape') closeMenu();
   });
 
-  // Если развернули экран до десктопа — закрываем меню и разблокируем скролл
+  // На ресайзе в десктоп — закрываем
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) toggleMenu(true);
+    if (window.innerWidth > 768) closeMenu();
   });
 
   // Кнопка "Наверх"
   if (scrollTopButton) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollTopButton.classList.add('visible');
-      } else {
-        scrollTopButton.classList.remove('visible');
-      }
+      scrollTopButton.classList.toggle('visible', window.scrollY > 300);
     });
 
     scrollTopButton.addEventListener('click', () => {
