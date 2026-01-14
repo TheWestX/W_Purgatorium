@@ -5,7 +5,7 @@
 
   if (!menuToggle || !mainNav) return;
 
-  // Overlay
+  // overlay
   let overlay = document.querySelector('.nav-overlay');
   if (!overlay) {
     overlay = document.createElement('div');
@@ -34,33 +34,37 @@
     lockScroll(false);
   };
 
-  const toggleMenu = () => {
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (mainNav.classList.contains('active')) closeMenu();
     else openMenu();
-  };
+  });
 
-  menuToggle.addEventListener('click', toggleMenu);
+  // чтобы клики внутри меню не всплывали наружу
+  mainNav.addEventListener('click', (e) => e.stopPropagation());
+
+  // overlay закрывает меню (по заданию)
   overlay.addEventListener('click', closeMenu);
 
-  // Клик по ссылке меню: закрываем меню и гарантированно скроллим к якорю
+  // клики по пунктам меню: на мобилке скроллим надёжно
   mainNav.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
-      if (window.innerWidth > 768) return; // на десктопе не трогаем стандартное поведение
+      // для десктопа оставляем обычный якорь
+      if (window.innerWidth > 768) return;
 
       e.preventDefault();
+      e.stopPropagation();
 
       const hash = a.getAttribute('href');
       const target = hash ? document.querySelector(hash) : null;
 
       closeMenu();
 
-      // ждём кадр, чтобы снялся lock scroll и ушёл overlay
       requestAnimationFrame(() => {
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           history.replaceState(null, '', hash);
         } else if (hash) {
-          // fallback
           location.hash = hash;
         }
       });
@@ -75,7 +79,7 @@
     if (window.innerWidth > 768) closeMenu();
   });
 
-  // "Наверх"
+  // scroll-top
   if (scrollTopButton) {
     window.addEventListener('scroll', () => {
       scrollTopButton.classList.toggle('visible', window.scrollY > 300);
