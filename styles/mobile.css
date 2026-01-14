@@ -1,12 +1,7 @@
-/* Мобильные стили для практического занятия 5 */
-
-/* Планшет и мобильные (768px и меньше): off-canvas меню + sticky */
-@media (max-width: 768px){
-
-  /* Блокировка прокрутки при открытом меню */
+@media (max-width: 768px) {
   .no-scroll { overflow: hidden; }
 
-  /* Sticky панель меню */
+  /* sticky панель */
   .home__menu{
     position: sticky;
     top: 0;
@@ -17,7 +12,7 @@
     gap: 12px;
   }
 
-  /* Показываем гамбургер */
+  /* гамбургер видим */
   .menu-toggle{
     display: inline-flex;
     flex-direction: column;
@@ -25,7 +20,6 @@
     align-items: stretch;
   }
 
-  /* Корзина в шапке */
   .cart{
     position: relative;
     left: auto;
@@ -33,11 +27,12 @@
     margin: 0;
   }
 
-  /* Выезжающее меню */
+  /* выезжающее меню: через transform (плавнее) */
   .home__menu .nav{
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
+    transform: translateX(110%);
     width: 320px;
     max-width: 92vw;
     height: 100vh;
@@ -45,13 +40,13 @@
     color: #fff;
     padding: 88px 20px 20px;
     box-shadow: -10px 0 22px rgba(21, 29, 40, 0.25);
-    transition: right .35s ease;
+    transition: transform .35s ease;
     overflow-y: auto;
     z-index: 1200;
+    will-change: transform;
   }
-  .home__menu .nav.active{ right: 0; }
+  .home__menu .nav.active{ transform: translateX(0); }
 
-  /* Список пунктов — колонкой, как в сайдбаре */
   .home__menu .nav__list{
     flex-direction: column;
     gap: 20px;
@@ -59,28 +54,26 @@
   }
   .home__menu .nav__item{ width: 100%; }
 
-  /* Ссылки — визуально как на ПК */
+  /* ссылки как на ПК */
   .home__menu .nav__link{
-    position: static;            /* убираем top/left из desktop */
+    position: static; /* убираем top/left из desktop-стилей */
     display: block;
     width: 100%;
     padding: 10px 0;
-    border-radius: 8px;
     font-size: 16px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    opacity: 0.45;               /* как на ПК */
-    transition: transform .2s ease, opacity .2s ease, color .2s ease, background-color .2s ease;
+    opacity: 0.45;
+    color: #fff;
+    transition: transform .2s ease, opacity .2s ease, color .2s ease;
   }
 
-  /* Активный пункт: как на ПК — просто сильнее */
   .home__menu .nav__link--active{
     opacity: 1;
     font-weight: 700;
     color: #fff;
   }
 
-  /* Hover там, где он реально есть */
   @media (hover: hover) and (pointer: fine) {
     .home__menu .nav__link:hover{
       opacity: 1;
@@ -89,20 +82,19 @@
     }
   }
 
-  /* Tap feedback */
   .home__menu .nav__link:active{
     opacity: 1;
     color: var(--accent);
-    background: rgba(255,255,255,0.06);
+    transform: translateX(1px);
   }
 
   .home__menu .nav__link:focus-visible{
     outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 10px;
+    border-radius: 8px;
   }
 
-  /* Overlay */
+  /* overlay */
   .nav-overlay{
     position: fixed;
     inset: 0;
@@ -111,12 +103,8 @@
     display: none;
   }
   .nav-overlay.active{ display: block; }
-
-  /* Touch-friendly */
-  .btn, .link{ min-height: 44px; }
 }
 
-/* Мобильные (480px и меньше): меню на всю ширину + HIG */
 @media (max-width: 480px){
   body{ font-size: 17px; }
   .home__menu .nav{

@@ -1,21 +1,20 @@
-// Практическое занятие 5: гамбургер-меню + кнопка "Наверх"
 (() => {
-  const menuToggle = document.getElementById('menuToggle') || document.querySelector('.menu-toggle');
-  const mainNav = document.getElementById('mainNav') || document.querySelector('nav.nav');
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
   const scrollTopButton = document.getElementById('scrollTop');
 
   if (!menuToggle || !mainNav) return;
 
   // Overlay
-  let navOverlay = document.querySelector('.nav-overlay');
-  if (!navOverlay) {
-    navOverlay = document.createElement('div');
-    navOverlay.className = 'nav-overlay';
-    navOverlay.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(navOverlay);
+  let overlay = document.querySelector('.nav-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(overlay);
   }
 
-  const setBodyScrollLock = (locked) => {
+  const lockScroll = (locked) => {
     document.body.classList.toggle('no-scroll', locked);
   };
 
@@ -23,16 +22,16 @@
     menuToggle.classList.add('active');
     menuToggle.setAttribute('aria-expanded', 'true');
     mainNav.classList.add('active');
-    navOverlay.classList.add('active');
-    setBodyScrollLock(true);
+    overlay.classList.add('active');
+    lockScroll(true);
   };
 
   const closeMenu = () => {
     menuToggle.classList.remove('active');
     menuToggle.setAttribute('aria-expanded', 'false');
     mainNav.classList.remove('active');
-    navOverlay.classList.remove('active');
-    setBodyScrollLock(false);
+    overlay.classList.remove('active');
+    lockScroll(false);
   };
 
   const toggleMenu = () => {
@@ -41,26 +40,42 @@
   };
 
   menuToggle.addEventListener('click', toggleMenu);
-  navOverlay.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
 
-  // Закрыть по клику на пункт меню (только на мобилке)
-  mainNav.querySelectorAll('a').forEach((a) => {
-    a.addEventListener('click', () => {
-      if (window.innerWidth <= 768) closeMenu();
+  // Клик по ссылке меню: закрываем меню и гарантированно скроллим к якорю
+  mainNav.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      if (window.innerWidth > 768) return; // на десктопе не трогаем стандартное поведение
+
+      e.preventDefault();
+
+      const hash = a.getAttribute('href');
+      const target = hash ? document.querySelector(hash) : null;
+
+      closeMenu();
+
+      // ждём кадр, чтобы снялся lock scroll и ушёл overlay
+      requestAnimationFrame(() => {
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', hash);
+        } else if (hash) {
+          // fallback
+          location.hash = hash;
+        }
+      });
     });
   });
 
-  // Закрыть по Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
   });
 
-  // При возврате на десктоп — закрываем меню
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) closeMenu();
   });
 
-  // Кнопка "Наверх"
+  // "Наверх"
   if (scrollTopButton) {
     window.addEventListener('scroll', () => {
       scrollTopButton.classList.toggle('visible', window.scrollY > 300);

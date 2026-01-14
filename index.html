@@ -6,9 +6,9 @@
   <title>Revo Coffee</title>
 
   <!-- Основные стили -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles/style.css" />
   <!-- Мобильные стили (ПЗ-5) -->
-  <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 1024px)" />
+  <link rel="stylesheet" href="styles/mobile.css" media="screen and (max-width: 1024px)" />
 </head>
 
 <body>
@@ -24,6 +24,7 @@
         <img src="assets/img/Баннер.jpg" alt="Your Personalized Coffee">
       </div>
 
+      <!-- ВАЖНО: заголовок вынесен отдельным блоком -->
       <h1 class="home__title" aria-label="home-title">
         <span class="home__t1">YOUR</span>
         <span class="home__t2"><span>PERSONALIZED</span></span>
@@ -31,7 +32,7 @@
       </h1>
 
       <aside class="home__menu" aria-label="Sidebar menu">
-        <!-- Гамбургер-кнопка -->
+        <!-- Гамбургер-кнопка (видна на планшетах и мобильных) -->
         <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">
           <span class="menu-toggle__line"></span>
           <span class="menu-toggle__line"></span>
@@ -43,7 +44,7 @@
           <span class="cart__badge">2</span>
         </div>
 
-        <!-- NAV -->
+        <!-- NAV: добавлен id="mainNav" для JS -->
         <nav class="nav" id="mainNav" aria-label="Menu">
           <ul class="nav__list">
             <li class="nav__item"><a class="nav__link nav__link--active" href="#home">TRANG CHỦ</a></li>
@@ -272,6 +273,6 @@
   <button class="scroll-top" id="scrollTop" aria-label="Наверх">↑</button>
 
   <!-- Скрипт меню + scroll-top -->
-  <script src="menu.js"></script>
+  <script src="scripts/menu.js"></script>
 </body>
 </html>

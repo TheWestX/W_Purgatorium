@@ -396,7 +396,7 @@ a { text-decoration: none; color: inherit; }
 /* UX */
 html { scroll-behavior: smooth; }
 
-/* ==== АНИМАЦИИ / FEEDBACK ==== */
+/* ==== ТВОИ РАБОЧИЕ АНИМАЦИИ ==== */
 a,
 button,
 .btn,
@@ -456,12 +456,13 @@ button,
   .home { grid-template-columns: 270px 1fr 250px; }
   .home__image { left: 0; }
 
+  /* Мягко уводим заголовок и ограничиваем, чтобы не наезжал на баннер */
   .home__title{
     left: clamp(24px, 4vw, 11px);
   }
 }
 
-/* Промежуточный диапазон */
+/* Промежуточный диапазон: самое проблемное место “чуть уменьшили — залез” */
 @media (max-width: 1100px) and (min-width: 992px) {
   .home__title{
     left: clamp(20px, 3vw, 70px);
@@ -471,9 +472,10 @@ button,
   }
 }
 
-/* <= 991px */
+/* <= 991px: “как мобильная” */
 @media (max-width: 991px) {
 
+  /* HOME перестраиваем */
   .home {
     grid-template-columns: 1fr;
     height: auto;
@@ -482,6 +484,7 @@ button,
 
   .home__menu { order: -1; padding: 18px 16px; }
 
+  /* Корзина В ПОТОКЕ, но relative (бейдж не улетает) */
   .cart{
     position: relative;
     left: auto;
@@ -513,10 +516,12 @@ button,
     line-height: 52px;
   }
 
+  /* Сетки */
   .base__grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .coffee__grid { grid-template-columns: 1fr; max-width: 720px; }
   .combo__grid { grid-template-columns: repeat(2, 1fr); max-width: 720px; }
 
+  /* Gift адаптив */
   .gift__wrap { grid-template-columns: 1fr; gap: 18px; }
   .gift__img img { width: min(420px, 100%); top: 0; margin: 0 auto; }
   .gift__card {
@@ -535,12 +540,13 @@ button,
   }
   .step:last-child { border-right: none; }
 
+  /* Фоны секций: остаются, но теперь по высоте секции (через inset выше) */
   .bg--coffee-top { width: 160px; }
   .bg--combo-right { width: 160px; }
   .gift__band { right: 160px; }
 }
 
-/* <= 768px */
+/* <= 768px: отключаем фоновые прямоугольники, чтобы не лезли на текст */
 @media (max-width: 768px) {
   .bg--coffee-top,
   .bg--combo-right,
@@ -548,22 +554,24 @@ button,
 
   .page { padding: 0 16px; }
 
-  /* В карточках товаров держим кнопки в одну строку */
+    /* actions: в товарных карточках держим кнопки в одну строку */
   .cCard .actions,
   .pCard .actions {
     gap: 14px;
     flex-wrap: nowrap;
     align-items: center;
   }
-  .cCard .btn, .cCard .link,
-  .pCard .btn, .pCard .link {
-    white-space: nowrap;
-  }
 
-  /* В gift можно переносить */
+  /* В Gift можно оставлять перенос (там реально часто не влезает) */
   .gift .actions {
     gap: 16px;
     flex-wrap: wrap;
+  }
+
+  /* чтобы текст не ломал верстку в одну строку */
+  .cCard .btn, .cCard .link,
+  .pCard .btn, .pCard .link {
+    white-space: nowrap;
   }
 }
 
@@ -587,13 +595,11 @@ button,
 }
 
 /* =========================
-   ПРАКТИКА 5: гамбургер + scroll-top
+   ПРАКТИКА 5: ДОБАВЛЕНО
+   гамбургер + scroll-top
    ========================= */
 
-/* глобально (используется JS) */
-.no-scroll { overflow: hidden; }
-
-/* Гамбургер (скрыт на десктопе; показывается в mobile.css) */
+/* Гамбургер-кнопка (скрыта на десктопе; показывается в mobile.css на <=768) */
 .menu-toggle{
   display: none;
   width: 44px;
@@ -605,6 +611,7 @@ button,
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  gap: 6px;
 }
 
 .menu-toggle__line{
@@ -613,10 +620,10 @@ button,
   height: 3px;
   background: #fff;
   border-radius: 2px;
-  margin: 6px 0;
   transition: transform .25s ease, opacity .25s ease;
 }
 
+/* Состояние открытого меню (крестик) */
 .menu-toggle.active .menu-toggle__line:nth-child(1){
   transform: translateY(9px) rotate(45deg);
 }
@@ -643,7 +650,7 @@ button,
   box-shadow: 0 4px 12px rgba(0,0,0,0.30);
   opacity: 0;
   visibility: hidden;
-  transition: transform .2s ease, opacity .25s ease, background-color .25s ease, visibility .25s ease;
+  transition: all .3s ease;
   z-index: 1300;
   display: flex;
   align-items: center;
