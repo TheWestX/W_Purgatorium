@@ -1,0 +1,103 @@
+/* Мобильные стили для практического занятия 5 */
+
+@media (max-width: 1024px){
+  /* Контейнер уже становится fluid в style.css, здесь только мелкие правки при необходимости */
+}
+
+/* Планшет и мобильные (768px и меньше): офф-канвас меню + sticky */
+@media (max-width: 768px){
+
+  /* Фиксируем верхнюю панель меню, чтобы она была доступна при скролле */
+  .home__menu{
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  /* Показываем гамбургер */
+  .menu-toggle{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  /* Переносим корзину в “шапку” */
+  .cart{
+    position: relative;
+    left: auto;
+    top: auto;
+    margin: 0;
+  }
+
+  /* Навигация по умолчанию скрыта и выезжает справа */
+  .home__menu .nav{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    max-width: 92vw;
+    height: 100vh;
+    background: var(--primary);
+    color: #fff;
+    padding: 88px 20px 20px;
+    box-shadow: -10px 0 22px rgba(21, 29, 40, 0.25);
+    transition: right .35s ease;
+    overflow-y: auto;
+    z-index: 1200;
+  }
+  .home__menu .nav.active{ right: 0; }
+
+  .home__menu .nav__list{
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .home__menu .nav__item{ width: 100%; }
+
+  .home__menu .nav__link{
+    display: block;
+    width: 100%;
+    padding: 16px 12px;
+    border-radius: 10px;
+    font-size: 18px; /* удобнее на мобилке */
+    opacity: 1;
+  }
+
+  .home__menu .nav__link:hover{
+    transform: none;
+    color: #fff;
+    background: rgba(255,255,255,0.10);
+  }
+
+  .home__menu .nav__link:active{
+    background: rgba(255,255,255,0.16);
+  }
+
+  /* Оверлей */
+  .nav-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1150;
+    display: none;
+  }
+  .nav-overlay.active{ display: block; }
+
+  /* Чтобы меню было кликабельным “одним пальцем” */
+  .btn, .link{ min-height: 44px; }
+}
+
+/* Мобильные (480px и меньше): меню на всю ширину */
+@media (max-width: 480px){
+  body{ font-size: 17px; } /* iOS рекомендация */
+  .home__menu .nav{
+    width: 100%;
+    max-width: 100%;
+  }
+}
