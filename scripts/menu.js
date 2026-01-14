@@ -42,10 +42,10 @@
   menuToggle.addEventListener('click', toggleMenu);
   overlay.addEventListener('click', closeMenu);
 
-  // Клик по ссылке меню: закрываем меню и гарантированно скроллим к якорю
+  // Якоря: на мобилке делаем скролл сами (чтобы всегда работало)
   mainNav.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
-      if (window.innerWidth > 768) return; // на десктопе не трогаем стандартное поведение
+      if (window.innerWidth > 768) return; // десктоп: стандартное поведение
 
       e.preventDefault();
 
@@ -54,13 +54,11 @@
 
       closeMenu();
 
-      // ждём кадр, чтобы снялся lock scroll и ушёл overlay
       requestAnimationFrame(() => {
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           history.replaceState(null, '', hash);
         } else if (hash) {
-          // fallback
           location.hash = hash;
         }
       });
