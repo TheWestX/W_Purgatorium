@@ -5,7 +5,7 @@
 
   if (!menuToggle || !mainNav) return;
 
-  // Overlay
+  // overlay
   let overlay = document.querySelector('.nav-overlay');
   if (!overlay) {
     overlay = document.createElement('div');
@@ -34,20 +34,26 @@
     lockScroll(false);
   };
 
-  const toggleMenu = () => {
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     if (mainNav.classList.contains('active')) closeMenu();
     else openMenu();
-  };
+  });
 
-  menuToggle.addEventListener('click', toggleMenu);
+  // чтобы клики внутри меню не всплывали наружу
+  mainNav.addEventListener('click', (e) => e.stopPropagation());
+
+  // overlay закрывает меню (по заданию)
   overlay.addEventListener('click', closeMenu);
 
-  // Якоря: на мобилке делаем скролл сами (чтобы всегда работало)
+  // клики по пунктам меню: на мобилке скроллим надёжно
   mainNav.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
-      if (window.innerWidth > 768) return; // десктоп: стандартное поведение
+      // для десктопа оставляем обычный якорь
+      if (window.innerWidth > 768) return;
 
       e.preventDefault();
+      e.stopPropagation();
 
       const hash = a.getAttribute('href');
       const target = hash ? document.querySelector(hash) : null;
@@ -73,7 +79,7 @@
     if (window.innerWidth > 768) closeMenu();
   });
 
-  // "Наверх"
+  // scroll-top
   if (scrollTopButton) {
     window.addEventListener('scroll', () => {
       scrollTopButton.classList.toggle('visible', window.scrollY > 300);
