@@ -1,8 +1,8 @@
 // Практическое занятие 5: гамбургер-меню + кнопка "Наверх"
 (() => {
-  // Более устойчивые селекторы (на случай если id/класс поменяется)
-  const menuToggle = document.querySelector('#menuToggle, .menu-toggle');
-  const mainNav = document.querySelector('#mainNav, nav.nav');
+  const menuToggle = document.getElementById('menuToggle') || document.querySelector('.menu-toggle');
+  const mainNav = document.getElementById('mainNav') || document.querySelector('nav.nav');
+  const scrollTopButton = document.getElementById('scrollTop');
 
   if (!menuToggle || !mainNav) return;
 
@@ -15,49 +15,47 @@
     document.body.appendChild(navOverlay);
   }
 
-  const scrollTopButton = document.getElementById('scrollTop');
-
-  function setBodyScrollLock(locked) {
+  const setBodyScrollLock = (locked) => {
     document.body.classList.toggle('no-scroll', locked);
-  }
+  };
 
-  function openMenu() {
+  const openMenu = () => {
     menuToggle.classList.add('active');
     menuToggle.setAttribute('aria-expanded', 'true');
     mainNav.classList.add('active');
     navOverlay.classList.add('active');
     setBodyScrollLock(true);
-  }
+  };
 
-  function closeMenu() {
+  const closeMenu = () => {
     menuToggle.classList.remove('active');
     menuToggle.setAttribute('aria-expanded', 'false');
     mainNav.classList.remove('active');
     navOverlay.classList.remove('active');
     setBodyScrollLock(false);
-  }
+  };
 
-  function toggleMenu() {
+  const toggleMenu = () => {
     if (mainNav.classList.contains('active')) closeMenu();
     else openMenu();
-  }
+  };
 
   menuToggle.addEventListener('click', toggleMenu);
   navOverlay.addEventListener('click', closeMenu);
 
-  // Закрываем по клику на пункт меню только на мобилке
+  // Закрыть по клику на пункт меню (только на мобилке)
   mainNav.querySelectorAll('a').forEach((a) => {
     a.addEventListener('click', () => {
       if (window.innerWidth <= 768) closeMenu();
     });
   });
 
-  // Escape
+  // Закрыть по Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeMenu();
   });
 
-  // На ресайзе в десктоп — закрываем
+  // При возврате на десктоп — закрываем меню
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) closeMenu();
   });
