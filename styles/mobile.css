@@ -242,9 +242,26 @@
     text-shadow: 0 4px 18px rgba(0,0,0,0.35);
   }
 
-  /* чтобы "YOUR" и "COFFEE" не терялись на фото */
-  .home__t1,
-  .home__t3{
-    color: #fff;
+@media (max-width: 768px){
+  .home__title{
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 18px;
+    margin: 0;
+    width: auto;
+    max-width: none;
+    z-index: 20;
+
+    /* подложка под текст */
+    background: rgba(255, 255, 255, 0.78);
+    padding: 12px 14px 10px;
+    border-radius: 6px;
   }
+
+  /* убираем влияние фона на уже выделенное слово */
+  .home__t2 > span{
+    background: var(--accent); /* как на ПК */
+  }
+}
 }
