@@ -118,3 +118,79 @@
     max-width: 100%;
   }
 }
+
+@media (max-width: 768px){
+  /* чтобы absolute работал предсказуемо */
+  .home{
+    position: relative;
+  }
+
+  /* картинка как фон-слой */
+  .home__image{
+    position: relative;
+    left: 0;
+  }
+  .home__image img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* заголовок снова поверх баннера (как на ПК) */
+  .home__title{
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 18px;
+    margin: 0;
+    width: auto;
+    max-width: none;
+    text-align: left;
+
+    z-index: 20;
+
+    font-size: 38px;
+    line-height: 46px;
+  }
+
+  /* чтобы не было лишнего “белого блока” под картинкой */
+  .home__left{
+    display: none;
+  }
+}
+
+@media (max-width: 768px){
+  .menu-toggle{
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;               /* вместо margin у линий */
+  }
+
+  .menu-toggle__line{
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #fff;       /* гарант */
+    border-radius: 2px;
+    margin: 0;              /* убираем margin из style.css, iOS иногда “режет” */
+  }
+}
+
+@media (max-width: 768px){
+  .coffee, .gift, .combo{
+    overflow: visible; /* перестаёт резать карточки/тени */
+  }
+
+  /* на всякий случай — чтобы карточки не упирались в край экрана */
+  .coffee__grid,
+  .combo__grid,
+  .gift__wrap{
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+  }
+}
