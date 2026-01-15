@@ -118,3 +118,133 @@
     max-width: 100%;
   }
 }
+
+@media (max-width: 768px){
+  /* чтобы absolute работал предсказуемо */
+  .home{
+    position: relative;
+  }
+
+  /* картинка как фон-слой */
+  .home__image{
+    position: relative;
+    left: 0;
+  }
+  .home__image img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* заголовок снова поверх баннера (как на ПК) */
+  .home__title{
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 18px;
+    margin: 0;
+    width: auto;
+    max-width: none;
+    text-align: left;
+
+    z-index: 20;
+
+    font-size: 38px;
+    line-height: 46px;
+  }
+
+  /* чтобы не было лишнего “белого блока” под картинкой */
+  .home__left{
+    display: none;
+  }
+}
+
+@media (max-width: 768px){
+  .menu-toggle{
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;               /* вместо margin у линий */
+  }
+
+  .menu-toggle__line{
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #fff;       /* гарант */
+    border-radius: 2px;
+    margin: 0;              /* убираем margin из style.css, iOS иногда “режет” */
+  }
+}
+
+@media (max-width: 575px){
+  /* делаем контент карточки чуть компактнее */
+  .cCard__body,
+  .pCard__body{
+    padding-right: 14px;
+  }
+
+  /* уменьшаем разрыв и размеры, чтобы "MUA NGAY" + "CHI TIẾT" влезали */
+  .cCard .actions,
+  .pCard .actions{
+    gap: 10px;
+  }
+
+  .cCard .btn,
+  .pCard .btn{
+    height: 30px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .cCard .link,
+  .pCard .link{
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px){
+  /* возвращаем левый блок с лого (НЕ скрываем) */
+  .home__left{
+    display: block;
+    padding: 16px;
+    background: var(--card);
+  }
+
+  .logo{
+    left: 0;            /* убираем desktop-смещение */
+    margin: 0 auto;     /* центрируем */
+  }
+
+  .home__image{
+    left: 0;            /* убираем desktop-смещение */
+  }
+
+  /* заголовок поверх картинки, но читаемый */
+  .home{
+    position: relative;
+  }
+
+  .home__title{
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 18px;
+    margin: 0;
+    width: auto;
+    max-width: none;
+    z-index: 20;
+
+    /* читаемость */
+    text-shadow: 0 4px 18px rgba(0,0,0,0.35);
+  }
+
+  /* чтобы "YOUR" и "COFFEE" не терялись на фото */
+  .home__t1,
+  .home__t3{
+    color: #fff;
+  }
+}
