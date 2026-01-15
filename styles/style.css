@@ -391,6 +391,86 @@ a { text-decoration: none; color: inherit; }
 /* UX */
 html { scroll-behavior: smooth; }
 
+/* =========================
+   UX / FEEDBACK (ПК + планшет)
+   ========================= */
+
+/* Плавные переходы */
+a,
+button,
+.btn,
+.link,
+.nav__link,
+.cCard,
+.pCard,
+.gift__card {
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    opacity .25s ease,
+    color .25s ease,
+    background-color .25s ease;
+}
+
+/* Видимый фокус (клавиатура) */
+.nav__link:focus-visible,
+.btn:focus-visible,
+.link:focus-visible,
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Hover — только там, где он реально есть (ПК/трекпад/мышь) */
+@media (hover: hover) and (pointer: fine) {
+  .nav__link:hover {
+    opacity: 1;
+    color: var(--accent);
+    transform: translateX(2px);
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 18px rgba(21, 29, 40, .14);
+  }
+
+  .link:hover {
+    opacity: 1;
+    color: var(--accent);
+  }
+
+  .cCard:hover,
+  .pCard:hover,
+  .gift__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 28px rgba(21, 29, 40, .14);
+  }
+}
+
+/* Active — важно для планшетов/тача */
+.nav__link:active {
+  opacity: 1;
+  color: var(--accent);
+  transform: translateX(1px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(.98);
+  box-shadow: 0 6px 12px rgba(21, 29, 40, .10);
+}
+
+.link:active {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.cCard:active,
+.pCard:active,
+.gift__card:active {
+  transform: translateY(-1px);
+}
+
 /* Адаптив */
 @media (max-width: 1200px) {
   .page { width: 100%; padding: 0 16px; }
