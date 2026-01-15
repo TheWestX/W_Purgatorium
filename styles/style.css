@@ -83,7 +83,12 @@ a { text-decoration: none; color: inherit; }
 }
 
 .home__left { padding: 46px 40px; background: var(--card); }
-.logo { position: relative; left: 90px; width: 115px; height: auto; }
+.logo{
+  display: block;
+  width: 115px;
+  height: auto;
+  margin: 0 auto;      /* центр по колонке */
+}
 
 .home__title {
   position: absolute;
@@ -629,3 +634,24 @@ button,
 
 .scroll-top:hover{ background: #324155; transform: scale(1.08); }
 .scroll-top:active{ transform: scale(0.95); }
+
+/* =========================
+   Планшет = как мобильный (off-canvas)
+   ========================= */
+@media (max-width: 991px) {
+  /* не показываем "строчное" меню */
+  .nav__list{
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .nav__link{
+    opacity: 0.45;
+  }
+}
+
+@media (max-width: 991px){
+  .menu-toggle{ display: inline-flex; }
+}
