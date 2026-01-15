@@ -180,17 +180,71 @@
   }
 }
 
-@media (max-width: 768px){
-  .coffee, .gift, .combo{
-    overflow: visible; /* перестаёт резать карточки/тени */
+@media (max-width: 575px){
+  /* делаем контент карточки чуть компактнее */
+  .cCard__body,
+  .pCard__body{
+    padding-right: 14px;
   }
 
-  /* на всякий случай — чтобы карточки не упирались в край экрана */
-  .coffee__grid,
-  .combo__grid,
-  .gift__wrap{
-    padding-left: 8px;
-    padding-right: 8px;
-    box-sizing: border-box;
+  /* уменьшаем разрыв и размеры, чтобы "MUA NGAY" + "CHI TIẾT" влезали */
+  .cCard .actions,
+  .pCard .actions{
+    gap: 10px;
+  }
+
+  .cCard .btn,
+  .pCard .btn{
+    height: 30px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .cCard .link,
+  .pCard .link{
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px){
+  /* возвращаем левый блок с лого (НЕ скрываем) */
+  .home__left{
+    display: block;
+    padding: 16px;
+    background: var(--card);
+  }
+
+  .logo{
+    left: 0;            /* убираем desktop-смещение */
+    margin: 0 auto;     /* центрируем */
+  }
+
+  .home__image{
+    left: 0;            /* убираем desktop-смещение */
+  }
+
+  /* заголовок поверх картинки, но читаемый */
+  .home{
+    position: relative;
+  }
+
+  .home__title{
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 18px;
+    margin: 0;
+    width: auto;
+    max-width: none;
+    z-index: 20;
+
+    /* читаемость */
+    text-shadow: 0 4px 18px rgba(0,0,0,0.35);
+  }
+
+  /* чтобы "YOUR" и "COFFEE" не терялись на фото */
+  .home__t1,
+  .home__t3{
+    color: #fff;
   }
 }
