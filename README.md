@@ -6,4 +6,4 @@
 
 ## Ссылки
 - [Публичная страница на GitHub Pages](https://thewestx.github.io/W_Purgatorium/)
-- ![Скрин дополнительных настроек](assets/Dop_1.png)
+- ![QR-код](assets/QR.png)
